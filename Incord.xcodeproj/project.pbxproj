@@ -7,6 +7,24 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		093AE1CC22BC59BA003F0535 /* CreateAccountView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 093AE1CB22BC59BA003F0535 /* CreateAccountView.swift */; };
+		093AE1D022BC5CA7003F0535 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 093AE1CF22BC5CA7003F0535 /* LoginView.swift */; };
+		093AE1D222BC7260003F0535 /* BackgroundView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 093AE1D122BC7260003F0535 /* BackgroundView.swift */; };
+		093AE1D422BCC0C7003F0535 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 093AE1D322BCC0C7003F0535 /* LoginViewController.swift */; };
+		093AE1D622BCC1B7003F0535 /* CreateAccountViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 093AE1D522BCC1B7003F0535 /* CreateAccountViewController.swift */; };
+		093AE1D822BCD07B003F0535 /* CreateChannelViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 093AE1D722BCD07B003F0535 /* CreateChannelViewController.swift */; };
+		093AE1DA22BCD2C5003F0535 /* ChannelView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 093AE1D922BCD2C5003F0535 /* ChannelView.swift */; };
+		093AE1DC22BCD5DD003F0535 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 093AE1DB22BCD5DD003F0535 /* ProfileViewController.swift */; };
+		093AE1DE22BCD5F8003F0535 /* FriendsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 093AE1DD22BCD5F8003F0535 /* FriendsViewController.swift */; };
+		093AE1E122BCD630003F0535 /* FriendsOnlineViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 093AE1DF22BCD630003F0535 /* FriendsOnlineViewController.swift */; };
+		093AE1E622BCD971003F0535 /* ChannelViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 093AE1E522BCD971003F0535 /* ChannelViewController.swift */; };
+		093AE1EC22BCF375003F0535 /* FriendsTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 093AE1EB22BCF375003F0535 /* FriendsTableCell.swift */; };
+		093AE1EE22BCF382003F0535 /* OnlineFriendsTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 093AE1ED22BCF382003F0535 /* OnlineFriendsTableCell.swift */; };
+		093AE1F022BCF38F003F0535 /* ChatTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 093AE1EF22BCF38F003F0535 /* ChatTableCell.swift */; };
+		093AE1F322BCF52E003F0535 /* Avatars.xib in Resources */ = {isa = PBXBuildFile; fileRef = 093AE1F222BCF52E003F0535 /* Avatars.xib */; };
+		093AE1F522BCF56F003F0535 /* AvatarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 093AE1F422BCF56F003F0535 /* AvatarViewController.swift */; };
+		093AE1F722BCF595003F0535 /* AvatarCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 093AE1F622BCF595003F0535 /* AvatarCell.swift */; };
+		093AE1F922BCF5DA003F0535 /* AvatarCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 093AE1F822BCF5DA003F0535 /* AvatarCell.xib */; };
 		09A95B8722B2525D002F17CE /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09A95B8622B2525D002F17CE /* AppDelegate.swift */; };
 		09A95B8B22B2525F002F17CE /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 09A95B8A22B2525F002F17CE /* Assets.xcassets */; };
 		09A95B8E22B2525F002F17CE /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 09A95B8C22B2525F002F17CE /* Main.storyboard */; };
@@ -19,6 +37,24 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		093AE1CB22BC59BA003F0535 /* CreateAccountView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateAccountView.swift; sourceTree = "<group>"; };
+		093AE1CF22BC5CA7003F0535 /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
+		093AE1D122BC7260003F0535 /* BackgroundView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackgroundView.swift; sourceTree = "<group>"; };
+		093AE1D322BCC0C7003F0535 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		093AE1D522BCC1B7003F0535 /* CreateAccountViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateAccountViewController.swift; sourceTree = "<group>"; };
+		093AE1D722BCD07B003F0535 /* CreateChannelViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateChannelViewController.swift; sourceTree = "<group>"; };
+		093AE1D922BCD2C5003F0535 /* ChannelView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChannelView.swift; sourceTree = "<group>"; };
+		093AE1DB22BCD5DD003F0535 /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
+		093AE1DD22BCD5F8003F0535 /* FriendsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendsViewController.swift; sourceTree = "<group>"; };
+		093AE1DF22BCD630003F0535 /* FriendsOnlineViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendsOnlineViewController.swift; sourceTree = "<group>"; };
+		093AE1E522BCD971003F0535 /* ChannelViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChannelViewController.swift; sourceTree = "<group>"; };
+		093AE1EB22BCF375003F0535 /* FriendsTableCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendsTableCell.swift; sourceTree = "<group>"; };
+		093AE1ED22BCF382003F0535 /* OnlineFriendsTableCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnlineFriendsTableCell.swift; sourceTree = "<group>"; };
+		093AE1EF22BCF38F003F0535 /* ChatTableCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatTableCell.swift; sourceTree = "<group>"; };
+		093AE1F222BCF52E003F0535 /* Avatars.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = Avatars.xib; sourceTree = "<group>"; };
+		093AE1F422BCF56F003F0535 /* AvatarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AvatarViewController.swift; sourceTree = "<group>"; };
+		093AE1F622BCF595003F0535 /* AvatarCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AvatarCell.swift; sourceTree = "<group>"; };
+		093AE1F822BCF5DA003F0535 /* AvatarCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AvatarCell.xib; sourceTree = "<group>"; };
 		09A95B8322B2525D002F17CE /* Incord.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Incord.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		09A95B8622B2525D002F17CE /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		09A95B8A22B2525F002F17CE /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -44,6 +80,23 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		093AE1C822BC55D6003F0535 /* Xibs */ = {
+			isa = PBXGroup;
+			children = (
+				093AE1F822BCF5DA003F0535 /* AvatarCell.xib */,
+			);
+			path = Xibs;
+			sourceTree = "<group>";
+		};
+		093AE1F122BCF51F003F0535 /* Popovers */ = {
+			isa = PBXGroup;
+			children = (
+				093AE1F222BCF52E003F0535 /* Avatars.xib */,
+				093AE1F422BCF56F003F0535 /* AvatarViewController.swift */,
+			);
+			path = Popovers;
+			sourceTree = "<group>";
+		};
 		09A95B7A22B2525D002F17CE = {
 			isa = PBXGroup;
 			children = (
@@ -63,6 +116,8 @@
 		09A95B8522B2525D002F17CE /* Incord */ = {
 			isa = PBXGroup;
 			children = (
+				09A95B8C22B2525F002F17CE /* Main.storyboard */,
+				093AE1C822BC55D6003F0535 /* Xibs */,
 				09A95B9E22B2678B002F17CE /* Utilities */,
 				09A95B9922B26288002F17CE /* Managers */,
 				09A95B9822B2627F002F17CE /* Controller */,
@@ -86,10 +141,18 @@
 		09A95B9722B2627A002F17CE /* View */ = {
 			isa = PBXGroup;
 			children = (
-				09A95B8C22B2525F002F17CE /* Main.storyboard */,
+				093AE1F122BCF51F003F0535 /* Popovers */,
 				09A95B9C22B26353002F17CE /* ChatBarView.swift */,
 				09A95BA122B267F7002F17CE /* CustomButtonView.swift */,
 				09A95BA522B26B33002F17CE /* MasterView.swift */,
+				093AE1CB22BC59BA003F0535 /* CreateAccountView.swift */,
+				093AE1CF22BC5CA7003F0535 /* LoginView.swift */,
+				093AE1D122BC7260003F0535 /* BackgroundView.swift */,
+				093AE1D922BCD2C5003F0535 /* ChannelView.swift */,
+				093AE1EB22BCF375003F0535 /* FriendsTableCell.swift */,
+				093AE1ED22BCF382003F0535 /* OnlineFriendsTableCell.swift */,
+				093AE1EF22BCF38F003F0535 /* ChatTableCell.swift */,
+				093AE1F622BCF595003F0535 /* AvatarCell.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -99,6 +162,13 @@
 			children = (
 				09A95B9A22B262BE002F17CE /* ChatViewController.swift */,
 				09A95BA322B26A71002F17CE /* MasterViewController.swift */,
+				093AE1D322BCC0C7003F0535 /* LoginViewController.swift */,
+				093AE1D522BCC1B7003F0535 /* CreateAccountViewController.swift */,
+				093AE1D722BCD07B003F0535 /* CreateChannelViewController.swift */,
+				093AE1DB22BCD5DD003F0535 /* ProfileViewController.swift */,
+				093AE1DD22BCD5F8003F0535 /* FriendsViewController.swift */,
+				093AE1DF22BCD630003F0535 /* FriendsOnlineViewController.swift */,
+				093AE1E522BCD971003F0535 /* ChannelViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -177,6 +247,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				09A95B8B22B2525F002F17CE /* Assets.xcassets in Resources */,
+				093AE1F322BCF52E003F0535 /* Avatars.xib in Resources */,
+				093AE1F922BCF5DA003F0535 /* AvatarCell.xib in Resources */,
 				09A95B8E22B2525F002F17CE /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -188,13 +260,29 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				093AE1DE22BCD5F8003F0535 /* FriendsViewController.swift in Sources */,
+				093AE1F522BCF56F003F0535 /* AvatarViewController.swift in Sources */,
+				093AE1D622BCC1B7003F0535 /* CreateAccountViewController.swift in Sources */,
+				093AE1E622BCD971003F0535 /* ChannelViewController.swift in Sources */,
+				093AE1F022BCF38F003F0535 /* ChatTableCell.swift in Sources */,
+				093AE1F722BCF595003F0535 /* AvatarCell.swift in Sources */,
+				093AE1E122BCD630003F0535 /* FriendsOnlineViewController.swift in Sources */,
+				093AE1D222BC7260003F0535 /* BackgroundView.swift in Sources */,
+				093AE1D822BCD07B003F0535 /* CreateChannelViewController.swift in Sources */,
 				09A95BA222B267F7002F17CE /* CustomButtonView.swift in Sources */,
 				09A95B9D22B26353002F17CE /* ChatBarView.swift in Sources */,
 				09A95BA622B26B33002F17CE /* MasterView.swift in Sources */,
+				093AE1D022BC5CA7003F0535 /* LoginView.swift in Sources */,
 				09A95BA422B26A71002F17CE /* MasterViewController.swift in Sources */,
 				09A95B9B22B262BE002F17CE /* ChatViewController.swift in Sources */,
 				09A95B8722B2525D002F17CE /* AppDelegate.swift in Sources */,
+				093AE1CC22BC59BA003F0535 /* CreateAccountView.swift in Sources */,
+				093AE1EC22BCF375003F0535 /* FriendsTableCell.swift in Sources */,
 				09A95BA022B267A3002F17CE /* Constants.swift in Sources */,
+				093AE1DC22BCD5DD003F0535 /* ProfileViewController.swift in Sources */,
+				093AE1DA22BCD2C5003F0535 /* ChannelView.swift in Sources */,
+				093AE1D422BCC0C7003F0535 /* LoginViewController.swift in Sources */,
+				093AE1EE22BCF382003F0535 /* OnlineFriendsTableCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

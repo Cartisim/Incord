@@ -10,9 +10,16 @@ import Foundation
 
 
 struct Conatants {
-    
     //Colors
-//    static let buttonColor = NSColor(calibratedRed: 135, green: 139, blue: 146, alpha: 1.0).cgColor
+
     
     
 }
+
+//XIB Constants
+
+
+//Notifications
+let USER_INFO_MODAL = "userInfoModal"
+let PRESENTING_MODAL_NOTIFICATION = Notification.Name("presentingModal")
+let CLOSING_MODAL_NOTIFIFCATION = Notification.Name("closingModal")
