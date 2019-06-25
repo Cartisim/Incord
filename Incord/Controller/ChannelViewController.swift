@@ -7,6 +7,7 @@
 //
 
 import Cocoa
+import SwiftyJSON
 
 class ChannelViewController: NSViewController {
 
@@ -16,6 +17,11 @@ class ChannelViewController: NSViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do view setup here.
+           print(Authentication().id)
     }
     
+    @IBAction func logoutClicked(_ sender: NSButton) {
+        Authentication.shared.logout()
+        print(Authentication().currentUser())
+    }
 }

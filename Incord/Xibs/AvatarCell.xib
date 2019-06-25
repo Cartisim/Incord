@@ -14,21 +14,19 @@
         <customObject id="-1" userLabel="First Responder" customClass="FirstResponder"/>
         <customObject id="-3" userLabel="Application" customClass="NSObject"/>
         <customView id="c22-O7-iKe">
-            <rect key="frame" x="0.0" y="0.0" width="150" height="150"/>
+            <rect key="frame" x="0.0" y="0.0" width="160" height="160"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
             <subviews>
                 <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="2qp-ND-BIf">
-                    <rect key="frame" x="0.0" y="0.0" width="150" height="150"/>
-                    <constraints>
-                        <constraint firstAttribute="height" constant="150" id="TEw-TR-lYV"/>
-                        <constraint firstAttribute="width" constant="150" id="XCL-gf-ElQ"/>
-                    </constraints>
+                    <rect key="frame" x="15" y="15" width="130" height="130"/>
                     <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" id="mQv-qO-ypa"/>
                 </imageView>
             </subviews>
             <constraints>
-                <constraint firstItem="2qp-ND-BIf" firstAttribute="centerY" secondItem="c22-O7-iKe" secondAttribute="centerY" id="3V5-aR-I7U"/>
-                <constraint firstItem="2qp-ND-BIf" firstAttribute="centerX" secondItem="c22-O7-iKe" secondAttribute="centerX" id="BQo-SR-kTk"/>
+                <constraint firstItem="2qp-ND-BIf" firstAttribute="centerX" secondItem="c22-O7-iKe" secondAttribute="centerX" id="3Ie-Ba-csJ"/>
+                <constraint firstItem="2qp-ND-BIf" firstAttribute="leading" secondItem="c22-O7-iKe" secondAttribute="leading" constant="15" id="8Qi-tH-Bn7"/>
+                <constraint firstItem="2qp-ND-BIf" firstAttribute="top" secondItem="c22-O7-iKe" secondAttribute="top" constant="15" id="cAi-EZ-YKH"/>
+                <constraint firstItem="2qp-ND-BIf" firstAttribute="centerY" secondItem="c22-O7-iKe" secondAttribute="centerY" id="nBw-7S-Jne"/>
             </constraints>
         </customView>
         <customObject id="cnb-Ux-WPd" customClass="AvatarCell" customModule="Incord" customModuleProvider="target"/>

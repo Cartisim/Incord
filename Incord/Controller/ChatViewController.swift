@@ -13,13 +13,15 @@ class ChatViewController: NSViewController {
     @IBOutlet weak var chatTextField: NSTextField!
     @IBOutlet weak var customButtonView: NSView!
     @IBOutlet weak var chatTableView: NSTableView!
+    @IBOutlet weak var profileImageButton: NSButton!
     
     var clickBackground: BackgroundView!
-static let shared = ChatViewController()
+    var avatarString = "avatar1"
+    static let shared = ChatViewController()
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do view setup here.
-       setUpViewController()
+        setUpViewController()
     }
     
     func setUpViewController() {
@@ -27,8 +29,10 @@ static let shared = ChatViewController()
         chatTextField.layer?.cornerRadius = 8
         customButtonView.wantsLayer = true
         customButtonView.layer?.cornerRadius = 8
+    
+        profileImageButton.image = NSImage(named: avatarString)
     }
- 
+    
     lazy var profileViewController: NSViewController = {
         return self.storyboard?.instantiateController(withIdentifier: "ProfileVC") as! NSViewController
     }()
@@ -52,7 +56,7 @@ static let shared = ChatViewController()
     @IBAction func friendsImageClicked(_ sender: NSButton) {
         self.view.window?.contentViewController?.presentAsSheet(friendsViewController)
     }
-
+    
     @IBAction func AddFileClicked(_ sender: NSButton) {
     }
     

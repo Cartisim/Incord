@@ -18,6 +18,9 @@ class ProfileViewController: NSViewController {
     @IBOutlet weak var updateAccountButton: NSButton!
     
     var clickBackground: BackgroundView!
+    let avatarPopover = NSPopover()
+    var avatarString = "avatar1"
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do view setup here.
@@ -26,6 +29,7 @@ class ProfileViewController: NSViewController {
     
     
     func setUpView() {
+        avatarPopover.delegate = self
         clickBackground = BackgroundView()
         clickBackground.translatesAutoresizingMaskIntoConstraints = false
         view.addSubview(clickBackground, positioned: .above, relativeTo: view)
@@ -38,6 +42,7 @@ class ProfileViewController: NSViewController {
         clickBackground.addGestureRecognizer(closeBackgroundClick)
         clickBackground.wantsLayer = true
         clickBackground.layer?.backgroundColor = NSColor.cyan.cgColor
+        avatarImage.image = NSImage(named: avatarString)
     }
     
     @objc func closeModalClick(_ recognizer: NSClickGestureRecognizer) {
@@ -52,5 +57,17 @@ class ProfileViewController: NSViewController {
     }
     
     @IBAction func changeImageClicked(_ sender: NSButton) {
+        avatarPopover.contentViewController = AvatarViewController(nibName: "Avatars", bundle: nil)
+        avatarPopover.show(relativeTo: avatarImage.bounds, of: avatarImage, preferredEdge: .minX)
+        avatarPopover.behavior = .transient
+    }
+}
+
+extension ProfileViewController: NSPopoverDelegate {
+    func popoverDidClose(_ notification: Notification) {
+        if Authentication.shared.avatarName != "" {
+            avatarImage.image = NSImage(named: Authentication.shared.avatarName)
+            avatarString = Authentication.shared.avatarName
+        }
     }
 }

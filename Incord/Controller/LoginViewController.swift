@@ -7,6 +7,8 @@
 //
 
 import Cocoa
+import Alamofire
+import KeychainSwift
 
 class LoginViewController: NSViewController {
 
@@ -43,10 +45,17 @@ class LoginViewController: NSViewController {
     }
     
     @IBAction func loginClicked(_ sender: NSButton) {
+            Authentication.shared.login(email: emailTextField.stringValue, password: passwordTextField.stringValue) { (success) in
+                if success {
+                    print(Authentication.shared.token)
+                    self.dismiss(self)
+                } else {
+                    print("fail")
+                }
+            }
     }
-
     @IBAction func loginOnEnterClicked(_ sender: NSTextField) {
-        passwordTextField.performClick(nil)
+//        passwordTextField.performClick(nil)
     }
     
 }

@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0910AA0922C18CEC008657B3 /* Authentication.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0910AA0822C18CEC008657B3 /* Authentication.swift */; };
+		09162E6322C1DFD100420996 /* CreateAccount.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09162E6222C1DFD100420996 /* CreateAccount.swift */; };
+		091630C122C1E83F00420996 /* AuthToken.swift in Sources */ = {isa = PBXBuildFile; fileRef = 091630C022C1E83F00420996 /* AuthToken.swift */; };
 		093AE1CC22BC59BA003F0535 /* CreateAccountView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 093AE1CB22BC59BA003F0535 /* CreateAccountView.swift */; };
 		093AE1D022BC5CA7003F0535 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 093AE1CF22BC5CA7003F0535 /* LoginView.swift */; };
 		093AE1D222BC7260003F0535 /* BackgroundView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 093AE1D122BC7260003F0535 /* BackgroundView.swift */; };
@@ -34,9 +37,13 @@
 		09A95BA222B267F7002F17CE /* CustomButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09A95BA122B267F7002F17CE /* CustomButtonView.swift */; };
 		09A95BA422B26A71002F17CE /* MasterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09A95BA322B26A71002F17CE /* MasterViewController.swift */; };
 		09A95BA622B26B33002F17CE /* MasterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09A95BA522B26B33002F17CE /* MasterView.swift */; };
+		A8D15497C580A30DDFD6774D /* Pods_Incord.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 70D583F843A756A5C7D349F2 /* Pods_Incord.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		0910AA0822C18CEC008657B3 /* Authentication.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Authentication.swift; sourceTree = "<group>"; };
+		09162E6222C1DFD100420996 /* CreateAccount.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateAccount.swift; sourceTree = "<group>"; };
+		091630C022C1E83F00420996 /* AuthToken.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthToken.swift; sourceTree = "<group>"; };
 		093AE1CB22BC59BA003F0535 /* CreateAccountView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateAccountView.swift; sourceTree = "<group>"; };
 		093AE1CF22BC5CA7003F0535 /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
 		093AE1D122BC7260003F0535 /* BackgroundView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackgroundView.swift; sourceTree = "<group>"; };
@@ -67,6 +74,9 @@
 		09A95BA122B267F7002F17CE /* CustomButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomButtonView.swift; sourceTree = "<group>"; };
 		09A95BA322B26A71002F17CE /* MasterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MasterViewController.swift; sourceTree = "<group>"; };
 		09A95BA522B26B33002F17CE /* MasterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MasterView.swift; sourceTree = "<group>"; };
+		1411E929D44EE55341137355 /* Pods-Incord.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Incord.release.xcconfig"; path = "Target Support Files/Pods-Incord/Pods-Incord.release.xcconfig"; sourceTree = "<group>"; };
+		403699CB42A42662375C9E5F /* Pods-Incord.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Incord.debug.xcconfig"; path = "Target Support Files/Pods-Incord/Pods-Incord.debug.xcconfig"; sourceTree = "<group>"; };
+		70D583F843A756A5C7D349F2 /* Pods_Incord.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Incord.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -74,6 +84,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A8D15497C580A30DDFD6774D /* Pods_Incord.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -92,7 +103,6 @@
 			isa = PBXGroup;
 			children = (
 				093AE1F222BCF52E003F0535 /* Avatars.xib */,
-				093AE1F422BCF56F003F0535 /* AvatarViewController.swift */,
 			);
 			path = Popovers;
 			sourceTree = "<group>";
@@ -102,6 +112,8 @@
 			children = (
 				09A95B8522B2525D002F17CE /* Incord */,
 				09A95B8422B2525D002F17CE /* Products */,
+				32242C9E6744BA2A0C221671 /* Pods */,
+				E608FA4E2A8D66E23468CF2D /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -134,6 +146,8 @@
 		09A95B9622B26275002F17CE /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				09162E6222C1DFD100420996 /* CreateAccount.swift */,
+				091630C022C1E83F00420996 /* AuthToken.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -169,6 +183,7 @@
 				093AE1DD22BCD5F8003F0535 /* FriendsViewController.swift */,
 				093AE1DF22BCD630003F0535 /* FriendsOnlineViewController.swift */,
 				093AE1E522BCD971003F0535 /* ChannelViewController.swift */,
+				093AE1F422BCF56F003F0535 /* AvatarViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -184,8 +199,27 @@
 			isa = PBXGroup;
 			children = (
 				09A95B9F22B267A3002F17CE /* Constants.swift */,
+				0910AA0822C18CEC008657B3 /* Authentication.swift */,
 			);
 			path = Utilities;
+			sourceTree = "<group>";
+		};
+		32242C9E6744BA2A0C221671 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				403699CB42A42662375C9E5F /* Pods-Incord.debug.xcconfig */,
+				1411E929D44EE55341137355 /* Pods-Incord.release.xcconfig */,
+			);
+			name = Pods;
+			path = Pods;
+			sourceTree = "<group>";
+		};
+		E608FA4E2A8D66E23468CF2D /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				70D583F843A756A5C7D349F2 /* Pods_Incord.framework */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -195,9 +229,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 09A95B9322B2525F002F17CE /* Build configuration list for PBXNativeTarget "Incord" */;
 			buildPhases = (
+				3109DC539D7F339F3C09113E /* [CP] Check Pods Manifest.lock */,
 				09A95B7F22B2525D002F17CE /* Sources */,
 				09A95B8022B2525D002F17CE /* Frameworks */,
 				09A95B8122B2525D002F17CE /* Resources */,
+				C037BEA2C2019B2DF154F413 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -220,6 +256,11 @@
 				TargetAttributes = {
 					09A95B8222B2525D002F17CE = {
 						CreatedOnToolsVersion = 10.2.1;
+						SystemCapabilities = {
+							com.apple.Sandbox = {
+								enabled = 1;
+							};
+						};
 					};
 				};
 			};
@@ -255,6 +296,48 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		3109DC539D7F339F3C09113E /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-Incord-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		C037BEA2C2019B2DF154F413 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Incord/Pods-Incord-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Incord/Pods-Incord-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Incord/Pods-Incord-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		09A95B7F22B2525D002F17CE /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
@@ -268,6 +351,7 @@
 				093AE1F722BCF595003F0535 /* AvatarCell.swift in Sources */,
 				093AE1E122BCD630003F0535 /* FriendsOnlineViewController.swift in Sources */,
 				093AE1D222BC7260003F0535 /* BackgroundView.swift in Sources */,
+				09162E6322C1DFD100420996 /* CreateAccount.swift in Sources */,
 				093AE1D822BCD07B003F0535 /* CreateChannelViewController.swift in Sources */,
 				09A95BA222B267F7002F17CE /* CustomButtonView.swift in Sources */,
 				09A95B9D22B26353002F17CE /* ChatBarView.swift in Sources */,
@@ -282,7 +366,9 @@
 				093AE1DC22BCD5DD003F0535 /* ProfileViewController.swift in Sources */,
 				093AE1DA22BCD2C5003F0535 /* ChannelView.swift in Sources */,
 				093AE1D422BCC0C7003F0535 /* LoginViewController.swift in Sources */,
+				091630C122C1E83F00420996 /* AuthToken.swift in Sources */,
 				093AE1EE22BCF382003F0535 /* OnlineFriendsTableCell.swift in Sources */,
+				0910AA0922C18CEC008657B3 /* Authentication.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -417,6 +503,7 @@
 		};
 		09A95B9422B2525F002F17CE /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 403699CB42A42662375C9E5F /* Pods-Incord.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = Incord/Incord.entitlements;
@@ -435,6 +522,7 @@
 		};
 		09A95B9522B2525F002F17CE /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 1411E929D44EE55341137355 /* Pods-Incord.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = Incord/Incord.entitlements;

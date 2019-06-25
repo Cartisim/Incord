@@ -7,10 +7,13 @@
 //
 
 import Cocoa
+import Alamofire
+import SwiftyJSON
+import KeychainSwift
 
 class CreateAccountViewController: NSViewController {
-
-
+    
+    
     @IBOutlet weak var userNameTextField: NSTextField!
     @IBOutlet weak var emailTextField: NSTextField!
     @IBOutlet weak var passwordTextField: NSTextField!
@@ -20,10 +23,18 @@ class CreateAccountViewController: NSViewController {
     @IBOutlet weak var progressIndicator: NSProgressIndicator!
     
     var clickBackground: BackgroundView!
+    let avatarPopover = NSPopover()
+    var avatarString = "avatar1"
+    
+    static let shared = CreateAccountViewController()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do view setup here.
         setUpView()
+        avatarPopover.delegate = self
+        progressIndicator.stopAnimation(self)
+        progressIndicator.isHidden = true
     }
     
     func setUpView() {
@@ -40,6 +51,7 @@ class CreateAccountViewController: NSViewController {
         clickBackground.addGestureRecognizer(closeBackgroundClick)
         clickBackground.wantsLayer = true
         clickBackground.layer?.backgroundColor = NSColor.cyan.cgColor
+        avatarImageView.image = NSImage(named: avatarString)
     }
     
     @objc func closeModalClick(_ recognizer: NSClickGestureRecognizer) {
@@ -47,12 +59,37 @@ class CreateAccountViewController: NSViewController {
     }
     @IBAction func chooseAvatarClicked(_ sender: NSButton) {
         
+        
+        avatarPopover.contentViewController = AvatarViewController(nibName: "Avatars", bundle: nil)
+        avatarPopover.show(relativeTo: avatarImageView.bounds, of: avatarImageView, preferredEdge: .minX)
+        avatarPopover.behavior = .transient
+        
     }
     
     @IBAction func createAccountClicked(_ sender: NSButton) {
-        
+            Authentication.shared.createUser(username: userNameTextField.stringValue, email: emailTextField.stringValue, password: passwordTextField.stringValue, avatar: Authentication.shared.avatarName, completion: { (success) in
+                if success {
+                    print(Authentication.shared.keychain.get(Authentication.shared.token) ?? "Empty")
+                          self.dismiss(self)
+                } else {
+                    print("failed to authenticate")
+                }
+            })
     }
+    
+    
+    
     @IBAction func createAccountOnEnterClicked(_ sender: NSTextField) {
-        reEnterPasswordTextField.performClick(nil)
+//        reEnterPasswordTextField.performClick(nil)
+    }
+}
+
+extension CreateAccountViewController: NSPopoverDelegate {
+    
+    func popoverDidClose(_ notification: Notification) {
+        if Authentication.shared.avatarName != "" {
+            avatarImageView.image = NSImage(named: Authentication.shared.avatarName)
+            avatarString = Authentication.shared.avatarName
+        }
     }
 }

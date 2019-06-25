@@ -22,6 +22,7 @@ class MasterViewController: NSViewController {
         super.viewDidLoad()
         // Do view setup here.
         setUpView()
+        
     }
     func setUpView() {
         channelCollectionView.wantsLayer = true

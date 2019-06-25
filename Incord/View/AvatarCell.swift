@@ -15,6 +15,10 @@ class AvatarCell: NSCollectionViewItem {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do view setup here.
+      
     }
     
+    func cellConfiguration(index: Int) {
+        avatarImage.image = NSImage(named:"avatar\(index + 1)")
+    }
 }
