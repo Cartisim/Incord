@@ -12,10 +12,12 @@ class ProfileViewController: NSViewController {
 
     @IBOutlet weak var usernameTextField: NSTextField!
     @IBOutlet weak var emailTextField: NSTextField!
-    @IBOutlet weak var passwordTextField: NSTextField!
-    @IBOutlet weak var reEnterPasswordTextField: NSTextField!
+    @IBOutlet weak var passwordTextField: NSSecureTextField!
+    
+    @IBOutlet weak var reEnterPasswordTextField: NSSecureTextField!
     @IBOutlet weak var avatarImage: NSImageView!
     @IBOutlet weak var updateAccountButton: NSButton!
+    @IBOutlet weak var progressIndicator: NSProgressIndicator!
     
     var clickBackground: BackgroundView!
     let avatarPopover = NSPopover()
@@ -27,8 +29,28 @@ class ProfileViewController: NSViewController {
         setUpView()
     }
     
+    override func viewWillAppear() {
+        if UserData.shared.isLoggedIn {
+            Authentication.shared.currentUser { (success) in
+                if success {
+                    self.usernameTextField.stringValue = UserData.shared.username
+                    self.emailTextField.stringValue = UserData.shared.userEmail
+                    self.avatarImage.image = NSImage(named: UserData.shared.avatarName)
+                } else {
+                    print("failure")
+                }
+            }
+        } else {
+            avatarImage.image = NSImage(named: avatarString)
+            usernameTextField.stringValue = ""
+            emailTextField.stringValue = ""
+            print("not logged")
+        }
+    }
     
     func setUpView() {
+        progressIndicator.stopAnimation(self)
+        progressIndicator.isHidden = true
         avatarPopover.delegate = self
         clickBackground = BackgroundView()
         clickBackground.translatesAutoresizingMaskIntoConstraints = false
@@ -42,7 +64,6 @@ class ProfileViewController: NSViewController {
         clickBackground.addGestureRecognizer(closeBackgroundClick)
         clickBackground.wantsLayer = true
         clickBackground.layer?.backgroundColor = NSColor.cyan.cgColor
-        avatarImage.image = NSImage(named: avatarString)
     }
     
     @objc func closeModalClick(_ recognizer: NSClickGestureRecognizer) {
@@ -54,6 +75,27 @@ class ProfileViewController: NSViewController {
     }
     
     @IBAction func updateAccountClicked(_ sender: NSButton) {
+        self.progressIndicator.startAnimation(self)
+        self.progressIndicator.isHidden = false
+        if passwordTextField.stringValue == reEnterPasswordTextField.stringValue {
+        Authentication.shared.updateUser(username: usernameTextField.stringValue, email: emailTextField.stringValue, password: passwordTextField.stringValue, avatar: UserData.shared.avatarName, completion: { (success) in
+            if success {
+                print("success")
+                self.progressIndicator.stopAnimation(self)
+                self.progressIndicator.isHidden = true
+                self.dismiss(self)
+            } else {
+                print("failed to update")
+                self.progressIndicator.stopAnimation(self)
+                self.progressIndicator.isHidden = true
+            }
+        })
+        } else {
+            print("passwords must match")
+            self.progressIndicator.stopAnimation(self)
+            self.progressIndicator.isHidden = true
+        }
+        
     }
     
     @IBAction func changeImageClicked(_ sender: NSButton) {
@@ -65,9 +107,9 @@ class ProfileViewController: NSViewController {
 
 extension ProfileViewController: NSPopoverDelegate {
     func popoverDidClose(_ notification: Notification) {
-        if Authentication.shared.avatarName != "" {
-            avatarImage.image = NSImage(named: Authentication.shared.avatarName)
-            avatarString = Authentication.shared.avatarName
+        if UserData.shared.avatarName != "" {
+            avatarImage.image = NSImage(named: UserData.shared.avatarName)
+            avatarString = UserData.shared.avatarName
         }
     }
 }

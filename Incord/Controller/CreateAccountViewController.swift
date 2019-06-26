@@ -16,8 +16,8 @@ class CreateAccountViewController: NSViewController {
     
     @IBOutlet weak var userNameTextField: NSTextField!
     @IBOutlet weak var emailTextField: NSTextField!
-    @IBOutlet weak var passwordTextField: NSTextField!
-    @IBOutlet weak var reEnterPasswordTextField: NSTextField!
+    @IBOutlet weak var passwordTextField: NSSecureTextField!
+    @IBOutlet weak var reEnterPasswordTextField: NSSecureTextField!
     @IBOutlet weak var avatarImageView: NSImageView!
     @IBOutlet weak var createAccountButton: NSButton!
     @IBOutlet weak var progressIndicator: NSProgressIndicator!
@@ -52,29 +52,47 @@ class CreateAccountViewController: NSViewController {
         clickBackground.wantsLayer = true
         clickBackground.layer?.backgroundColor = NSColor.cyan.cgColor
         avatarImageView.image = NSImage(named: avatarString)
+        self.progressIndicator.stopAnimation(self)
+        self.progressIndicator.isHidden = true
     }
     
     @objc func closeModalClick(_ recognizer: NSClickGestureRecognizer) {
         dismiss(self)
     }
     @IBAction func chooseAvatarClicked(_ sender: NSButton) {
-        
-        
         avatarPopover.contentViewController = AvatarViewController(nibName: "Avatars", bundle: nil)
         avatarPopover.show(relativeTo: avatarImageView.bounds, of: avatarImageView, preferredEdge: .minX)
         avatarPopover.behavior = .transient
-        
     }
     
     @IBAction func createAccountClicked(_ sender: NSButton) {
-            Authentication.shared.createUser(username: userNameTextField.stringValue, email: emailTextField.stringValue, password: passwordTextField.stringValue, avatar: Authentication.shared.avatarName, completion: { (success) in
+        self.progressIndicator.startAnimation(self)
+        self.progressIndicator.isHidden = false
+        if UserData.shared.isLoggedIn != true {
+            if passwordTextField.stringValue == reEnterPasswordTextField.stringValue {
+            Authentication.shared.createUser(username: userNameTextField.stringValue, email: emailTextField.stringValue, password: passwordTextField.stringValue, avatar: UserData.shared.avatarName, completion: { (success) in
                 if success {
-                    print(Authentication.shared.keychain.get(Authentication.shared.token) ?? "Empty")
+                    print(UserData.shared.keychain.get(UserData.shared.token) ?? "Empty Token, Create an admin")
+                    self.progressIndicator.stopAnimation(self)
+                    self.progressIndicator.isHidden = true
                           self.dismiss(self)
                 } else {
                     print("failed to authenticate")
+                    self.progressIndicator.stopAnimation(self)
+                    self.progressIndicator.isHidden = true
                 }
             })
+            } else {
+                print("passwords must match")
+                self.progressIndicator.stopAnimation(self)
+                self.progressIndicator.isHidden = true
+            }
+            } else {
+            self.progressIndicator.stopAnimation(self)
+            self.progressIndicator.isHidden = true
+            print("Please log out to create user")
+            dismiss(self)
+        }
     }
     
     
@@ -87,9 +105,9 @@ class CreateAccountViewController: NSViewController {
 extension CreateAccountViewController: NSPopoverDelegate {
     
     func popoverDidClose(_ notification: Notification) {
-        if Authentication.shared.avatarName != "" {
-            avatarImageView.image = NSImage(named: Authentication.shared.avatarName)
-            avatarString = Authentication.shared.avatarName
+        if UserData.shared.avatarName != "" {
+            avatarImageView.image = NSImage(named:  UserData.shared.avatarName)
+            avatarString = UserData.shared.avatarName
         }
     }
 }

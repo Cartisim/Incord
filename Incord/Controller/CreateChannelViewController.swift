@@ -35,6 +35,8 @@ class CreateChannelViewController: NSViewController {
         clickBackground.addGestureRecognizer(closeBackgroundClick)
         clickBackground.wantsLayer = true
         clickBackground.layer?.backgroundColor = NSColor.cyan.cgColor
+        self.progressIndicator.stopAnimation(self)
+        self.progressIndicator.isHidden = true
     }
     
     @objc func closeModalClick(_ recognizer: NSClickGestureRecognizer) {

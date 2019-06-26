@@ -1020,7 +1020,7 @@
                                                                     <constraint firstAttribute="height" constant="32" id="TtF-Ft-Ngg"/>
                                                                     <constraint firstAttribute="width" constant="300" id="rZ8-PH-OuS"/>
                                                                 </constraints>
-                                                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" focusRingType="none" alignment="left" placeholderString="Username" id="80t-te-ILA">
+                                                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" refusesFirstResponder="YES" sendsActionOnEndEditing="YES" focusRingType="none" alignment="left" placeholderString="Username" id="80t-te-ILA">
                                                                     <font key="font" size="16" name="AvenirNext-Regular"/>
                                                                     <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                                                                     <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
@@ -1059,9 +1059,6 @@
                                                                     <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                                                                     <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                                                 </textFieldCell>
-                                                                <connections>
-                                                                    <outlet property="nextKeyView" destination="GnS-UI-GPJ" id="0jH-4J-6Fd"/>
-                                                                </connections>
                                                             </textField>
                                                             <box verticalHuggingPriority="750" boxType="separator" translatesAutoresizingMaskIntoConstraints="NO" id="1HX-1N-nlx">
                                                                 <rect key="frame" x="0.0" y="-2" width="300" height="5"/>
@@ -1079,24 +1076,24 @@
                                                             <real value="3.4028234663852886e+38"/>
                                                         </customSpacing>
                                                     </stackView>
+                                                    <secureTextField focusRingType="none" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="5vh-uS-TTm">
+                                                        <rect key="frame" x="-2" y="97" width="304" height="32"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="height" constant="32" id="Rbn-Jb-npD"/>
+                                                            <constraint firstAttribute="width" constant="300" id="vRi-mn-nuc"/>
+                                                        </constraints>
+                                                        <secureTextFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" focusRingType="none" alignment="left" placeholderString="Password" id="5J4-MZ-QP3">
+                                                            <font key="font" size="16" name="AvenirNext-Regular"/>
+                                                            <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                                                            <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                                            <allowedInputSourceLocales>
+                                                                <string>NSAllRomanInputSourcesLocaleIdentifier</string>
+                                                            </allowedInputSourceLocales>
+                                                        </secureTextFieldCell>
+                                                    </secureTextField>
                                                     <stackView distribution="fill" orientation="vertical" alignment="leading" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="otb-H9-Wbm">
-                                                        <rect key="frame" x="0.0" y="88" width="300" height="41"/>
+                                                        <rect key="frame" x="0.0" y="88" width="300" height="1"/>
                                                         <subviews>
-                                                            <textField focusRingType="none" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="GnS-UI-GPJ">
-                                                                <rect key="frame" x="-2" y="9" width="304" height="32"/>
-                                                                <constraints>
-                                                                    <constraint firstAttribute="height" constant="32" id="4I6-3U-Qpk"/>
-                                                                    <constraint firstAttribute="width" constant="300" id="soa-LP-PdM"/>
-                                                                </constraints>
-                                                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" focusRingType="none" alignment="left" placeholderString="Password" id="UZW-nt-icY">
-                                                                    <font key="font" size="16" name="AvenirNext-Regular"/>
-                                                                    <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
-                                                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
-                                                                </textFieldCell>
-                                                                <connections>
-                                                                    <outlet property="nextKeyView" destination="6rD-MI-7xC" id="zK8-uZ-EmE"/>
-                                                                </connections>
-                                                            </textField>
                                                             <box verticalHuggingPriority="750" boxType="separator" translatesAutoresizingMaskIntoConstraints="NO" id="lZm-hH-Gxw">
                                                                 <rect key="frame" x="0.0" y="-2" width="300" height="5"/>
                                                                 <constraints>
@@ -1106,31 +1103,29 @@
                                                         </subviews>
                                                         <visibilityPriorities>
                                                             <integer value="1000"/>
-                                                            <integer value="1000"/>
                                                         </visibilityPriorities>
                                                         <customSpacing>
                                                             <real value="3.4028234663852886e+38"/>
-                                                            <real value="3.4028234663852886e+38"/>
                                                         </customSpacing>
                                                     </stackView>
+                                                    <secureTextField focusRingType="none" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="z6q-3o-ajs">
+                                                        <rect key="frame" x="-2" y="48" width="304" height="32"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="width" constant="300" id="Hqz-FL-nKj"/>
+                                                            <constraint firstAttribute="height" constant="32" id="RGR-gt-5I8"/>
+                                                        </constraints>
+                                                        <secureTextFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" focusRingType="none" alignment="left" placeholderString="Re-Enter Password" id="CoJ-O5-me9">
+                                                            <font key="font" size="16" name="AvenirNext-Regular"/>
+                                                            <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                                                            <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                                            <allowedInputSourceLocales>
+                                                                <string>NSAllRomanInputSourcesLocaleIdentifier</string>
+                                                            </allowedInputSourceLocales>
+                                                        </secureTextFieldCell>
+                                                    </secureTextField>
                                                     <stackView distribution="fill" orientation="vertical" alignment="leading" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="N81-3g-3Rz">
-                                                        <rect key="frame" x="0.0" y="39" width="300" height="41"/>
+                                                        <rect key="frame" x="0.0" y="39" width="300" height="1"/>
                                                         <subviews>
-                                                            <textField focusRingType="none" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="6rD-MI-7xC">
-                                                                <rect key="frame" x="-2" y="9" width="304" height="32"/>
-                                                                <constraints>
-                                                                    <constraint firstAttribute="width" constant="300" id="1QM-qY-37r"/>
-                                                                    <constraint firstAttribute="height" constant="32" id="a4z-rD-fD6"/>
-                                                                </constraints>
-                                                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" focusRingType="none" alignment="left" placeholderString="Re-Enter Password" id="05D-ZR-X44">
-                                                                    <font key="font" size="16" name="AvenirNext-Regular"/>
-                                                                    <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
-                                                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
-                                                                </textFieldCell>
-                                                                <connections>
-                                                                    <action selector="updateAccountOnEnterClicked:" target="53G-E7-32y" id="cOt-Xh-1Gl"/>
-                                                                </connections>
-                                                            </textField>
                                                             <box verticalHuggingPriority="750" boxType="separator" translatesAutoresizingMaskIntoConstraints="NO" id="fMR-j6-V0Z">
                                                                 <rect key="frame" x="0.0" y="-2" width="300" height="5"/>
                                                                 <constraints>
@@ -1140,10 +1135,8 @@
                                                         </subviews>
                                                         <visibilityPriorities>
                                                             <integer value="1000"/>
-                                                            <integer value="1000"/>
                                                         </visibilityPriorities>
                                                         <customSpacing>
-                                                            <real value="3.4028234663852886e+38"/>
                                                             <real value="3.4028234663852886e+38"/>
                                                         </customSpacing>
                                                     </stackView>
@@ -1164,8 +1157,12 @@
                                                     <integer value="1000"/>
                                                     <integer value="1000"/>
                                                     <integer value="1000"/>
+                                                    <integer value="1000"/>
+                                                    <integer value="1000"/>
                                                 </visibilityPriorities>
                                                 <customSpacing>
+                                                    <real value="3.4028234663852886e+38"/>
+                                                    <real value="3.4028234663852886e+38"/>
                                                     <real value="3.4028234663852886e+38"/>
                                                     <real value="3.4028234663852886e+38"/>
                                                     <real value="3.4028234663852886e+38"/>
@@ -1197,19 +1194,25 @@
                                     <real value="3.4028234663852886e+38"/>
                                 </customSpacing>
                             </stackView>
+                            <progressIndicator wantsLayer="YES" horizontalHuggingPriority="750" verticalHuggingPriority="750" maxValue="100" bezeled="NO" indeterminate="YES" style="spinning" translatesAutoresizingMaskIntoConstraints="NO" id="v8I-cs-Srm">
+                                <rect key="frame" x="294" y="184" width="32" height="32"/>
+                            </progressIndicator>
                         </subviews>
                         <constraints>
                             <constraint firstItem="ARk-Y3-bb8" firstAttribute="top" secondItem="ZJE-w5-rVz" secondAttribute="top" constant="39" id="Ay4-h7-yA6"/>
                             <constraint firstItem="ARk-Y3-bb8" firstAttribute="leading" secondItem="ZJE-w5-rVz" secondAttribute="leading" constant="70" id="SfN-KB-Nh5"/>
                             <constraint firstAttribute="bottom" secondItem="ARk-Y3-bb8" secondAttribute="bottom" constant="40" id="VxS-Z4-j9g"/>
+                            <constraint firstItem="v8I-cs-Srm" firstAttribute="centerX" secondItem="ZJE-w5-rVz" secondAttribute="centerX" id="YC8-Qf-KJf"/>
                             <constraint firstAttribute="trailing" secondItem="ARk-Y3-bb8" secondAttribute="trailing" constant="69" id="aIy-GD-bN4"/>
+                            <constraint firstItem="v8I-cs-Srm" firstAttribute="centerY" secondItem="ZJE-w5-rVz" secondAttribute="centerY" id="g8U-8o-UQF"/>
                         </constraints>
                     </view>
                     <connections>
                         <outlet property="avatarImage" destination="V6c-ab-jVE" id="B3j-33-Olh"/>
                         <outlet property="emailTextField" destination="IOn-Hz-z2i" id="vio-M1-0ht"/>
-                        <outlet property="passwordTextField" destination="GnS-UI-GPJ" id="ZYN-lI-9Ly"/>
-                        <outlet property="reEnterPasswordTextField" destination="6rD-MI-7xC" id="nd5-o7-riU"/>
+                        <outlet property="passwordTextField" destination="5vh-uS-TTm" id="yIt-ol-H9w"/>
+                        <outlet property="progressIndicator" destination="v8I-cs-Srm" id="4HZ-H3-PgT"/>
+                        <outlet property="reEnterPasswordTextField" destination="z6q-3o-ajs" id="qiP-9I-oWh"/>
                         <outlet property="updateAccountButton" destination="AWb-Nl-Pt6" id="3vD-FJ-Y3l"/>
                         <outlet property="usernameTextField" destination="SNI-Fl-D4g" id="tmC-Vu-9rS"/>
                     </connections>
@@ -2063,24 +2066,24 @@
                                                             <real value="3.4028234663852886e+38"/>
                                                         </customSpacing>
                                                     </stackView>
+                                                    <secureTextField focusRingType="none" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="0pY-Ta-TNT">
+                                                        <rect key="frame" x="-2" y="9" width="304" height="32"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="height" constant="32" id="L5U-7o-uQf"/>
+                                                            <constraint firstAttribute="width" constant="300" id="gqo-tE-WXw"/>
+                                                        </constraints>
+                                                        <secureTextFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" focusRingType="none" alignment="left" placeholderString="Password" id="YSe-Od-47I">
+                                                            <font key="font" size="16" name="AvenirNext-Regular"/>
+                                                            <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                                                            <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                                            <allowedInputSourceLocales>
+                                                                <string>NSAllRomanInputSourcesLocaleIdentifier</string>
+                                                            </allowedInputSourceLocales>
+                                                        </secureTextFieldCell>
+                                                    </secureTextField>
                                                     <stackView distribution="fill" orientation="vertical" alignment="leading" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="RbJ-Yt-cTv">
-                                                        <rect key="frame" x="0.0" y="0.0" width="300" height="41"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="300" height="1"/>
                                                         <subviews>
-                                                            <textField focusRingType="none" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="eVj-Sb-AqI">
-                                                                <rect key="frame" x="-2" y="9" width="304" height="32"/>
-                                                                <constraints>
-                                                                    <constraint firstAttribute="height" constant="32" id="Wr7-6u-sda"/>
-                                                                    <constraint firstAttribute="width" constant="300" id="pUJ-Sq-nHd"/>
-                                                                </constraints>
-                                                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" focusRingType="none" placeholderString="Password" id="KTv-gJ-sdF">
-                                                                    <font key="font" size="16" name="AvenirNext-Regular"/>
-                                                                    <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
-                                                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
-                                                                </textFieldCell>
-                                                                <connections>
-                                                                    <action selector="loginOnEnterClicked:" target="4rj-6c-s2N" id="rCi-W1-qxf"/>
-                                                                </connections>
-                                                            </textField>
                                                             <box verticalHuggingPriority="750" boxType="separator" translatesAutoresizingMaskIntoConstraints="NO" id="4Pp-Gx-epi">
                                                                 <rect key="frame" x="0.0" y="-2" width="300" height="5"/>
                                                                 <constraints>
@@ -2091,10 +2094,8 @@
                                                         </subviews>
                                                         <visibilityPriorities>
                                                             <integer value="1000"/>
-                                                            <integer value="1000"/>
                                                         </visibilityPriorities>
                                                         <customSpacing>
-                                                            <real value="3.4028234663852886e+38"/>
                                                             <real value="3.4028234663852886e+38"/>
                                                         </customSpacing>
                                                     </stackView>
@@ -2102,8 +2103,10 @@
                                                 <visibilityPriorities>
                                                     <integer value="1000"/>
                                                     <integer value="1000"/>
+                                                    <integer value="1000"/>
                                                 </visibilityPriorities>
                                                 <customSpacing>
+                                                    <real value="3.4028234663852886e+38"/>
                                                     <real value="3.4028234663852886e+38"/>
                                                     <real value="3.4028234663852886e+38"/>
                                                 </customSpacing>
@@ -2142,14 +2145,24 @@
                                     <real value="3.4028234663852886e+38"/>
                                 </customSpacing>
                             </stackView>
-                            <progressIndicator hidden="YES" wantsLayer="YES" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" maxValue="100" bezeled="NO" indeterminate="YES" style="spinning" translatesAutoresizingMaskIntoConstraints="NO" id="JW3-fj-fJ3">
+                            <progressIndicator hidden="YES" wantsLayer="YES" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" maxValue="100" displayedWhenStopped="NO" bezeled="NO" indeterminate="YES" style="spinning" translatesAutoresizingMaskIntoConstraints="NO" id="JW3-fj-fJ3">
                                 <rect key="frame" x="259" y="159" width="32" height="32"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                             </progressIndicator>
+                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="sMW-i2-9Ik">
+                                <rect key="frame" x="257" y="313" width="37" height="23"/>
+                                <textFieldCell key="cell" lineBreakMode="clipping" title="Label" id="uW2-bt-luZ">
+                                    <font key="font" size="13" name="AvenirNext-Regular"/>
+                                    <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                </textFieldCell>
+                            </textField>
                         </subviews>
                         <constraints>
                             <constraint firstItem="Ynz-1E-A7H" firstAttribute="leading" secondItem="Yee-Pj-J4z" secondAttribute="leading" constant="125" id="2qu-Dt-toG"/>
                             <constraint firstItem="Ynz-1E-A7H" firstAttribute="top" secondItem="Yee-Pj-J4z" secondAttribute="top" constant="66" id="5cE-Wt-9SU"/>
+                            <constraint firstItem="sMW-i2-9Ik" firstAttribute="top" secondItem="Yee-Pj-J4z" secondAttribute="top" constant="14" id="BTc-FL-fwl"/>
+                            <constraint firstItem="sMW-i2-9Ik" firstAttribute="centerX" secondItem="Yee-Pj-J4z" secondAttribute="centerX" id="DdI-5F-IgX"/>
                             <constraint firstAttribute="bottom" secondItem="Ynz-1E-A7H" secondAttribute="bottom" constant="67" id="Mx9-Dh-gZY"/>
                             <constraint firstAttribute="trailing" secondItem="Ynz-1E-A7H" secondAttribute="trailing" constant="125" id="bgv-c6-h5O"/>
                         </constraints>
@@ -2157,8 +2170,9 @@
                     <connections>
                         <outlet property="emailTextField" destination="s1A-8A-Dyn" id="xgh-Z4-goa"/>
                         <outlet property="loginButton" destination="0bz-kr-GLT" id="YO6-LA-Zuq"/>
-                        <outlet property="passwordTextField" destination="eVj-Sb-AqI" id="pJE-f4-y7j"/>
+                        <outlet property="passwordTextField" destination="0pY-Ta-TNT" id="qYx-0T-VDM"/>
                         <outlet property="progressIndicator" destination="JW3-fj-fJ3" id="6ga-d3-qjy"/>
+                        <outlet property="statusLabel" destination="sMW-i2-9Ik" id="obz-DC-Aq2"/>
                     </connections>
                 </viewController>
                 <customObject id="EAf-Rl-7wS" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
@@ -2253,9 +2267,6 @@
                                                             <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                                                             <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                                         </textFieldCell>
-                                                        <connections>
-                                                            <outlet property="nextKeyView" destination="1TY-HS-PBe" id="Uio-fU-c2v"/>
-                                                        </connections>
                                                     </textField>
                                                     <box verticalHuggingPriority="750" boxType="separator" translatesAutoresizingMaskIntoConstraints="NO" id="hnk-wt-W5k">
                                                         <rect key="frame" x="0.0" y="135" width="300" height="5"/>
@@ -2263,42 +2274,42 @@
                                                             <constraint firstAttribute="width" constant="300" id="QXz-ZW-v3v"/>
                                                         </constraints>
                                                     </box>
-                                                    <textField focusRingType="none" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="1TY-HS-PBe">
+                                                    <secureTextField focusRingType="none" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Nxh-dT-1o9">
                                                         <rect key="frame" x="-2" y="97" width="304" height="32"/>
                                                         <constraints>
-                                                            <constraint firstAttribute="width" constant="300" id="6Ps-MC-K8I"/>
-                                                            <constraint firstAttribute="height" constant="32" id="DR0-pJ-FWd"/>
+                                                            <constraint firstAttribute="width" constant="300" id="9lJ-Sg-7Y0"/>
+                                                            <constraint firstAttribute="height" constant="32" id="Jdl-MG-qrA"/>
                                                         </constraints>
-                                                        <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" focusRingType="none" alignment="left" placeholderString="Password" id="qpS-dQ-8KK">
+                                                        <secureTextFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" focusRingType="none" alignment="left" placeholderString="Password" id="gy6-Ni-5j4">
                                                             <font key="font" size="16" name="AvenirNext-Regular"/>
                                                             <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                                                             <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
-                                                        </textFieldCell>
-                                                        <connections>
-                                                            <outlet property="nextKeyView" destination="COs-EF-EVW" id="67V-L2-9Gp"/>
-                                                        </connections>
-                                                    </textField>
+                                                            <allowedInputSourceLocales>
+                                                                <string>NSAllRomanInputSourcesLocaleIdentifier</string>
+                                                            </allowedInputSourceLocales>
+                                                        </secureTextFieldCell>
+                                                    </secureTextField>
                                                     <box verticalHuggingPriority="750" boxType="separator" translatesAutoresizingMaskIntoConstraints="NO" id="Tbn-uh-LVj">
                                                         <rect key="frame" x="0.0" y="86" width="300" height="5"/>
                                                         <constraints>
                                                             <constraint firstAttribute="width" constant="300" id="Jwe-a7-Fp5"/>
                                                         </constraints>
                                                     </box>
-                                                    <textField focusRingType="none" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="COs-EF-EVW">
+                                                    <secureTextField focusRingType="none" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Tqg-bN-ZDU">
                                                         <rect key="frame" x="-2" y="48" width="304" height="32"/>
                                                         <constraints>
-                                                            <constraint firstAttribute="width" constant="300" id="HBD-cH-S6n"/>
-                                                            <constraint firstAttribute="height" constant="32" id="yeq-de-7qT"/>
+                                                            <constraint firstAttribute="width" constant="300" id="YZQ-Oe-oQq"/>
+                                                            <constraint firstAttribute="height" constant="32" id="z55-vR-kmd"/>
                                                         </constraints>
-                                                        <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" focusRingType="none" alignment="left" placeholderString="Re-Enter Password" id="e73-vD-Gil">
+                                                        <secureTextFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" focusRingType="none" alignment="left" placeholderString="Re-Enter Password" id="hBf-h2-DLK">
                                                             <font key="font" size="16" name="AvenirNext-Regular"/>
                                                             <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                                                             <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
-                                                        </textFieldCell>
-                                                        <connections>
-                                                            <action selector="createAccountOnEnterClicked:" target="14O-a9-307" id="7QJ-T9-i7h"/>
-                                                        </connections>
-                                                    </textField>
+                                                            <allowedInputSourceLocales>
+                                                                <string>NSAllRomanInputSourcesLocaleIdentifier</string>
+                                                            </allowedInputSourceLocales>
+                                                        </secureTextFieldCell>
+                                                    </secureTextField>
                                                     <box verticalHuggingPriority="750" boxType="separator" translatesAutoresizingMaskIntoConstraints="NO" id="INf-Q3-hij">
                                                         <rect key="frame" x="0.0" y="37" width="300" height="5"/>
                                                         <constraints>
@@ -2363,7 +2374,7 @@
                                     <real value="3.4028234663852886e+38"/>
                                 </customSpacing>
                             </stackView>
-                            <progressIndicator hidden="YES" wantsLayer="YES" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" maxValue="100" bezeled="NO" indeterminate="YES" style="spinning" translatesAutoresizingMaskIntoConstraints="NO" id="ru9-qB-8Fk">
+                            <progressIndicator hidden="YES" wantsLayer="YES" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" maxValue="100" displayedWhenStopped="NO" bezeled="NO" indeterminate="YES" style="spinning" translatesAutoresizingMaskIntoConstraints="NO" id="ru9-qB-8Fk">
                                 <rect key="frame" x="259" y="159" width="32" height="32"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                             </progressIndicator>
@@ -2379,9 +2390,9 @@
                         <outlet property="avatarImageView" destination="uEe-sp-jfC" id="EWm-eE-A1C"/>
                         <outlet property="createAccountButton" destination="mDe-xj-xNe" id="NC7-U5-YR9"/>
                         <outlet property="emailTextField" destination="BIW-tf-50m" id="jTs-6R-QMs"/>
-                        <outlet property="passwordTextField" destination="1TY-HS-PBe" id="cUV-ox-nbN"/>
+                        <outlet property="passwordTextField" destination="Nxh-dT-1o9" id="E4m-Pk-Xgw"/>
                         <outlet property="progressIndicator" destination="ru9-qB-8Fk" id="ZZS-O1-g2l"/>
-                        <outlet property="reEnterPasswordTextField" destination="COs-EF-EVW" id="9af-aS-5uf"/>
+                        <outlet property="reEnterPasswordTextField" destination="Tqg-bN-ZDU" id="LlJ-ce-Vy6"/>
                         <outlet property="userNameTextField" destination="xxA-94-Gs1" id="joH-QW-r8X"/>
                     </connections>
                 </viewController>

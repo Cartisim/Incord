@@ -8,6 +8,7 @@
 
 import Cocoa
 import SwiftyJSON
+import Alamofire
 
 class ChannelViewController: NSViewController {
 
@@ -16,12 +17,13 @@ class ChannelViewController: NSViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do view setup here.
-           print(Authentication().id)
     }
     
     @IBAction func logoutClicked(_ sender: NSButton) {
         Authentication.shared.logout()
-        print(Authentication().currentUser())
+        print("logoutClicked")
+      
     }
+    
+   
 }

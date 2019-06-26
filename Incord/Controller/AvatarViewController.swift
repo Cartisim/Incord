@@ -22,7 +22,7 @@ extension AvatarViewController: NSCollectionViewDelegate {
     
     func collectionView(_ collectionView: NSCollectionView, didSelectItemsAt indexPaths: Set<IndexPath>) {
         if let selectedAvatar = collectionView.selectionIndexPaths.first {
-            Authentication.shared.avatarName = "avatar\(selectedAvatar.item + 1)"
+             UserData.shared.avatarName = "avatar\(selectedAvatar.item + 1)"
             view.window?.cancelOperation(nil)
         }
     }

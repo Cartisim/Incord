@@ -11,11 +11,12 @@ import Alamofire
 import KeychainSwift
 
 class LoginViewController: NSViewController {
-
+    
     @IBOutlet weak var emailTextField: NSTextField!
-    @IBOutlet weak var passwordTextField: NSTextField!
+    @IBOutlet weak var passwordTextField: NSSecureTextField!
     @IBOutlet weak var loginButton: NSButton!
     @IBOutlet weak var progressIndicator: NSProgressIndicator!
+    @IBOutlet weak var statusLabel: NSTextField!
     
     var clickBackground: BackgroundView!
     override func viewDidLoad() {
@@ -26,6 +27,8 @@ class LoginViewController: NSViewController {
     
     
     func setUpView() {
+        progressIndicator.stopAnimation(self)
+        progressIndicator.isHidden = true
         clickBackground = BackgroundView()
         clickBackground.translatesAutoresizingMaskIntoConstraints = false
         view.addSubview(clickBackground, positioned: .above, relativeTo: view)
@@ -39,23 +42,51 @@ class LoginViewController: NSViewController {
         clickBackground.wantsLayer = true
         clickBackground.layer?.backgroundColor = NSColor.cyan.cgColor
     }
+    var account = [CreateAccount]()
+    
+    override func viewWillAppear() {
+        if UserData.shared.isLoggedIn != true {
+            emailTextField.stringValue = ""
+            passwordTextField.stringValue  = ""
+            statusLabel.stringValue = "Not Logged in"
+            Authentication.shared.logout()
+            print("not logged in")
+        } else {
+            emailTextField.stringValue = UserData.shared.userEmail
+            passwordTextField.stringValue  = ""
+            statusLabel.stringValue = "Logged In"
+        }
+    }
     
     @objc func closeModalClick(_ recognizer: NSClickGestureRecognizer) {
         dismiss(self)
     }
     
     @IBAction func loginClicked(_ sender: NSButton) {
+        progressIndicator.isHidden = false
+        progressIndicator.startAnimation(self)
+        if UserData.shared.isLoggedIn != true {
             Authentication.shared.login(email: emailTextField.stringValue, password: passwordTextField.stringValue) { (success) in
                 if success {
-                    print(Authentication.shared.token)
+                    print(UserData.shared.token)
+                    self.progressIndicator.stopAnimation(self)
+                    self.progressIndicator.isHidden = true
                     self.dismiss(self)
                 } else {
                     print("fail")
+                    self.progressIndicator.stopAnimation(self)
+                    self.progressIndicator.isHidden = true
                 }
             }
+        } else {
+            self.progressIndicator.stopAnimation(self)
+            self.progressIndicator.isHidden = true
+            print("already logged in")
+            dismiss(self)
+        }
     }
     @IBAction func loginOnEnterClicked(_ sender: NSTextField) {
-//        passwordTextField.performClick(nil)
+        //        passwordTextField.performClick(nil)
     }
     
 }

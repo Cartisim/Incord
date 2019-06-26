@@ -29,7 +29,6 @@ class ChatViewController: NSViewController {
         chatTextField.layer?.cornerRadius = 8
         customButtonView.wantsLayer = true
         customButtonView.layer?.cornerRadius = 8
-    
         profileImageButton.image = NSImage(named: avatarString)
     }
     

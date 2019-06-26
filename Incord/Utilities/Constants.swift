@@ -30,7 +30,7 @@ let HEADER = [
 ]
 
 let BEARER_HEADER = [
-    "Authorization":"Bearer \(Authentication().token)",
+    "Authorization":"Bearer \(UserData.shared.token)",
     "Content-Type": "application/json; charset=utf-8"
 ]
 
@@ -38,3 +38,6 @@ let BEARER_HEADER = [
 let TOKEN_KEY = "token"
 let LOGGED_IN_KEY = "loggedIn"
 let USER_EMAIL = "userEmail"
+let ACCOUNT_ID_KEY = "createAccountID"
+let ID_KEY = "id"
+let AVATAR_KEY = "avatar"
