@@ -31,7 +31,7 @@ class ProfileViewController: NSViewController {
     
     override func viewWillAppear() {
         if UserData.shared.isLoggedIn {
-            Authentication.shared.currentUser { (success) in
+            Users.shared.currentUser { (success) in
                 if success {
                     self.usernameTextField.stringValue = UserData.shared.username
                     self.emailTextField.stringValue = UserData.shared.userEmail
@@ -78,7 +78,7 @@ class ProfileViewController: NSViewController {
         self.progressIndicator.startAnimation(self)
         self.progressIndicator.isHidden = false
         if passwordTextField.stringValue == reEnterPasswordTextField.stringValue {
-        Authentication.shared.updateUser(username: usernameTextField.stringValue, email: emailTextField.stringValue, password: passwordTextField.stringValue, avatar: UserData.shared.avatarName, completion: { (success) in
+        Users.shared.updateUser(username: usernameTextField.stringValue, email: emailTextField.stringValue, password: passwordTextField.stringValue, avatar: UserData.shared.avatarName, completion: { (success) in
             if success {
                 print("success")
                 self.progressIndicator.stopAnimation(self)

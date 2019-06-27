@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		0910AA0922C18CEC008657B3 /* Authentication.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0910AA0822C18CEC008657B3 /* Authentication.swift */; };
+		09116CFD22C4A4EA00762A93 /* Users.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09116CFC22C4A4EA00762A93 /* Users.swift */; };
 		09162E6322C1DFD100420996 /* CreateAccount.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09162E6222C1DFD100420996 /* CreateAccount.swift */; };
 		091630C122C1E83F00420996 /* AuthToken.swift in Sources */ = {isa = PBXBuildFile; fileRef = 091630C022C1E83F00420996 /* AuthToken.swift */; };
 		093AE1CC22BC59BA003F0535 /* CreateAccountView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 093AE1CB22BC59BA003F0535 /* CreateAccountView.swift */; };
@@ -43,6 +44,7 @@
 
 /* Begin PBXFileReference section */
 		0910AA0822C18CEC008657B3 /* Authentication.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Authentication.swift; sourceTree = "<group>"; };
+		09116CFC22C4A4EA00762A93 /* Users.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Users.swift; sourceTree = "<group>"; };
 		09162E6222C1DFD100420996 /* CreateAccount.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateAccount.swift; sourceTree = "<group>"; };
 		091630C022C1E83F00420996 /* AuthToken.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthToken.swift; sourceTree = "<group>"; };
 		093AE1CB22BC59BA003F0535 /* CreateAccountView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateAccountView.swift; sourceTree = "<group>"; };
@@ -203,6 +205,7 @@
 				09A95B9F22B267A3002F17CE /* Constants.swift */,
 				0910AA0822C18CEC008657B3 /* Authentication.swift */,
 				09DF1CDF22C3301100562564 /* UserData.swift */,
+				09116CFC22C4A4EA00762A93 /* Users.swift */,
 			);
 			path = Utilities;
 			sourceTree = "<group>";
@@ -365,6 +368,7 @@
 				093AE1CC22BC59BA003F0535 /* CreateAccountView.swift in Sources */,
 				093AE1EC22BCF375003F0535 /* FriendsTableCell.swift in Sources */,
 				09A95BA022B267A3002F17CE /* Constants.swift in Sources */,
+				09116CFD22C4A4EA00762A93 /* Users.swift in Sources */,
 				093AE1DC22BCD5DD003F0535 /* ProfileViewController.swift in Sources */,
 				09DF1CE022C3301100562564 /* UserData.swift in Sources */,
 				093AE1DA22BCD2C5003F0535 /* ChannelView.swift in Sources */,
@@ -510,8 +514,10 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = Incord/Incord.entitlements;
+				CODE_SIGN_IDENTITY = "Mac Developer";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
+				DEVELOPMENT_TEAM = 2F37KZ5KN2;
 				INFOPLIST_FILE = Incord/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -519,6 +525,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = io.cartisim.Incord;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 5.0;
 			};
 			name = Debug;
@@ -529,8 +536,10 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = Incord/Incord.entitlements;
+				CODE_SIGN_IDENTITY = "Mac Developer";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
+				DEVELOPMENT_TEAM = 2F37KZ5KN2;
 				INFOPLIST_FILE = Incord/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -538,6 +547,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = io.cartisim.Incord;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 5.0;
 			};
 			name = Release;

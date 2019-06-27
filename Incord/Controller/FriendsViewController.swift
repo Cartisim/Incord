@@ -7,23 +7,27 @@
 //
 
 import Cocoa
+import Alamofire
+import SwiftyJSON
 
 class FriendsViewController: NSViewController {
     
     @IBOutlet weak var friendsTableView: NSTableView!
     
     var clickBackground: BackgroundView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do view setup here.
         setUpView()
         loadData()
-        friendsTableView.dataSource = self
-        friendsTableView.delegate = self
+    }
+    override func viewWillAppear() {
+        getUsers()
     }
     
-    override func viewWillAppear() {
-        Authentication.shared.allUsers { (success) in
+    func getUsers() {
+        Users.shared.allUsers { (success) in
             if success {
                 print("users got")
                 self.friendsTableView.reloadData()
@@ -32,6 +36,7 @@ class FriendsViewController: NSViewController {
             }
         }
     }
+    
     func setUpView() {
         clickBackground = BackgroundView()
         clickBackground.translatesAutoresizingMaskIntoConstraints = false
@@ -45,7 +50,10 @@ class FriendsViewController: NSViewController {
         let closeBackgroundClick = NSClickGestureRecognizer(target: self, action: #selector(closeModalClick(_:)))
         clickBackground.addGestureRecognizer(closeBackgroundClick)
         clickBackground.wantsLayer = true
-        clickBackground.layer?.backgroundColor = NSColor.cyan.cgColor    }
+        clickBackground.layer?.backgroundColor = NSColor.cyan.cgColor
+        friendsTableView.dataSource = self
+        friendsTableView.delegate = self
+    }
     
     @objc func closeModalClick(_ recognizer: NSClickGestureRecognizer) {
         print("clicked")
@@ -53,7 +61,6 @@ class FriendsViewController: NSViewController {
     }
     
     func loadData() {
-        
         friendsTableView.reloadData()
     }
 }
@@ -64,15 +71,17 @@ extension FriendsViewController: NSTableViewDelegate {
 
 extension FriendsViewController: NSTableViewDataSource {
     func numberOfRows(in tableView: NSTableView) -> Int {
-        print("cell\(Authentication.shared.user.count)")
-        return Authentication.shared.user.count
+        return Users.shared.users.count
     }
     
-    func tableView(_ tableView: NSTableView, viewFor tableColumn: NSTableColumn?, row: Int) -> NSView? {
-        let users = Authentication.shared.user[row]
-        
+    
+     func tableView(_ tableView: NSTableView, viewFor tableColumn: NSTableColumn?, row: Int) -> NSView? {
         let cell = tableView.makeView(withIdentifier: NSUserInterfaceItemIdentifier(rawValue: "friendsCell"), owner: nil) as? FriendsTableCell
-        cell?.configureCellData(cell: users)
+        cell?.avatarImage.image = NSImage(named: Users.shared.users[row].avatar )
+        cell?.usernameLabel.stringValue = Users.shared.users[row].username
         return cell
+    }
+    func tableView(_ tableView: NSTableView, heightOfRow row: Int) -> CGFloat {
+        return 80.0
     }
 }

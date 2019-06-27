@@ -747,7 +747,7 @@
                                             <color key="backgroundColor" name="_sourceListBackgroundColor" catalog="System" colorSpace="catalog"/>
                                             <color key="gridColor" name="gridColor" catalog="System" colorSpace="catalog"/>
                                             <tableColumns>
-                                                <tableColumn identifier="friendsColumn" width="197" minWidth="40" maxWidth="1000" id="5sg-D5-E3B">
+                                                <tableColumn width="197" minWidth="40" maxWidth="1000" id="5sg-D5-E3B">
                                                     <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border">
                                                         <font key="font" metaFont="smallSystem"/>
                                                         <color key="textColor" name="headerTextColor" catalog="System" colorSpace="catalog"/>
@@ -760,23 +760,23 @@
                                                     </textFieldCell>
                                                     <tableColumnResizingMask key="resizingMask" resizeWithTable="YES" userResizable="YES"/>
                                                     <prototypeCellViews>
-                                                        <tableCellView identifier="friendsCell" id="wqS-uo-ogh" customClass="OnlineFriendsTableCell" customModule="Incord" customModuleProvider="target">
+                                                        <tableCellView identifier="onlineCell" id="wqS-uo-ogh" customClass="OnlineFriendsTableCell" customModule="Incord" customModuleProvider="target">
                                                             <rect key="frame" x="1" y="1" width="197" height="50"/>
                                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                             <subviews>
                                                                 <stackView distribution="fill" orientation="horizontal" alignment="bottom" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="MPC-sT-MLz">
-                                                                    <rect key="frame" x="0.0" y="0.0" width="194" height="50"/>
+                                                                    <rect key="frame" x="0.0" y="5" width="184" height="40"/>
                                                                     <subviews>
                                                                         <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="ioX-LR-UTT">
-                                                                            <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+                                                                            <rect key="frame" x="0.0" y="0.0" width="40" height="40"/>
                                                                             <constraints>
-                                                                                <constraint firstAttribute="width" constant="50" id="3sw-DH-fOw"/>
-                                                                                <constraint firstAttribute="height" constant="50" id="6IR-ND-Ne2"/>
+                                                                                <constraint firstAttribute="width" constant="40" id="3sw-DH-fOw"/>
+                                                                                <constraint firstAttribute="height" constant="40" id="6IR-ND-Ne2"/>
                                                                             </constraints>
                                                                             <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="avatar1" id="YAs-rD-PAk"/>
                                                                         </imageView>
                                                                         <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="qca-GA-2S5">
-                                                                            <rect key="frame" x="56" y="0.0" width="140" height="20"/>
+                                                                            <rect key="frame" x="46" y="0.0" width="140" height="20"/>
                                                                             <constraints>
                                                                                 <constraint firstAttribute="height" constant="20" id="fxo-9F-MNV"/>
                                                                             </constraints>
@@ -798,7 +798,7 @@
                                                                 </stackView>
                                                             </subviews>
                                                             <constraints>
-                                                                <constraint firstItem="MPC-sT-MLz" firstAttribute="top" secondItem="wqS-uo-ogh" secondAttribute="top" id="7o5-oC-WR9"/>
+                                                                <constraint firstItem="MPC-sT-MLz" firstAttribute="top" secondItem="wqS-uo-ogh" secondAttribute="top" constant="5" id="7o5-oC-WR9"/>
                                                                 <constraint firstItem="MPC-sT-MLz" firstAttribute="leading" secondItem="wqS-uo-ogh" secondAttribute="leading" id="ADu-fc-y1Q"/>
                                                             </constraints>
                                                             <connections>
@@ -833,6 +833,9 @@
                             <constraint firstItem="pKF-Te-qL0" firstAttribute="leading" secondItem="m2S-Jp-Qdl" secondAttribute="leading" id="wp4-kD-eyL"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="onlineTableView" destination="sfu-t3-KIO" id="xhm-Nh-5l5"/>
+                    </connections>
                 </viewController>
                 <customObject id="rPt-NT-nkU" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -847,13 +850,13 @@
                         <autoresizingMask key="autoresizingMask"/>
                         <subviews>
                             <scrollView borderType="none" autohidesScrollers="YES" horizontalLineScroll="82" horizontalPageScroll="10" verticalLineScroll="82" verticalPageScroll="10" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="L42-I3-sf1">
-                                <rect key="frame" x="0.0" y="0.0" width="620" height="400"/>
+                                <rect key="frame" x="0.0" y="20" width="620" height="360"/>
                                 <clipView key="contentView" drawsBackground="NO" copiesOnScroll="NO" id="NlI-w5-Rgc">
-                                    <rect key="frame" x="0.0" y="0.0" width="620" height="400"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="620" height="360"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <subviews>
                                         <tableView verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="lastColumnOnly" selectionHighlightStyle="sourceList" columnSelection="YES" multipleSelection="NO" autosaveColumns="NO" rowHeight="80" rowSizeStyle="automatic" viewBased="YES" id="kqX-XH-XJu">
-                                            <rect key="frame" x="0.0" y="0.0" width="620" height="400"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="620" height="360"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <size key="intercellSpacing" width="3" height="2"/>
                                             <color key="backgroundColor" name="_sourceListBackgroundColor" catalog="System" colorSpace="catalog"/>
@@ -922,17 +925,13 @@
                                                     </prototypeCellViews>
                                                 </tableColumn>
                                             </tableColumns>
-                                            <connections>
-                                                <outlet property="dataSource" destination="4fp-NG-eXt" id="1w1-Hy-1z3"/>
-                                                <outlet property="delegate" destination="4fp-NG-eXt" id="Ht4-Ac-CYS"/>
-                                            </connections>
                                         </tableView>
                                     </subviews>
                                     <nil key="backgroundColor"/>
                                 </clipView>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="620" id="Te0-fx-f9B"/>
-                                    <constraint firstAttribute="height" constant="400" id="iXU-DQ-niq"/>
+                                    <constraint firstAttribute="height" constant="360" id="iXU-DQ-niq"/>
                                 </constraints>
                                 <scroller key="horizontalScroller" hidden="YES" wantsLayer="YES" verticalHuggingPriority="750" horizontal="YES" id="Gng-Dp-mTN">
                                     <rect key="frame" x="1" y="119" width="223" height="15"/>
@@ -945,14 +944,14 @@
                             </scrollView>
                         </subviews>
                         <constraints>
-                            <constraint firstItem="L42-I3-sf1" firstAttribute="top" secondItem="j0S-nq-uPT" secondAttribute="top" id="gnm-ia-1an"/>
+                            <constraint firstItem="L42-I3-sf1" firstAttribute="top" secondItem="j0S-nq-uPT" secondAttribute="top" constant="20" id="gnm-ia-1an"/>
                             <constraint firstItem="L42-I3-sf1" firstAttribute="leading" secondItem="j0S-nq-uPT" secondAttribute="leading" id="n9N-XW-UZR"/>
                             <constraint firstAttribute="trailing" secondItem="L42-I3-sf1" secondAttribute="trailing" id="oKe-t1-oPG"/>
-                            <constraint firstAttribute="bottom" secondItem="L42-I3-sf1" secondAttribute="bottom" id="tR2-oV-P4s"/>
+                            <constraint firstAttribute="bottom" secondItem="L42-I3-sf1" secondAttribute="bottom" constant="20" id="tR2-oV-P4s"/>
                         </constraints>
                     </view>
                     <connections>
-                        <outlet property="friendsTableView" destination="kqX-XH-XJu" id="8Ex-X5-APn"/>
+                        <outlet property="friendsTableView" destination="kqX-XH-XJu" id="v6o-9r-LsK"/>
                     </connections>
                 </viewController>
                 <customObject id="QMM-65-I7x" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>

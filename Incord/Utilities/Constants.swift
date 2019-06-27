@@ -17,6 +17,7 @@ struct Constants {
 let USER_INFO_MODAL = "userInfoModal"
 let PRESENTING_MODAL_NOTIFICATION = Notification.Name("presentingModal")
 let CLOSING_MODAL_NOTIFIFCATION = Notification.Name("closingModal")
+let DATA_CHANGED = Notification.Name("loadData")
 
 //URLS
 let BASE_URL = "http://localhost:8080/api"
