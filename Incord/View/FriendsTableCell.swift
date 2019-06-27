@@ -19,4 +19,9 @@ class FriendsTableCell: NSTableCellView {
         // Drawing code here.
     }
     
+    func configureCellData(cell: CreateAccount) {
+        avatarImage.image = NSImage(named: cell.avatar)
+        usernameLabel.stringValue = cell.username
+    }
+    
 }

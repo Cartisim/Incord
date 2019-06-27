@@ -15,6 +15,7 @@ import KeychainSwift
 class Authentication {
     
     static let shared = Authentication()
+    let user = [CreateAccount]()
     
     func login(email: String, password: String, completion: @escaping CompletionHandler) {
         
@@ -80,14 +81,12 @@ class Authentication {
     }
     
     func currentUser(completion: @escaping CompletionHandler) {
-        
         if  UserData.shared.isLoggedIn {
             Alamofire.request("\(CREATE_URL)/\(UserData.shared.createAccountID)", method: .get, parameters: nil, encoding: JSONEncoding.default, headers: nil).responseJSON { (response) in
                 if response.result.error == nil {
                     guard let data = response.data else { return }
                     self.setUserInfo(data: data)
                     completion(true)
-                    print(data)
                 } else {
                     completion(false)
                     print("another error")
@@ -96,6 +95,19 @@ class Authentication {
             }
         } else {
             print("Not Logged In")
+        }
+    }
+    
+    func allUsers(completion: @escaping CompletionHandler) {
+        Alamofire.request("\(CREATE_URL)", method: .get, parameters: nil, encoding: JSONEncoding.default, headers: nil).responseJSON { (response) in
+            if response.result.error == nil {
+                guard let data = response.data else { return }
+                self.setUserInfo(data: data)
+                completion(true)
+            } else {
+                completion(false)
+                print("Could not get all Users")
+            }
         }
     }
     
@@ -117,6 +129,7 @@ class Authentication {
             UserData.shared.avatarName = json["avatar"].stringValue
             UserData.shared.userEmail = json["email"].stringValue
             UserData.shared.username = json["username"].stringValue
+            print(json)
         } catch {
             fatalError()
         }
@@ -133,8 +146,9 @@ class Authentication {
         
          let headers = ["Authorization": "Bearer \(UserData.shared.token)", "Content-Type": "application/json; charset=utf-8"]
         Alamofire.request("\(CREATE_URL)/\(UserData.shared.createAccountID)", method: .put, parameters: body, encoding: JSONEncoding.default, headers: headers).responseJSON { (response) in
-            if response.result.error != nil {
+            if response.result.error == nil {
                 guard let data = response.data else { return }
+                print(data)
                 self.setUserInfo(data: data)
                 completion(true)
             } else {

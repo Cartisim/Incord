@@ -859,7 +859,7 @@
                                             <color key="backgroundColor" name="_sourceListBackgroundColor" catalog="System" colorSpace="catalog"/>
                                             <color key="gridColor" name="gridColor" catalog="System" colorSpace="catalog"/>
                                             <tableColumns>
-                                                <tableColumn identifier="friendsColumn" width="617" minWidth="40" maxWidth="1000" id="Vvl-DA-bCf">
+                                                <tableColumn width="617" minWidth="40" maxWidth="1000" id="Vvl-DA-bCf">
                                                     <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border">
                                                         <font key="font" metaFont="smallSystem"/>
                                                         <color key="textColor" name="headerTextColor" catalog="System" colorSpace="catalog"/>
@@ -922,6 +922,10 @@
                                                     </prototypeCellViews>
                                                 </tableColumn>
                                             </tableColumns>
+                                            <connections>
+                                                <outlet property="dataSource" destination="4fp-NG-eXt" id="1w1-Hy-1z3"/>
+                                                <outlet property="delegate" destination="4fp-NG-eXt" id="Ht4-Ac-CYS"/>
+                                            </connections>
                                         </tableView>
                                     </subviews>
                                     <nil key="backgroundColor"/>

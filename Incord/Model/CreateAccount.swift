@@ -13,12 +13,12 @@ final class CreateAccount: Codable {
     var username: String
     var email: String
     var password: String
-    var avartar: String
+    var avatar: String
     
     init(username: String, email: String, password: String, avatar: String) {
         self.username = username
         self.email = email
         self.password = password
-        self.avartar = avatar
+        self.avatar = avatar
     }
 }
