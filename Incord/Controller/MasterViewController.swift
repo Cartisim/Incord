@@ -8,7 +8,6 @@
 
 import Cocoa
 
-
 class MasterViewController: NSViewController {
 
     @IBOutlet weak var channelCollectionView: NSScrollView!
@@ -22,14 +21,12 @@ class MasterViewController: NSViewController {
         super.viewDidLoad()
         // Do view setup here.
         setUpView()
-        
     }
     func setUpView() {
         channelCollectionView.wantsLayer = true
         channelCollectionView.layer?.backgroundColor = .clear
     }
-    
-    
+
     //SheetViewController
     lazy var createAccountViewController: NSViewController = {
         return self.storyboard!.instantiateController(withIdentifier: "CreateAccount") as! NSViewController

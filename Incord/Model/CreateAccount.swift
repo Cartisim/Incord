@@ -9,6 +9,7 @@
 import Foundation
 
 final class CreateAccount: Codable {
+    
     var id: UUID?
     var username: String
     var email: String

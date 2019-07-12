@@ -29,7 +29,12 @@ class ChatViewController: NSViewController {
         chatTextField.layer?.cornerRadius = 8
         customButtonView.wantsLayer = true
         customButtonView.layer?.cornerRadius = 8
+        
+        if UserData.shared.isLoggedIn == false {
         profileImageButton.image = NSImage(named: avatarString)
+        } else {
+            profileImageButton.image = NSImage(named: UserData.shared.avatarName)
+        }
     }
     
     lazy var profileViewController: NSViewController = {

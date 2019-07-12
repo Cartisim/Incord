@@ -7,8 +7,6 @@
 //
 
 import Cocoa
-import Alamofire
-import SwiftyJSON
 import KeychainSwift
 
 class CreateAccountViewController: NSViewController {
@@ -70,24 +68,33 @@ class CreateAccountViewController: NSViewController {
         self.progressIndicator.isHidden = false
         if UserData.shared.isLoggedIn != true {
             if passwordTextField.stringValue == reEnterPasswordTextField.stringValue {
-            Authentication.shared.createUser(username: userNameTextField.stringValue, email: emailTextField.stringValue, password: passwordTextField.stringValue, avatar: UserData.shared.avatarName, completion: { (success) in
-                if success {
-                    print(UserData.shared.keychain.get(UserData.shared.token) ?? "Empty Token, Create an admin")
-                    self.progressIndicator.stopAnimation(self)
-                    self.progressIndicator.isHidden = true
-                          self.dismiss(self)
-                } else {
-                    print("failed to authenticate")
-                    self.progressIndicator.stopAnimation(self)
-                    self.progressIndicator.isHidden = true
-                }
-            })
+                
+                Authentication.shared.createUser(username: userNameTextField.stringValue, email: emailTextField.stringValue, password: passwordTextField.stringValue, avatar: UserData.shared.avatarName, completion: { (res) in
+                    print("res \(res)")
+                    switch res {
+                    case .success(let user):
+                        print(user)
+                        DispatchQueue.main.async {
+                        print(UserData.shared.keychain.get(UserData.shared.token) ?? "Empty Token, Create an admin")
+                        self.progressIndicator.stopAnimation(self)
+                        self.progressIndicator.isHidden = true
+                        self.dismiss(self)
+                        }
+                    case .failure(let err):
+                        print(err)
+                        DispatchQueue.main.async {
+                            print("failed to authenticate")
+                            self.progressIndicator.stopAnimation(self)
+                            self.progressIndicator.isHidden = true
+                        }
+                    }
+                })
             } else {
                 print("passwords must match")
                 self.progressIndicator.stopAnimation(self)
                 self.progressIndicator.isHidden = true
             }
-            } else {
+        } else {
             self.progressIndicator.stopAnimation(self)
             self.progressIndicator.isHidden = true
             print("Please log out to create user")
@@ -98,7 +105,7 @@ class CreateAccountViewController: NSViewController {
     
     
     @IBAction func createAccountOnEnterClicked(_ sender: NSTextField) {
-//        reEnterPasswordTextField.performClick(nil)
+        //        reEnterPasswordTextField.performClick(nil)
     }
 }
 

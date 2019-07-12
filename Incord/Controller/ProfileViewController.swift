@@ -9,11 +9,10 @@
 import Cocoa
 
 class ProfileViewController: NSViewController {
-
+    
     @IBOutlet weak var usernameTextField: NSTextField!
     @IBOutlet weak var emailTextField: NSTextField!
     @IBOutlet weak var passwordTextField: NSSecureTextField!
-    
     @IBOutlet weak var reEnterPasswordTextField: NSSecureTextField!
     @IBOutlet weak var avatarImage: NSImageView!
     @IBOutlet weak var updateAccountButton: NSButton!
@@ -31,13 +30,17 @@ class ProfileViewController: NSViewController {
     
     override func viewWillAppear() {
         if UserData.shared.isLoggedIn {
-            Users.shared.currentUser { (success) in
-                if success {
-                    self.usernameTextField.stringValue = UserData.shared.username
-                    self.emailTextField.stringValue = UserData.shared.userEmail
-                    self.avatarImage.image = NSImage(named: UserData.shared.avatarName)
-                } else {
-                    print("failure")
+            Users.shared.currentUser { (res) in
+                switch res {
+                case .success(let user):
+                    print(user)
+                    DispatchQueue.main.async {
+                        self.usernameTextField.stringValue = user.username
+                        self.emailTextField.stringValue = user.email
+                        self.avatarImage.image = NSImage(named: user.avatar)
+                    }
+                case .failure(let err):
+                    print(err)
                 }
             }
         } else {
@@ -78,18 +81,24 @@ class ProfileViewController: NSViewController {
         self.progressIndicator.startAnimation(self)
         self.progressIndicator.isHidden = false
         if passwordTextField.stringValue == reEnterPasswordTextField.stringValue {
-        Users.shared.updateUser(username: usernameTextField.stringValue, email: emailTextField.stringValue, password: passwordTextField.stringValue, avatar: UserData.shared.avatarName, completion: { (success) in
-            if success {
-                print("success")
-                self.progressIndicator.stopAnimation(self)
-                self.progressIndicator.isHidden = true
-                self.dismiss(self)
-            } else {
-                print("failed to update")
-                self.progressIndicator.stopAnimation(self)
-                self.progressIndicator.isHidden = true
+            
+            Users.shared.updateUser(username: usernameTextField.stringValue, email: emailTextField.stringValue, password: passwordTextField.stringValue, avatar: UserData.shared.avatarName) { (res) in
+                switch res {
+                case .success(let updatedProfile):
+                    print("success \(updatedProfile)")
+                    DispatchQueue.main.async {
+                        self.progressIndicator.stopAnimation(self)
+                        self.progressIndicator.isHidden = true
+                        self.dismiss(self)
+                    }
+                case .failure(let err):
+                    print(err)
+                    DispatchQueue.main.async {
+                        self.progressIndicator.stopAnimation(self)
+                        self.progressIndicator.isHidden = true
+                    }
+                }
             }
-        })
         } else {
             print("passwords must match")
             self.progressIndicator.stopAnimation(self)

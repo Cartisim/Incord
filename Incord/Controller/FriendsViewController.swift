@@ -7,32 +7,37 @@
 //
 
 import Cocoa
-import Alamofire
-import SwiftyJSON
 
 class FriendsViewController: NSViewController {
     
     @IBOutlet weak var friendsTableView: NSTableView!
     
     var clickBackground: BackgroundView!
+    var users = [CreateAccount]()
+    var user: CreateAccount?
     
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do view setup here.
         setUpView()
-        loadData()
     }
     override func viewWillAppear() {
         getUsers()
     }
     
     func getUsers() {
-        Users.shared.allUsers { (success) in
-            if success {
-                print("users got")
-                self.friendsTableView.reloadData()
-            } else {
-                print("couldn't get all users")
+        Users.shared.allUsers { (res) in
+            switch res {
+            case .success(let users):
+                users.forEach({ (user) in
+                    print(user.avatar, user.email, user.id as Any, user.username)
+                    DispatchQueue.main.async {
+                        self.users = users
+                        self.friendsTableView.reloadData()
+                    }
+                })
+            case .failure(let err):
+                print("There was an \(err)")
             }
         }
     }
@@ -71,14 +76,16 @@ extension FriendsViewController: NSTableViewDelegate {
 
 extension FriendsViewController: NSTableViewDataSource {
     func numberOfRows(in tableView: NSTableView) -> Int {
-        return Users.shared.users.count
+        print(users.count)
+        return users.count
     }
     
     
      func tableView(_ tableView: NSTableView, viewFor tableColumn: NSTableColumn?, row: Int) -> NSView? {
         let cell = tableView.makeView(withIdentifier: NSUserInterfaceItemIdentifier(rawValue: "friendsCell"), owner: nil) as? FriendsTableCell
-        cell?.avatarImage.image = NSImage(named: Users.shared.users[row].avatar )
-        cell?.usernameLabel.stringValue = Users.shared.users[row].username
+        let user = users[row]
+        cell?.avatarImage.image = NSImage(named: user.avatar )
+        cell?.usernameLabel.stringValue = user.username
         return cell
     }
     func tableView(_ tableView: NSTableView, heightOfRow row: Int) -> CGFloat {

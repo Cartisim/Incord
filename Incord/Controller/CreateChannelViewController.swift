@@ -9,12 +9,13 @@
 import Cocoa
 
 class CreateChannelViewController: NSViewController {
-
+    
     @IBOutlet weak var channelImage: NSImageView!
     @IBOutlet weak var createChannelTextField: NSTextField!
     @IBOutlet weak var progressIndicator: NSProgressIndicator!
     
     var clickBackground: BackgroundView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do view setup here.
@@ -48,10 +49,10 @@ class CreateChannelViewController: NSViewController {
     
     
     @IBAction func createChannelOnEnterClicked(_ sender: NSTextField) {
-//        createChannelTextField.performClick(nil)
+        //        createChannelTextField.performClick(nil)
     }
     
     @IBAction func createChannelClicked(_ sender: NSButton) {
-        
+
     }
 }

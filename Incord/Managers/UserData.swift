@@ -73,15 +73,15 @@ class UserData {
             defaults.set(newValue, forKey: ID_KEY)
         }
     }
-//    
-//    var email: String {
-//        get {
-//            return _email
-//        }
-//        set {
-//            _email = newValue
-//        }
-//    }
+    
+    var email: String {
+        get {
+            return _email
+        }
+        set {
+            _email = newValue
+        }
+    }
     
     var username: String {
         get {

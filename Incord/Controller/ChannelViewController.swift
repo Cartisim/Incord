@@ -7,13 +7,10 @@
 //
 
 import Cocoa
-import SwiftyJSON
-import Alamofire
 
 class ChannelViewController: NSViewController {
 
     @IBOutlet weak var channelLabel: NSTextField!
-    
     
     override func viewDidLoad() {
         super.viewDidLoad()

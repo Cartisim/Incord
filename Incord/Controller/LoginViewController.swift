@@ -7,8 +7,6 @@
 //
 
 import Cocoa
-import Alamofire
-import KeychainSwift
 
 class LoginViewController: NSViewController {
     
@@ -65,19 +63,27 @@ class LoginViewController: NSViewController {
     @IBAction func loginClicked(_ sender: NSButton) {
         progressIndicator.isHidden = false
         progressIndicator.startAnimation(self)
+ 
         if UserData.shared.isLoggedIn != true {
-            Authentication.shared.login(email: emailTextField.stringValue, password: passwordTextField.stringValue) { (success) in
-                if success {
+                   print(UserData.shared.isLoggedIn)
+            Authentication.shared.login(email: emailTextField.stringValue, password: passwordTextField.stringValue, completion: { (res) in
+                switch res {
+                case .success(let user):
+                    print(user)
                     print(UserData.shared.token)
+                    DispatchQueue.main.async {
                     self.progressIndicator.stopAnimation(self)
                     self.progressIndicator.isHidden = true
                     self.dismiss(self)
-                } else {
-                    print("fail")
-                    self.progressIndicator.stopAnimation(self)
-                    self.progressIndicator.isHidden = true
+                    }
+                case .failure(let error):
+                    print("There was an error parsing user JSON \(error)")
+                    DispatchQueue.main.async {
+                        self.progressIndicator.stopAnimation(self)
+                        self.progressIndicator.isHidden = true
+                    }
                 }
-            }
+            })
         } else {
             self.progressIndicator.stopAnimation(self)
             self.progressIndicator.isHidden = true

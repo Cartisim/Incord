@@ -12,6 +12,9 @@ class FriendsOnlineViewController: NSViewController {
     
     @IBOutlet weak var onlineTableView: NSTableView!
     
+    var users = [CreateAccount]()
+    var user: CreateAccount?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do view setup here.
@@ -25,12 +28,18 @@ class FriendsOnlineViewController: NSViewController {
     }
     
     func getUsers() {
-        Users.shared.allUsers { (success) in
-            if success {
-                print("users got")
-                self.onlineTableView.reloadData()
-            } else {
-                print("couldn't get all users")
+        Users.shared.allUsers { (res) in
+            switch res {
+            case .success(let users):
+                users.forEach({ (user) in
+                    print(user.avatar, user.email, user.id as Any, user.username)
+                    DispatchQueue.main.async {
+                        self.users = users
+                        self.onlineTableView.reloadData()
+                    }
+                })
+            case .failure(let err):
+                print(err)
             }
         }
     }
@@ -47,17 +56,14 @@ extension FriendsOnlineViewController: NSTableViewDelegate {
 extension FriendsOnlineViewController: NSTableViewDataSource {
     
     func numberOfRows(in tableView: NSTableView) -> Int {
-        if UserData.shared.isLoggedIn {
-            return Users.shared.users.count
-        } else {
-        return 0
-        }
+        return users.count
     }
     
     func tableView(_ tableView: NSTableView, viewFor tableColumn: NSTableColumn?, row: Int) -> NSView? {
         let cell = tableView.makeView(withIdentifier: NSUserInterfaceItemIdentifier(rawValue: "onlineCell"), owner: nil) as? OnlineFriendsTableCell
-            cell?.avatarImage.image = NSImage(named: Users.shared.users[row].avatar)
-        cell?.usernameLabel.stringValue = Users.shared.users[row].username
+        let user = users[row]
+            cell?.avatarImage.image = NSImage(named: user.avatar)
+        cell?.usernameLabel.stringValue = user.username
         return cell
     }
     

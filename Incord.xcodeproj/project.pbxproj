@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		0910AA0922C18CEC008657B3 /* Authentication.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0910AA0822C18CEC008657B3 /* Authentication.swift */; };
 		09116CFD22C4A4EA00762A93 /* Users.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09116CFC22C4A4EA00762A93 /* Users.swift */; };
+		09144D9822D820B800FD7EF8 /* ChannelImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09144D9722D820B800FD7EF8 /* ChannelImage.swift */; };
 		09162E6322C1DFD100420996 /* CreateAccount.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09162E6222C1DFD100420996 /* CreateAccount.swift */; };
 		091630C122C1E83F00420996 /* AuthToken.swift in Sources */ = {isa = PBXBuildFile; fileRef = 091630C022C1E83F00420996 /* AuthToken.swift */; };
 		093AE1CC22BC59BA003F0535 /* CreateAccountView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 093AE1CB22BC59BA003F0535 /* CreateAccountView.swift */; };
@@ -29,6 +30,8 @@
 		093AE1F522BCF56F003F0535 /* AvatarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 093AE1F422BCF56F003F0535 /* AvatarViewController.swift */; };
 		093AE1F722BCF595003F0535 /* AvatarCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 093AE1F622BCF595003F0535 /* AvatarCell.swift */; };
 		093AE1F922BCF5DA003F0535 /* AvatarCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 093AE1F822BCF5DA003F0535 /* AvatarCell.xib */; };
+		09541D1622C58CD100BED9D4 /* WebSockets.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09541D1522C58CD100BED9D4 /* WebSockets.swift */; };
+		09954C7A22D8166200C582F1 /* Channels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09954C7922D8166200C582F1 /* Channels.swift */; };
 		09A95B8722B2525D002F17CE /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09A95B8622B2525D002F17CE /* AppDelegate.swift */; };
 		09A95B8B22B2525F002F17CE /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 09A95B8A22B2525F002F17CE /* Assets.xcassets */; };
 		09A95B8E22B2525F002F17CE /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 09A95B8C22B2525F002F17CE /* Main.storyboard */; };
@@ -38,6 +41,11 @@
 		09A95BA222B267F7002F17CE /* CustomButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09A95BA122B267F7002F17CE /* CustomButtonView.swift */; };
 		09A95BA422B26A71002F17CE /* MasterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09A95BA322B26A71002F17CE /* MasterViewController.swift */; };
 		09A95BA622B26B33002F17CE /* MasterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09A95BA522B26B33002F17CE /* MasterView.swift */; };
+		09DB4D2222C4FBF500387E4E /* Messages.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09DB4D2122C4FBF500387E4E /* Messages.swift */; };
+		09DB4F8022C4FCBE00387E4E /* Channel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09DB4F7F22C4FCBE00387E4E /* Channel.swift */; };
+		09DB4F8222C4FCC700387E4E /* Message.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09DB4F8122C4FCC700387E4E /* Message.swift */; };
+		09DB4F8422C4FCD700387E4E /* SubChannel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09DB4F8322C4FCD700387E4E /* SubChannel.swift */; };
+		09DB4F8622C4FCE600387E4E /* SubChannels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09DB4F8522C4FCE600387E4E /* SubChannels.swift */; };
 		09DF1CE022C3301100562564 /* UserData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09DF1CDF22C3301100562564 /* UserData.swift */; };
 		A8D15497C580A30DDFD6774D /* Pods_Incord.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 70D583F843A756A5C7D349F2 /* Pods_Incord.framework */; };
 /* End PBXBuildFile section */
@@ -45,6 +53,7 @@
 /* Begin PBXFileReference section */
 		0910AA0822C18CEC008657B3 /* Authentication.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Authentication.swift; sourceTree = "<group>"; };
 		09116CFC22C4A4EA00762A93 /* Users.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Users.swift; sourceTree = "<group>"; };
+		09144D9722D820B800FD7EF8 /* ChannelImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChannelImage.swift; sourceTree = "<group>"; };
 		09162E6222C1DFD100420996 /* CreateAccount.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateAccount.swift; sourceTree = "<group>"; };
 		091630C022C1E83F00420996 /* AuthToken.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthToken.swift; sourceTree = "<group>"; };
 		093AE1CB22BC59BA003F0535 /* CreateAccountView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateAccountView.swift; sourceTree = "<group>"; };
@@ -65,6 +74,8 @@
 		093AE1F422BCF56F003F0535 /* AvatarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AvatarViewController.swift; sourceTree = "<group>"; };
 		093AE1F622BCF595003F0535 /* AvatarCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AvatarCell.swift; sourceTree = "<group>"; };
 		093AE1F822BCF5DA003F0535 /* AvatarCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AvatarCell.xib; sourceTree = "<group>"; };
+		09541D1522C58CD100BED9D4 /* WebSockets.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebSockets.swift; sourceTree = "<group>"; };
+		09954C7922D8166200C582F1 /* Channels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Channels.swift; sourceTree = "<group>"; };
 		09A95B8322B2525D002F17CE /* Incord.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Incord.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		09A95B8622B2525D002F17CE /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		09A95B8A22B2525F002F17CE /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -77,6 +88,11 @@
 		09A95BA122B267F7002F17CE /* CustomButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomButtonView.swift; sourceTree = "<group>"; };
 		09A95BA322B26A71002F17CE /* MasterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MasterViewController.swift; sourceTree = "<group>"; };
 		09A95BA522B26B33002F17CE /* MasterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MasterView.swift; sourceTree = "<group>"; };
+		09DB4D2122C4FBF500387E4E /* Messages.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Messages.swift; sourceTree = "<group>"; };
+		09DB4F7F22C4FCBE00387E4E /* Channel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Channel.swift; sourceTree = "<group>"; };
+		09DB4F8122C4FCC700387E4E /* Message.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Message.swift; sourceTree = "<group>"; };
+		09DB4F8322C4FCD700387E4E /* SubChannel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubChannel.swift; sourceTree = "<group>"; };
+		09DB4F8522C4FCE600387E4E /* SubChannels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubChannels.swift; sourceTree = "<group>"; };
 		09DF1CDF22C3301100562564 /* UserData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserData.swift; sourceTree = "<group>"; };
 		1411E929D44EE55341137355 /* Pods-Incord.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Incord.release.xcconfig"; path = "Target Support Files/Pods-Incord/Pods-Incord.release.xcconfig"; sourceTree = "<group>"; };
 		403699CB42A42662375C9E5F /* Pods-Incord.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Incord.debug.xcconfig"; path = "Target Support Files/Pods-Incord/Pods-Incord.debug.xcconfig"; sourceTree = "<group>"; };
@@ -152,6 +168,10 @@
 			children = (
 				09162E6222C1DFD100420996 /* CreateAccount.swift */,
 				091630C022C1E83F00420996 /* AuthToken.swift */,
+				09DB4F7F22C4FCBE00387E4E /* Channel.swift */,
+				09DB4F8122C4FCC700387E4E /* Message.swift */,
+				09DB4F8322C4FCD700387E4E /* SubChannel.swift */,
+				09144D9722D820B800FD7EF8 /* ChannelImage.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -195,6 +215,13 @@
 		09A95B9922B26288002F17CE /* Managers */ = {
 			isa = PBXGroup;
 			children = (
+				0910AA0822C18CEC008657B3 /* Authentication.swift */,
+				09DF1CDF22C3301100562564 /* UserData.swift */,
+				09116CFC22C4A4EA00762A93 /* Users.swift */,
+				09DB4D2122C4FBF500387E4E /* Messages.swift */,
+				09DB4F8522C4FCE600387E4E /* SubChannels.swift */,
+				09541D1522C58CD100BED9D4 /* WebSockets.swift */,
+				09954C7922D8166200C582F1 /* Channels.swift */,
 			);
 			path = Managers;
 			sourceTree = "<group>";
@@ -203,9 +230,6 @@
 			isa = PBXGroup;
 			children = (
 				09A95B9F22B267A3002F17CE /* Constants.swift */,
-				0910AA0822C18CEC008657B3 /* Authentication.swift */,
-				09DF1CDF22C3301100562564 /* UserData.swift */,
-				09116CFC22C4A4EA00762A93 /* Users.swift */,
 			);
 			path = Utilities;
 			sourceTree = "<group>";
@@ -256,7 +280,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 1020;
-				LastUpgradeCheck = 1020;
+				LastUpgradeCheck = 1100;
 				ORGANIZATIONNAME = "Cole M";
 				TargetAttributes = {
 					09A95B8222B2525D002F17CE = {
@@ -270,7 +294,7 @@
 				};
 			};
 			buildConfigurationList = 09A95B7E22B2525D002F17CE /* Build configuration list for PBXProject "Incord" */;
-			compatibilityVersion = "Xcode 9.3";
+			compatibilityVersion = "Xcode 10.0";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
 			knownRegions = (
@@ -349,26 +373,33 @@
 			buildActionMask = 2147483647;
 			files = (
 				093AE1DE22BCD5F8003F0535 /* FriendsViewController.swift in Sources */,
+				09DB4F8222C4FCC700387E4E /* Message.swift in Sources */,
 				093AE1F522BCF56F003F0535 /* AvatarViewController.swift in Sources */,
 				093AE1D622BCC1B7003F0535 /* CreateAccountViewController.swift in Sources */,
 				093AE1E622BCD971003F0535 /* ChannelViewController.swift in Sources */,
 				093AE1F022BCF38F003F0535 /* ChatTableCell.swift in Sources */,
 				093AE1F722BCF595003F0535 /* AvatarCell.swift in Sources */,
+				09DB4D2222C4FBF500387E4E /* Messages.swift in Sources */,
 				093AE1E122BCD630003F0535 /* FriendsOnlineViewController.swift in Sources */,
 				093AE1D222BC7260003F0535 /* BackgroundView.swift in Sources */,
 				09162E6322C1DFD100420996 /* CreateAccount.swift in Sources */,
 				093AE1D822BCD07B003F0535 /* CreateChannelViewController.swift in Sources */,
 				09A95BA222B267F7002F17CE /* CustomButtonView.swift in Sources */,
+				09144D9822D820B800FD7EF8 /* ChannelImage.swift in Sources */,
 				09A95B9D22B26353002F17CE /* ChatBarView.swift in Sources */,
 				09A95BA622B26B33002F17CE /* MasterView.swift in Sources */,
+				09DB4F8622C4FCE600387E4E /* SubChannels.swift in Sources */,
 				093AE1D022BC5CA7003F0535 /* LoginView.swift in Sources */,
 				09A95BA422B26A71002F17CE /* MasterViewController.swift in Sources */,
+				09DB4F8422C4FCD700387E4E /* SubChannel.swift in Sources */,
 				09A95B9B22B262BE002F17CE /* ChatViewController.swift in Sources */,
 				09A95B8722B2525D002F17CE /* AppDelegate.swift in Sources */,
+				09954C7A22D8166200C582F1 /* Channels.swift in Sources */,
 				093AE1CC22BC59BA003F0535 /* CreateAccountView.swift in Sources */,
 				093AE1EC22BCF375003F0535 /* FriendsTableCell.swift in Sources */,
 				09A95BA022B267A3002F17CE /* Constants.swift in Sources */,
 				09116CFD22C4A4EA00762A93 /* Users.swift in Sources */,
+				09DB4F8022C4FCBE00387E4E /* Channel.swift in Sources */,
 				093AE1DC22BCD5DD003F0535 /* ProfileViewController.swift in Sources */,
 				09DF1CE022C3301100562564 /* UserData.swift in Sources */,
 				093AE1DA22BCD2C5003F0535 /* ChannelView.swift in Sources */,
@@ -376,6 +407,7 @@
 				091630C122C1E83F00420996 /* AuthToken.swift in Sources */,
 				093AE1EE22BCF382003F0535 /* OnlineFriendsTableCell.swift in Sources */,
 				0910AA0922C18CEC008657B3 /* Authentication.swift in Sources */,
+				09541D1622C58CD100BED9D4 /* WebSockets.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -444,7 +476,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				MACOSX_DEPLOYMENT_TARGET = 10.14;
+				MACOSX_DEPLOYMENT_TARGET = 10.15;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -499,7 +531,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				MACOSX_DEPLOYMENT_TARGET = 10.14;
+				MACOSX_DEPLOYMENT_TARGET = 10.15;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = macosx;
@@ -518,6 +550,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				DEVELOPMENT_TEAM = 2F37KZ5KN2;
+				ENABLE_HARDENED_RUNTIME = YES;
 				INFOPLIST_FILE = Incord/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -540,6 +573,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				DEVELOPMENT_TEAM = 2F37KZ5KN2;
+				ENABLE_HARDENED_RUNTIME = YES;
 				INFOPLIST_FILE = Incord/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",

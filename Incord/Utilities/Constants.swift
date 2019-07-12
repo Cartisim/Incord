@@ -23,7 +23,8 @@ let DATA_CHANGED = Notification.Name("loadData")
 let BASE_URL = "http://localhost:8080/api"
 let CREATE_URL = "\(BASE_URL)/create_account"
 let LOGIN_URL = "\(CREATE_URL)/login"
-
+let CHANNEL_URL = "\(BASE_URL)/channel"
+let SOCKET_URL = "ws://localhost:8080/api/channel"
 
 // Headers
 let HEADER = [
