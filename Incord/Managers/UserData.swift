@@ -17,6 +17,7 @@ class UserData {
     fileprivate var _email = ""
     fileprivate var _username = ""
     fileprivate var _createAccountID = ""
+    fileprivate var _channelID = ""
     
     var keychain = KeychainSwift()
     let defaults = UserDefaults.standard
@@ -71,6 +72,15 @@ class UserData {
         }
         set {
             defaults.set(newValue, forKey: ID_KEY)
+        }
+    }
+    
+    var channelID: Int {
+        get {
+            return defaults.value(forKey: CHANNEL_ID_KEY) as! Int
+        }
+        set {
+            defaults.set(newValue, forKey:  CHANNEL_ID_KEY)
         }
     }
     

@@ -18,12 +18,15 @@ let USER_INFO_MODAL = "userInfoModal"
 let PRESENTING_MODAL_NOTIFICATION = Notification.Name("presentingModal")
 let CLOSING_MODAL_NOTIFIFCATION = Notification.Name("closingModal")
 let DATA_CHANGED = Notification.Name("loadData")
+let NOTIF_USER_DATA_DID_CHANGE = Notification.Name("notifUserDataChanged")
 
 //URLS
 let BASE_URL = "http://localhost:8080/api"
 let CREATE_URL = "\(BASE_URL)/create_account"
 let LOGIN_URL = "\(CREATE_URL)/login"
 let CHANNEL_URL = "\(BASE_URL)/channel"
+let SUB_CHANNEL_URL = "\(BASE_URL)/subchannel"
+let MESSAGE_URL = "\(BASE_URL)/message"
 let SOCKET_URL = "ws://localhost:8080/api/channel"
 
 // Headers
@@ -43,3 +46,4 @@ let USER_EMAIL = "userEmail"
 let ACCOUNT_ID_KEY = "createAccountID"
 let ID_KEY = "id"
 let AVATAR_KEY = "avatar"
+let CHANNEL_ID_KEY = "channelID"

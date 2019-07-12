@@ -70,20 +70,26 @@ class CreateAccountViewController: NSViewController {
             if passwordTextField.stringValue == reEnterPasswordTextField.stringValue {
                 
                 Authentication.shared.createUser(username: userNameTextField.stringValue, email: emailTextField.stringValue, password: passwordTextField.stringValue, avatar: UserData.shared.avatarName, completion: { (res) in
-                    print("res \(res)")
                     switch res {
                     case .success(let user):
-                        print(user)
-                        DispatchQueue.main.async {
-                        print(UserData.shared.keychain.get(UserData.shared.token) ?? "Empty Token, Create an admin")
-                        self.progressIndicator.stopAnimation(self)
-                        self.progressIndicator.isHidden = true
-                        self.dismiss(self)
-                        }
+                            print(user)
+                            Authentication.shared.login(email: self.emailTextField.stringValue, password: self.passwordTextField.stringValue, completion: { (res) in
+                                switch res {
+                                case .success(let login):
+                                    DispatchQueue.main.async {
+                                     NotificationCenter.default.post(name: NOTIF_USER_DATA_DID_CHANGE, object: nil)
+                                     self.progressIndicator.stopAnimation(self)
+                                     self.progressIndicator.isHidden = true
+                                     self.dismiss(self)
+                                    print(login)
+                                    }
+                                case .failure(let err):
+                                    print(err)
+                                }
+                            })
                     case .failure(let err):
                         print(err)
                         DispatchQueue.main.async {
-                            print("failed to authenticate")
                             self.progressIndicator.stopAnimation(self)
                             self.progressIndicator.isHidden = true
                         }
@@ -101,9 +107,7 @@ class CreateAccountViewController: NSViewController {
             dismiss(self)
         }
     }
-    
-    
-    
+
     @IBAction func createAccountOnEnterClicked(_ sender: NSTextField) {
         //        reEnterPasswordTextField.performClick(nil)
     }

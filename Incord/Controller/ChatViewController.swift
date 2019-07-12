@@ -21,20 +21,33 @@ class ChatViewController: NSViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do view setup here.
-        setUpViewController()
+        if UserData.shared.isLoggedIn != true {
+           profileImageButton.image = NSImage(named: self.avatarString)
+        }
     }
+    override func viewWillAppear() {
+        setUpViewController()
+
+            Users.shared.currentUser { (res) in
+                switch res {
+                case .success(let user):
+ NotificationCenter.default.post(name: NOTIF_USER_DATA_DID_CHANGE, object: nil)
+                    print(user)
+                case .failure(let err):
+                    self.profileImageButton.image = NSImage(named: self.avatarString)
+                    print(err)
+                }
+            }
+            
+        }
+    
     
     func setUpViewController() {
         chatTextField.wantsLayer = true
         chatTextField.layer?.cornerRadius = 8
         customButtonView.wantsLayer = true
         customButtonView.layer?.cornerRadius = 8
-        
-        if UserData.shared.isLoggedIn == false {
-        profileImageButton.image = NSImage(named: avatarString)
-        } else {
-            profileImageButton.image = NSImage(named: UserData.shared.avatarName)
-        }
+          NotificationCenter.default.addObserver(self, selector: #selector(userDataDidChange), name: NOTIF_USER_DATA_DID_CHANGE, object: nil)
     }
     
     lazy var profileViewController: NSViewController = {
@@ -44,6 +57,17 @@ class ChatViewController: NSViewController {
     lazy var friendsViewController: NSViewController = {
         return self.storyboard?.instantiateController(withIdentifier: "FriendsVC") as! NSViewController
     }()
+    
+    
+    @objc func userDataDidChange(_ notif: Notification) {
+        DispatchQueue.main.async {
+        if UserData.shared.isLoggedIn {
+            self.profileImageButton.image = NSImage(named: UserData.shared.avatarName)
+        } else {
+            self.profileImageButton.image = NSImage(named: "avatar1")
+        }
+        }
+    }
     
     @IBAction func profileButtonClicked(_ sender: NSButton) {
         self.view.window?.contentViewController?.presentAsSheet(profileViewController)

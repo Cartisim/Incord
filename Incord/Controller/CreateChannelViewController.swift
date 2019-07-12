@@ -10,7 +10,6 @@ import Cocoa
 
 class CreateChannelViewController: NSViewController {
     
-    @IBOutlet weak var channelImage: NSImageView!
     @IBOutlet weak var createChannelTextField: NSTextField!
     @IBOutlet weak var progressIndicator: NSProgressIndicator!
     
@@ -27,7 +26,7 @@ class CreateChannelViewController: NSViewController {
         clickBackground = BackgroundView()
         clickBackground.translatesAutoresizingMaskIntoConstraints = false
         view.addSubview(clickBackground, positioned: .above, relativeTo: view)
-        let topCn = NSLayoutConstraint(item: clickBackground!, attribute: .top, relatedBy: .equal, toItem: view, attribute: .top, multiplier: 1, constant: 330)
+        let topCn = NSLayoutConstraint(item: clickBackground!, attribute: .top, relatedBy: .equal, toItem: view, attribute: .top, multiplier: 1, constant: 240)
         let leftCn = NSLayoutConstraint(item: clickBackground!, attribute: .left, relatedBy: .equal, toItem: view, attribute: .left, multiplier: 1, constant: 0)
         let rightCn = NSLayoutConstraint(item: clickBackground!, attribute: .right, relatedBy: .equal, toItem: view, attribute: .right, multiplier: 1, constant: 0)
         let bottomCn = NSLayoutConstraint(item: clickBackground!, attribute: .bottom, relatedBy: .equal, toItem: view, attribute: .bottom, multiplier: 1, constant: 0)
@@ -44,8 +43,9 @@ class CreateChannelViewController: NSViewController {
         dismiss(self)
     }
     
-    @IBAction func imageButtonClicked(_ sender: NSButton) {
-    }
+    lazy var imageViewController: NSViewController = {
+        return self.storyboard?.instantiateController(withIdentifier: "ChooseImage") as! NSViewController
+    }()
     
     
     @IBAction func createChannelOnEnterClicked(_ sender: NSTextField) {
@@ -53,6 +53,20 @@ class CreateChannelViewController: NSViewController {
     }
     
     @IBAction func createChannelClicked(_ sender: NSButton) {
-
-    }
+        
+        Channels.shared.addChannel(image: "", channel: createChannelTextField.stringValue, completion: { (res) in
+            switch res {
+            case .success(let channel):
+                print(channel)
+                DispatchQueue.main.async {
+                    UserData.shared.channelID = channel.id!
+                      self.view.window?.contentViewController?.presentAsSheet(self.imageViewController)
+                }
+            case .failure(let err):
+                DispatchQueue.main.async {
+                    print(err)
+                }
+            }
+        })
+    } 
 }

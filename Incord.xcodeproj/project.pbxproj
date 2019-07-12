@@ -22,7 +22,7 @@
 		093AE1DC22BCD5DD003F0535 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 093AE1DB22BCD5DD003F0535 /* ProfileViewController.swift */; };
 		093AE1DE22BCD5F8003F0535 /* FriendsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 093AE1DD22BCD5F8003F0535 /* FriendsViewController.swift */; };
 		093AE1E122BCD630003F0535 /* FriendsOnlineViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 093AE1DF22BCD630003F0535 /* FriendsOnlineViewController.swift */; };
-		093AE1E622BCD971003F0535 /* ChannelViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 093AE1E522BCD971003F0535 /* ChannelViewController.swift */; };
+		093AE1E622BCD971003F0535 /* ToolBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 093AE1E522BCD971003F0535 /* ToolBarViewController.swift */; };
 		093AE1EC22BCF375003F0535 /* FriendsTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 093AE1EB22BCF375003F0535 /* FriendsTableCell.swift */; };
 		093AE1EE22BCF382003F0535 /* OnlineFriendsTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 093AE1ED22BCF382003F0535 /* OnlineFriendsTableCell.swift */; };
 		093AE1F022BCF38F003F0535 /* ChatTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 093AE1EF22BCF38F003F0535 /* ChatTableCell.swift */; };
@@ -31,6 +31,9 @@
 		093AE1F722BCF595003F0535 /* AvatarCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 093AE1F622BCF595003F0535 /* AvatarCell.swift */; };
 		093AE1F922BCF5DA003F0535 /* AvatarCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 093AE1F822BCF5DA003F0535 /* AvatarCell.xib */; };
 		09541D1622C58CD100BED9D4 /* WebSockets.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09541D1522C58CD100BED9D4 /* WebSockets.swift */; };
+		0981017A22D887D50006B64F /* ChooseImageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0981017922D887D50006B64F /* ChooseImageViewController.swift */; };
+		0981017C22D895240006B64F /* ChannelCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0981017B22D895240006B64F /* ChannelCell.xib */; };
+		0981017E22D895980006B64F /* ChannelCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0981017D22D895980006B64F /* ChannelCell.swift */; };
 		09954C7A22D8166200C582F1 /* Channels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09954C7922D8166200C582F1 /* Channels.swift */; };
 		09A95B8722B2525D002F17CE /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09A95B8622B2525D002F17CE /* AppDelegate.swift */; };
 		09A95B8B22B2525F002F17CE /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 09A95B8A22B2525F002F17CE /* Assets.xcassets */; };
@@ -66,7 +69,7 @@
 		093AE1DB22BCD5DD003F0535 /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		093AE1DD22BCD5F8003F0535 /* FriendsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendsViewController.swift; sourceTree = "<group>"; };
 		093AE1DF22BCD630003F0535 /* FriendsOnlineViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendsOnlineViewController.swift; sourceTree = "<group>"; };
-		093AE1E522BCD971003F0535 /* ChannelViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChannelViewController.swift; sourceTree = "<group>"; };
+		093AE1E522BCD971003F0535 /* ToolBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToolBarViewController.swift; sourceTree = "<group>"; };
 		093AE1EB22BCF375003F0535 /* FriendsTableCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendsTableCell.swift; sourceTree = "<group>"; };
 		093AE1ED22BCF382003F0535 /* OnlineFriendsTableCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnlineFriendsTableCell.swift; sourceTree = "<group>"; };
 		093AE1EF22BCF38F003F0535 /* ChatTableCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatTableCell.swift; sourceTree = "<group>"; };
@@ -75,6 +78,9 @@
 		093AE1F622BCF595003F0535 /* AvatarCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AvatarCell.swift; sourceTree = "<group>"; };
 		093AE1F822BCF5DA003F0535 /* AvatarCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AvatarCell.xib; sourceTree = "<group>"; };
 		09541D1522C58CD100BED9D4 /* WebSockets.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebSockets.swift; sourceTree = "<group>"; };
+		0981017922D887D50006B64F /* ChooseImageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChooseImageViewController.swift; sourceTree = "<group>"; };
+		0981017B22D895240006B64F /* ChannelCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ChannelCell.xib; sourceTree = "<group>"; };
+		0981017D22D895980006B64F /* ChannelCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChannelCell.swift; sourceTree = "<group>"; };
 		09954C7922D8166200C582F1 /* Channels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Channels.swift; sourceTree = "<group>"; };
 		09A95B8322B2525D002F17CE /* Incord.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Incord.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		09A95B8622B2525D002F17CE /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -115,6 +121,7 @@
 			isa = PBXGroup;
 			children = (
 				093AE1F822BCF5DA003F0535 /* AvatarCell.xib */,
+				0981017B22D895240006B64F /* ChannelCell.xib */,
 			);
 			path = Xibs;
 			sourceTree = "<group>";
@@ -191,6 +198,7 @@
 				093AE1ED22BCF382003F0535 /* OnlineFriendsTableCell.swift */,
 				093AE1EF22BCF38F003F0535 /* ChatTableCell.swift */,
 				093AE1F622BCF595003F0535 /* AvatarCell.swift */,
+				0981017D22D895980006B64F /* ChannelCell.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -206,8 +214,9 @@
 				093AE1DB22BCD5DD003F0535 /* ProfileViewController.swift */,
 				093AE1DD22BCD5F8003F0535 /* FriendsViewController.swift */,
 				093AE1DF22BCD630003F0535 /* FriendsOnlineViewController.swift */,
-				093AE1E522BCD971003F0535 /* ChannelViewController.swift */,
+				093AE1E522BCD971003F0535 /* ToolBarViewController.swift */,
 				093AE1F422BCF56F003F0535 /* AvatarViewController.swift */,
+				0981017922D887D50006B64F /* ChooseImageViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -320,6 +329,7 @@
 				093AE1F322BCF52E003F0535 /* Avatars.xib in Resources */,
 				093AE1F922BCF5DA003F0535 /* AvatarCell.xib in Resources */,
 				09A95B8E22B2525F002F17CE /* Main.storyboard in Resources */,
+				0981017C22D895240006B64F /* ChannelCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -376,7 +386,7 @@
 				09DB4F8222C4FCC700387E4E /* Message.swift in Sources */,
 				093AE1F522BCF56F003F0535 /* AvatarViewController.swift in Sources */,
 				093AE1D622BCC1B7003F0535 /* CreateAccountViewController.swift in Sources */,
-				093AE1E622BCD971003F0535 /* ChannelViewController.swift in Sources */,
+				093AE1E622BCD971003F0535 /* ToolBarViewController.swift in Sources */,
 				093AE1F022BCF38F003F0535 /* ChatTableCell.swift in Sources */,
 				093AE1F722BCF595003F0535 /* AvatarCell.swift in Sources */,
 				09DB4D2222C4FBF500387E4E /* Messages.swift in Sources */,
@@ -401,12 +411,14 @@
 				09116CFD22C4A4EA00762A93 /* Users.swift in Sources */,
 				09DB4F8022C4FCBE00387E4E /* Channel.swift in Sources */,
 				093AE1DC22BCD5DD003F0535 /* ProfileViewController.swift in Sources */,
+				0981017E22D895980006B64F /* ChannelCell.swift in Sources */,
 				09DF1CE022C3301100562564 /* UserData.swift in Sources */,
 				093AE1DA22BCD2C5003F0535 /* ChannelView.swift in Sources */,
 				093AE1D422BCC0C7003F0535 /* LoginViewController.swift in Sources */,
 				091630C122C1E83F00420996 /* AuthToken.swift in Sources */,
 				093AE1EE22BCF382003F0535 /* OnlineFriendsTableCell.swift in Sources */,
 				0910AA0922C18CEC008657B3 /* Authentication.swift in Sources */,
+				0981017A22D887D50006B64F /* ChooseImageViewController.swift in Sources */,
 				09541D1622C58CD100BED9D4 /* WebSockets.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -63,18 +63,17 @@ class LoginViewController: NSViewController {
     @IBAction func loginClicked(_ sender: NSButton) {
         progressIndicator.isHidden = false
         progressIndicator.startAnimation(self)
- 
+        
         if UserData.shared.isLoggedIn != true {
-                   print(UserData.shared.isLoggedIn)
             Authentication.shared.login(email: emailTextField.stringValue, password: passwordTextField.stringValue, completion: { (res) in
                 switch res {
                 case .success(let user):
-                    print(user)
-                    print(UserData.shared.token)
                     DispatchQueue.main.async {
-                    self.progressIndicator.stopAnimation(self)
-                    self.progressIndicator.isHidden = true
-                    self.dismiss(self)
+                        print(user)
+                         NotificationCenter.default.post(name: NOTIF_USER_DATA_DID_CHANGE, object: nil)
+                        self.progressIndicator.stopAnimation(self)
+                        self.progressIndicator.isHidden = true
+                        self.dismiss(self)
                     }
                 case .failure(let error):
                     print("There was an error parsing user JSON \(error)")

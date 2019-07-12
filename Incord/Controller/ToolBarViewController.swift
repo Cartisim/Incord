@@ -8,7 +8,7 @@
 
 import Cocoa
 
-class ChannelViewController: NSViewController {
+class ToolBarViewController: NSViewController {
 
     @IBOutlet weak var channelLabel: NSTextField!
     
@@ -19,7 +19,16 @@ class ChannelViewController: NSViewController {
     @IBAction func logoutClicked(_ sender: NSButton) {
         Authentication.shared.logout()
         print("logoutClicked")
-      
+//        Users.shared.currentUser { (res) in
+//            switch res {
+//            case .success(let user):
+//
+//                print(user)
+//            case .failure(let err):
+//                print(err)
+//            }
+//        }
+       NotificationCenter.default.post(name: NOTIF_USER_DATA_DID_CHANGE, object: nil)
     }
     
    

@@ -81,4 +81,6 @@ func updateUser(username: String, email: String, password: String, avatar: Strin
         }
     }.resume()
 }
+    
+    //TODO:- Add Delete User method
 }

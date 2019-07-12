@@ -11,12 +11,11 @@ import Foundation
 final class Channel: Codable {
     
     var id: Int?
-    var image: String
+    var imageString: String
     var channel: String
     
-    init(image: String, channel: String, id: Int?) {
-        self.image = image
+    init(imageString: String, channel: String) {
+        self.imageString = imageString
         self.channel = channel
-        self.id = id
     }
 }
