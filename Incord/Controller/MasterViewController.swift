@@ -17,31 +17,32 @@ class MasterViewController: NSViewController {
     @IBOutlet weak var createAccountButton: NSButton!
     
     //Variables
-      var channels = [ChannelImage]()
+      var channels = [Channel]()
+      var images = [ChannelImage]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do view setup here.
         setUpView()
-//        getAllChannels()
+        getAllChannels()
     }
     
-//    func getAllChannels() {
-//        Channels.shared.getChannels { (res) in
-//            switch res {
-//            case .success(let channels):
-//                channels.forEach({ (channel) in
-//                    print(channel.channel, channel.id as Any, channel.imageString)
-//                    DispatchQueue.main.async {
-//                        self.channels = channels
-//                        self.channelCollectionView.reloadData()
-//                    }
-//                })
-//            case .failure(let err):
-//                print("There was an error \(err)")
-//            }
-//        }
-//    }
+    func getAllChannels() {
+        Channels.shared.getChannels { (res) in
+            switch res {
+            case .success(let channels):
+                channels.forEach({ (channel) in
+                    print(channel.channel, channel.id as Any, channel.imageString)
+                    DispatchQueue.main.async {
+                        self.channels = channels
+                        self.channelCollectionView.reloadData()
+                    }
+                })
+            case .failure(let err):
+                print("There was an error \(err)")
+            }
+        }
+    }
     
     func setUpView() {
         channelCollectionView.wantsLayer = true
@@ -80,7 +81,7 @@ class MasterViewController: NSViewController {
 
 extension MasterViewController: NSCollectionViewDelegate{
     func collectionView(_ collectionView: NSCollectionView, didSelectItemsAt indexPaths: Set<IndexPath>) {
-
+        print(channelCollectionView.selectionIndexPaths.first)
     }
 }
 
@@ -96,11 +97,27 @@ extension MasterViewController: NSCollectionViewDataSource  {
     func collectionView(_ collectionView: NSCollectionView, itemForRepresentedObjectAt indexPath: IndexPath) -> NSCollectionViewItem {
         let cell = collectionView.makeItem(withIdentifier: NSUserInterfaceItemIdentifier(rawValue: "ChannelCell"), for: indexPath)
         guard let channelCell = cell as? ChannelCell else { return NSCollectionViewItem() }
-
-        let dataImage = NSImage(data: channels[indexPath.item].image)
-        channelCell.channelImage.image = dataImage
-        print("cells \(channelCell.cellConfiguration(index: indexPath.item))")
+        
+        let url = URL(string: "\(CHANNEL_URL)/image/\(String(describing: channels[indexPath.item].id!))/channelImage")! 
+        print(url)
+        print(channels[indexPath.item].channel)
+        channelCell.channelLabel.stringValue = channels[indexPath.item].channel
+        channelCell.channelImage.load(url: url)
         return channelCell
     }
 
+}
+
+extension NSImageView {
+    func load(url: URL) {
+        DispatchQueue.global().async { [weak self] in
+            if let data = try? Data(contentsOf: url) {
+                if let image = NSImage(data: data) {
+                    DispatchQueue.main.async {
+                        self?.image = image
+                    }
+                }
+            }
+        }
+    }
 }

@@ -13,13 +13,14 @@ class ChannelCell: NSCollectionViewItem {
     var channels = [Channel]()
     
     
+    @IBOutlet weak var channelLabel: NSTextField!
     @IBOutlet weak var channelImage: NSImageView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do view setup here.
     }
-    func cellConfiguration(index: Int) {
-        channelImage.image = NSImage(named:"\(channels)")
-    }
+//    func cellConfiguration(index: Int) {
+//        channelImage.image = NSImage(named:"\(channels)")
+//    }
 }

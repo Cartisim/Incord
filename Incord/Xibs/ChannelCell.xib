@@ -1,32 +1,46 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="14810.12" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="14810.12"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="14490.70"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
         <customObject id="-2" userLabel="File's Owner" customClass="ChannelCell" customModule="Incord" customModuleProvider="target">
             <connections>
                 <outlet property="channelImage" destination="4vN-8E-muz" id="YYr-Mc-a8D"/>
+                <outlet property="channelLabel" destination="q5v-j9-iND" id="LGb-ok-Gg1"/>
                 <outlet property="view" destination="c22-O7-iKe" id="d9R-Qh-2Cw"/>
             </connections>
         </customObject>
         <customObject id="-1" userLabel="First Responder" customClass="FirstResponder"/>
         <customObject id="-3" userLabel="Application" customClass="NSObject"/>
         <customView id="c22-O7-iKe">
-            <rect key="frame" x="0.0" y="0.0" width="160" height="160"/>
+            <rect key="frame" x="0.0" y="0.0" width="130" height="130"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
             <subviews>
                 <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="4vN-8E-muz">
-                    <rect key="frame" x="15" y="15" width="130" height="130"/>
+                    <rect key="frame" x="0.0" y="0.0" width="130" height="100"/>
                     <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" id="5qH-2j-vav"/>
                 </imageView>
+                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="q5v-j9-iND">
+                    <rect key="frame" x="47" y="108" width="37" height="17"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="17" id="EGS-1D-Cwj"/>
+                    </constraints>
+                    <textFieldCell key="cell" lineBreakMode="clipping" title="Label" id="l7I-uq-qTc">
+                        <font key="font" metaFont="system"/>
+                        <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                        <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                    </textFieldCell>
+                </textField>
             </subviews>
             <constraints>
-                <constraint firstItem="4vN-8E-muz" firstAttribute="leading" secondItem="c22-O7-iKe" secondAttribute="leading" constant="15" id="XuD-eL-wZA"/>
-                <constraint firstItem="4vN-8E-muz" firstAttribute="centerX" secondItem="c22-O7-iKe" secondAttribute="centerX" id="fnc-FF-icG"/>
-                <constraint firstItem="4vN-8E-muz" firstAttribute="centerY" secondItem="c22-O7-iKe" secondAttribute="centerY" id="nYn-l3-Ca0"/>
-                <constraint firstItem="4vN-8E-muz" firstAttribute="top" secondItem="c22-O7-iKe" secondAttribute="top" constant="15" id="xa5-TW-4oZ"/>
+                <constraint firstItem="q5v-j9-iND" firstAttribute="top" secondItem="c22-O7-iKe" secondAttribute="top" constant="5" id="4Z8-6r-EBe"/>
+                <constraint firstAttribute="bottom" secondItem="4vN-8E-muz" secondAttribute="bottom" id="Tyc-OQ-QLM"/>
+                <constraint firstItem="4vN-8E-muz" firstAttribute="leading" secondItem="c22-O7-iKe" secondAttribute="leading" id="UeN-cM-D2s"/>
+                <constraint firstItem="q5v-j9-iND" firstAttribute="centerX" secondItem="c22-O7-iKe" secondAttribute="centerX" id="VN4-r9-rLB"/>
+                <constraint firstItem="4vN-8E-muz" firstAttribute="top" secondItem="q5v-j9-iND" secondAttribute="bottom" constant="8" id="YVm-sd-vnf"/>
+                <constraint firstAttribute="trailing" secondItem="4vN-8E-muz" secondAttribute="trailing" id="eOY-Y6-v9B"/>
             </constraints>
             <point key="canvasLocation" x="139" y="154"/>
         </customView>

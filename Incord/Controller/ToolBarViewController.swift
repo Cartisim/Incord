@@ -11,6 +11,7 @@ import Cocoa
 class ToolBarViewController: NSViewController {
 
     @IBOutlet weak var channelLabel: NSTextField!
+    @IBOutlet weak var subChannelLabel: NSTextField!
     
     override func viewDidLoad() {
         super.viewDidLoad()
