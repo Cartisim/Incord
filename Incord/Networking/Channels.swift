@@ -59,8 +59,7 @@ class Channels {
             }
         }.resume()
     }
-    
-    //TODO:- Add Revtrieval methods
+  
     func getChannels(completion: @escaping (Result<[Channel], Error>) -> ()) {
          guard let url = URL(string: "\(CHANNEL_URL)") else { return }
         print(url)
@@ -81,17 +80,23 @@ class Channels {
         }.resume()
     }
     
-    func getChannel() {
-        
-    }
-    
-    //TODO:- Add Update methods
-    func updateChannel() {
-        
-    }
-    
-    //TODO:- Add Delete Methods
-    func deleteChannel() {
-        
+    func getChannel(channel: Int, completion: @escaping (Result<Channel, Error>) -> ()) {
+            guard let url = URL(string: "\(CHANNEL_URL)/\(channel + 1)") else { return }
+            var request = URLRequest(url: url)
+            request.httpMethod = "GET"
+            print(url)
+            URLSession.shared.dataTask(with: request) { data, response, error in
+                if let error = error {
+                    completion(.failure(error))
+                    return
+                }
+                
+                do {
+                    let currentChannel = try JSONDecoder().decode(Channel.self, from: data!)
+                    completion(.success(currentChannel))
+                } catch let err {
+                    completion(.failure(err))
+                }
+                }.resume()
     }
 }

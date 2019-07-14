@@ -68,11 +68,11 @@ class CreateAccountViewController: NSViewController {
         self.progressIndicator.isHidden = false
         if UserData.shared.isLoggedIn != true {
             if passwordTextField.stringValue == reEnterPasswordTextField.stringValue {
-                
                 Authentication.shared.createUser(username: userNameTextField.stringValue, email: emailTextField.stringValue, password: passwordTextField.stringValue, avatar: UserData.shared.avatarName, completion: { (res) in
                     switch res {
                     case .success(let user):
                             print(user)
+                            DispatchQueue.main.async {
                             Authentication.shared.login(email: self.emailTextField.stringValue, password: self.passwordTextField.stringValue, completion: { (res) in
                                 switch res {
                                 case .success(let login):
@@ -87,6 +87,7 @@ class CreateAccountViewController: NSViewController {
                                     print(err)
                                 }
                             })
+                        }
                     case .failure(let err):
                         print(err)
                         DispatchQueue.main.async {

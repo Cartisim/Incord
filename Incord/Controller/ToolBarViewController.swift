@@ -13,8 +13,16 @@ class ToolBarViewController: NSViewController {
     @IBOutlet weak var channelLabel: NSTextField!
     @IBOutlet weak var subChannelLabel: NSTextField!
     
+    let channel = [Channel]()
+    static let shared = ToolBarViewController()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+      setUpView()
+    }
+    
+    func setUpView() {
+         NotificationCenter.default.addObserver(self, selector: #selector(channelDidChange), name: CHANNEL_DID_CHANGE, object: nil)
     }
     
     @IBAction func logoutClicked(_ sender: NSButton) {
@@ -29,8 +37,14 @@ class ToolBarViewController: NSViewController {
 //                print(err)
 //            }
 //        }
-       NotificationCenter.default.post(name: NOTIF_USER_DATA_DID_CHANGE, object: nil)
     }
     
+    
+    @objc func channelDidChange(_ notif: Notification) {
+        DispatchQueue.main.async {
+            self.channelLabel.stringValue = "#\(UserData.shared.channel)"
+//        }
+    }
+    }
    
 }

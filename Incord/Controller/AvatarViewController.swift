@@ -27,7 +27,6 @@ extension AvatarViewController: NSCollectionViewDelegate {
             view.window?.cancelOperation(nil)
         }
     }
-
 }
 
 extension AvatarViewController: NSCollectionViewDataSource {

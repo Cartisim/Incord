@@ -1,17 +1,17 @@
 //
-//  CreateChannelViewController.swift
+//  CreateSubChannelViewController.swift
 //  Incord
 //
-//  Created by Cole M on 6/21/19.
+//  Created by Cole M on 7/13/19.
 //  Copyright © 2019 Cole M. All rights reserved.
 //
 
 import Cocoa
 
-class CreateChannelViewController: NSViewController {
-    
-    @IBOutlet weak var createChannelTextField: NSTextField!
+class CreateSubChannelViewController: NSViewController {
+
     @IBOutlet weak var progressIndicator: NSProgressIndicator!
+    @IBOutlet weak var subChannelTextField: NSTextField!
     
     var clickBackground: BackgroundView!
     
@@ -20,7 +20,6 @@ class CreateChannelViewController: NSViewController {
         // Do view setup here.
         setUpView()
     }
-    
     
     func setUpView() {
         clickBackground = BackgroundView()
@@ -43,31 +42,8 @@ class CreateChannelViewController: NSViewController {
         dismiss(self)
     }
     
-    lazy var imageViewController: NSViewController = {
-        return self.storyboard?.instantiateController(withIdentifier: "ChooseImage") as! NSViewController
-    }()
     
-    
-    @IBAction func createChannelOnEnterClicked(_ sender: NSTextField) {
-        //        createChannelTextField.performClick(nil)
-    }
-    
-    @IBAction func createChannelClicked(_ sender: NSButton) {
-        
-        Channels.shared.addChannel(image: "", channel: createChannelTextField.stringValue, completion: { (res) in
-            switch res {
-            case .success(let channel):
-                print(channel)
-                DispatchQueue.main.async {
-                    UserData.shared.channelID = channel.id!
-                    UserData.shared.channel = channel.channel
-                      self.view.window?.contentViewController?.presentAsSheet(self.imageViewController)
-                }
-            case .failure(let err):
-                DispatchQueue.main.async {
-                    print(err)
-                }
-            }
-        })
+    @IBAction func createSubChannelClicked(_ sender: NSButton) {
+        dismiss(self)
     }
 }

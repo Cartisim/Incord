@@ -31,6 +31,7 @@
 		093AE1F722BCF595003F0535 /* AvatarCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 093AE1F622BCF595003F0535 /* AvatarCell.swift */; };
 		093AE1F922BCF5DA003F0535 /* AvatarCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 093AE1F822BCF5DA003F0535 /* AvatarCell.xib */; };
 		09541D1622C58CD100BED9D4 /* WebSockets.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09541D1522C58CD100BED9D4 /* WebSockets.swift */; };
+		0969CBA422D9E2990080057E /* CreateSubChannelViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0969CBA322D9E2990080057E /* CreateSubChannelViewController.swift */; };
 		0981017A22D887D50006B64F /* ChooseImageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0981017922D887D50006B64F /* ChooseImageViewController.swift */; };
 		0981017C22D895240006B64F /* ChannelCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0981017B22D895240006B64F /* ChannelCell.xib */; };
 		0981017E22D895980006B64F /* ChannelCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0981017D22D895980006B64F /* ChannelCell.swift */; };
@@ -78,6 +79,7 @@
 		093AE1F622BCF595003F0535 /* AvatarCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AvatarCell.swift; sourceTree = "<group>"; };
 		093AE1F822BCF5DA003F0535 /* AvatarCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AvatarCell.xib; sourceTree = "<group>"; };
 		09541D1522C58CD100BED9D4 /* WebSockets.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebSockets.swift; sourceTree = "<group>"; };
+		0969CBA322D9E2990080057E /* CreateSubChannelViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateSubChannelViewController.swift; sourceTree = "<group>"; };
 		0981017922D887D50006B64F /* ChooseImageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChooseImageViewController.swift; sourceTree = "<group>"; };
 		0981017B22D895240006B64F /* ChannelCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ChannelCell.xib; sourceTree = "<group>"; };
 		0981017D22D895980006B64F /* ChannelCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChannelCell.swift; sourceTree = "<group>"; };
@@ -158,7 +160,7 @@
 				09A95B8C22B2525F002F17CE /* Main.storyboard */,
 				093AE1C822BC55D6003F0535 /* Xibs */,
 				09A95B9E22B2678B002F17CE /* Utilities */,
-				09A95B9922B26288002F17CE /* Managers */,
+				09A95B9922B26288002F17CE /* Networking */,
 				09A95B9822B2627F002F17CE /* Controller */,
 				09A95B9722B2627A002F17CE /* View */,
 				09A95B9622B26275002F17CE /* Model */,
@@ -217,28 +219,29 @@
 				093AE1E522BCD971003F0535 /* ToolBarViewController.swift */,
 				093AE1F422BCF56F003F0535 /* AvatarViewController.swift */,
 				0981017922D887D50006B64F /* ChooseImageViewController.swift */,
+				0969CBA322D9E2990080057E /* CreateSubChannelViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
 		};
-		09A95B9922B26288002F17CE /* Managers */ = {
+		09A95B9922B26288002F17CE /* Networking */ = {
 			isa = PBXGroup;
 			children = (
 				0910AA0822C18CEC008657B3 /* Authentication.swift */,
-				09DF1CDF22C3301100562564 /* UserData.swift */,
 				09116CFC22C4A4EA00762A93 /* Users.swift */,
 				09DB4D2122C4FBF500387E4E /* Messages.swift */,
 				09DB4F8522C4FCE600387E4E /* SubChannels.swift */,
 				09541D1522C58CD100BED9D4 /* WebSockets.swift */,
 				09954C7922D8166200C582F1 /* Channels.swift */,
 			);
-			path = Managers;
+			path = Networking;
 			sourceTree = "<group>";
 		};
 		09A95B9E22B2678B002F17CE /* Utilities */ = {
 			isa = PBXGroup;
 			children = (
 				09A95B9F22B267A3002F17CE /* Constants.swift */,
+				09DF1CDF22C3301100562564 /* UserData.swift */,
 			);
 			path = Utilities;
 			sourceTree = "<group>";
@@ -410,6 +413,7 @@
 				09A95BA022B267A3002F17CE /* Constants.swift in Sources */,
 				09116CFD22C4A4EA00762A93 /* Users.swift in Sources */,
 				09DB4F8022C4FCBE00387E4E /* Channel.swift in Sources */,
+				0969CBA422D9E2990080057E /* CreateSubChannelViewController.swift in Sources */,
 				093AE1DC22BCD5DD003F0535 /* ProfileViewController.swift in Sources */,
 				0981017E22D895980006B64F /* ChannelCell.swift in Sources */,
 				09DF1CE022C3301100562564 /* UserData.swift in Sources */,

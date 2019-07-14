@@ -83,6 +83,14 @@ class UserData {
             defaults.set(newValue, forKey:  CHANNEL_ID_KEY)
         }
     }
+    var channel: String {
+        get {
+            return defaults.value(forKey: CHANNEL_KEY) as! String
+        }
+        set {
+            defaults.set(newValue, forKey:  CHANNEL_KEY)
+        }
+    }
     
     var email: String {
         get {

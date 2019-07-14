@@ -19,6 +19,7 @@ let PRESENTING_MODAL_NOTIFICATION = Notification.Name("presentingModal")
 let CLOSING_MODAL_NOTIFIFCATION = Notification.Name("closingModal")
 let DATA_CHANGED = Notification.Name("loadData")
 let NOTIF_USER_DATA_DID_CHANGE = Notification.Name("notifUserDataChanged")
+let CHANNEL_DID_CHANGE = Notification.Name("noftifyChannelChaned")
 
 //URLS
 let BASE_URL = "http://localhost:8080/api"
@@ -47,3 +48,4 @@ let ACCOUNT_ID_KEY = "createAccountID"
 let ID_KEY = "id"
 let AVATAR_KEY = "avatar"
 let CHANNEL_ID_KEY = "channelID"
+let CHANNEL_KEY = "channel"

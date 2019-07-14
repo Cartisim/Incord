@@ -19,3 +19,7 @@ final class Channel: Codable {
         self.channel = channel
     }
 }
+//TODO:- Add Delete Methods
+func deleteChannel() {
+    
+}

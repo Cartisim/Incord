@@ -9,16 +9,17 @@
 import Cocoa
 
 class MasterViewController: NSViewController {
-
-   
+    
+    
     @IBOutlet weak var channelCollectionView: NSCollectionView!
     @IBOutlet weak var subChannelTableView: NSTableView!
     @IBOutlet weak var loginButton: NSButton!
     @IBOutlet weak var createAccountButton: NSButton!
     
     //Variables
-      var channels = [Channel]()
-      var images = [ChannelImage]()
+    var channels = [Channel]()
+    var channel: Channel?
+    var images = [ChannelImage]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -47,20 +48,23 @@ class MasterViewController: NSViewController {
     func setUpView() {
         channelCollectionView.wantsLayer = true
         channelCollectionView.layer?.backgroundColor = .clear
-    
     }
-
+    
     //SheetViewController
     lazy var createAccountViewController: NSViewController = {
         return self.storyboard!.instantiateController(withIdentifier: "CreateAccount") as! NSViewController
     }()
     
     lazy var loginViewController: NSViewController = {
-            return self.storyboard!.instantiateController(withIdentifier: "Login") as! NSViewController
+        return self.storyboard!.instantiateController(withIdentifier: "Login") as! NSViewController
     }()
     
     lazy var channelViewController: NSViewController = {
-    return self.storyboard?.instantiateController(withIdentifier: "CreateChannel") as! NSViewController
+        return self.storyboard?.instantiateController(withIdentifier: "CreateChannel") as! NSViewController
+    }()
+    
+    lazy var subChannelViewController: NSViewController = {
+        return self.storyboard?.instantiateController(withIdentifier: "SubChannel") as! NSViewController
     }()
     
     @IBAction func loginClicked(_ sender: NSButton) {
@@ -75,15 +79,33 @@ class MasterViewController: NSViewController {
         view.window?.contentViewController?.presentAsSheet(channelViewController)
     }
     
-    
+    @IBAction func createSubChannelClicked(_ sender: NSButton) {
+        view.window?.contentViewController?
+            .presentAsSheet(subChannelViewController)
+    }
 }
-
 
 extension MasterViewController: NSCollectionViewDelegate{
     func collectionView(_ collectionView: NSCollectionView, didSelectItemsAt indexPaths: Set<IndexPath>) {
-        print(channelCollectionView.selectionIndexPaths.first)
+        if let itemIndex = self.channelCollectionView.selectionIndexPaths.first?.item {
+            Channels.shared.getChannel(channel: itemIndex) { (res) in
+                switch res {
+                case .success(let channel):
+                    print(channel)
+                    DispatchQueue.main.async {
+                        self.channel?.channel = channel.channel
+                        UserData.shared.channel = self.channels[itemIndex].channel
+                        print("channel name \( UserData.shared.channel)")
+                        NotificationCenter.default.post(name: CHANNEL_DID_CHANGE, object: nil)
+                    }
+                case .failure(let err):
+                    print(err)
+                }
+            }
+        }
     }
 }
+
 
 extension MasterViewController: NSCollectionViewDataSource  {
     func collectionView(_ collectionView: NSCollectionView, numberOfItemsInSection section: Int) -> Int {
@@ -105,7 +127,7 @@ extension MasterViewController: NSCollectionViewDataSource  {
         channelCell.channelImage.load(url: url)
         return channelCell
     }
-
+    
 }
 
 extension NSImageView {
