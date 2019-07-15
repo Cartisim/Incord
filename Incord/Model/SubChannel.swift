@@ -12,8 +12,10 @@ final class SubChannel: Codable {
     
     var id: Int?
     var title: String
+    var channelID: Int
     
-    init(title: String) {
+    init(title: String, channelID: Int) {
         self.title = title
+        self.channelID = channelID
     }
 }

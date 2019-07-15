@@ -20,12 +20,16 @@ class MasterViewController: NSViewController {
     var channels = [Channel]()
     var channel: Channel?
     var images = [ChannelImage]()
+    var subchannels = [SubChannel]()
+    var subchannel: SubChannel?
     
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do view setup here.
         setUpView()
         getAllChannels()
+        subChannelTableView.dataSource = self
+        subChannelTableView.delegate = self
     }
     
     func getAllChannels() {
@@ -85,6 +89,8 @@ class MasterViewController: NSViewController {
     }
 }
 
+
+
 extension MasterViewController: NSCollectionViewDelegate{
     func collectionView(_ collectionView: NSCollectionView, didSelectItemsAt indexPaths: Set<IndexPath>) {
         if let itemIndex = self.channelCollectionView.selectionIndexPaths.first?.item {
@@ -95,8 +101,23 @@ extension MasterViewController: NSCollectionViewDelegate{
                     DispatchQueue.main.async {
                         self.channel?.channel = channel.channel
                         UserData.shared.channel = self.channels[itemIndex].channel
-                        print("channel name \( UserData.shared.channel)")
+                        UserData.shared.channelID = self.channels[itemIndex].id!
+                        print("channel name \( UserData.shared.channelID)")
                         NotificationCenter.default.post(name: CHANNEL_DID_CHANGE, object: nil)
+                        
+                        SubChannels.shared.getSubChannels(channelID: itemIndex) { (res) in
+                            switch res {
+                            case .success(let subchannels):
+                                subchannels.forEach({ (subchannel) in
+                                    DispatchQueue.main.async {
+                                        self.subchannels = subchannels
+                                        self.subChannelTableView.reloadData()
+                                    }
+                                })
+                            case .failure(let error):
+                                print(error)
+                            }
+                        }
                     }
                 case .failure(let err):
                     print(err)
@@ -104,6 +125,7 @@ extension MasterViewController: NSCollectionViewDelegate{
             }
         }
     }
+    
 }
 
 
@@ -128,6 +150,32 @@ extension MasterViewController: NSCollectionViewDataSource  {
         return channelCell
     }
     
+}
+
+extension MasterViewController: NSTableViewDelegate {
+    
+    func tableViewSelectionDidChange(_ notification: Notification) {
+            let indexPath = subChannelTableView.selectedRow
+            let subChannel = subchannels[indexPath]
+            UserData.shared.subChannel = subChannel.title
+            NotificationCenter.default.post(name: SUB_CHANNEL_DID_CHANGE, object: nil)
+    }
+}
+extension MasterViewController: NSTableViewDataSource {
+    
+    func numberOfRows(in tableView: NSTableView) -> Int {
+        return subchannels.count
+    }
+    
+    func tableView(_ tableView: NSTableView, viewFor tableColumn: NSTableColumn?, row: Int) -> NSView? {
+        let cell = tableView.makeView(withIdentifier: NSUserInterfaceItemIdentifier(rawValue: "subChannel"), owner: self) as! NSTableCellView?
+        cell?.textField?.stringValue = "#\(subchannels[row].title)"
+        return cell
+    }
+    
+    func tableView(_ tableView: NSTableView, heightOfRow row: Int) -> CGFloat {
+        return 30.0
+    }
 }
 
 extension NSImageView {

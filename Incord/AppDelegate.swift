@@ -16,7 +16,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
 
     func applicationDidFinishLaunching(_ aNotification: Notification) {
 //        guard UserData.shared.token == nil else { return true }
-        
+        print(UserData.shared.token)
         
     }
     

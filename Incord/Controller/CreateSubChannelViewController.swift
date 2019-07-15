@@ -14,6 +14,7 @@ class CreateSubChannelViewController: NSViewController {
     @IBOutlet weak var subChannelTextField: NSTextField!
     
     var clickBackground: BackgroundView!
+    var channelIdent: Int?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -42,8 +43,14 @@ class CreateSubChannelViewController: NSViewController {
         dismiss(self)
     }
     
-    
     @IBAction func createSubChannelClicked(_ sender: NSButton) {
-        dismiss(self)
+        SubChannels.shared.addSubChannel(title: subChannelTextField.stringValue, channelID: UserData.shared.channelID, completion: { (res) in
+            switch res {
+            case .success(let subChannel):
+                print(subChannel.channelID)
+            case .failure(let err):
+                print(err)
+            }
+        })
     }
 }

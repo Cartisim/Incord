@@ -23,6 +23,7 @@ class ToolBarViewController: NSViewController {
     
     func setUpView() {
          NotificationCenter.default.addObserver(self, selector: #selector(channelDidChange), name: CHANNEL_DID_CHANGE, object: nil)
+          NotificationCenter.default.addObserver(self, selector: #selector(subChannelDidChange), name: SUB_CHANNEL_DID_CHANGE, object: nil)
     }
     
     @IBAction func logoutClicked(_ sender: NSButton) {
@@ -43,8 +44,11 @@ class ToolBarViewController: NSViewController {
     @objc func channelDidChange(_ notif: Notification) {
         DispatchQueue.main.async {
             self.channelLabel.stringValue = "#\(UserData.shared.channel)"
-//        }
     }
     }
-   
+    @objc func subChannelDidChange(_ notif: Notification) {
+        DispatchQueue.main.async {
+            self.subChannelLabel.stringValue = "#\(UserData.shared.subChannel)"
+        }
+    }
 }
