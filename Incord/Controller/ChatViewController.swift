@@ -34,7 +34,6 @@ class ChatViewController: NSViewController {
         chatTableView.reloadData()
     }
     override func viewWillAppear() {
-        
         setUpViewController()
         Users.shared.currentUser { (res) in
             switch res {
@@ -43,14 +42,13 @@ class ChatViewController: NSViewController {
                 print(user)
             case .failure(let err):
                 DispatchQueue.main.async {
-                self.profileImageButton.image = NSImage(named: self.avatarString)
+                    self.profileImageButton.image = NSImage(named: self.avatarString)
                 }
                 print(err)
             }
         }
         
     }
-    
     
     func setUpViewController() {
         chatTextField.wantsLayer = true
@@ -70,24 +68,6 @@ class ChatViewController: NSViewController {
         }
     }
 
-    func getMessages() {
-        Messages.shared.getMessages(subChannelID: UserData.shared.subChannelID){ (res) in
-            switch res {
-            case .success(let chats):
-                chats.forEach({ (message) in
-                    DispatchQueue.main.async {
-                        self.messages = chats
-                        self.chatTableView.reloadData()
-                        self.chatTableView.scrollRowToVisible(self.messages.count - 1)
-                    }
-                })
-            case .failure(let err):
-                print("fail- \(err)")
-            }
-        }
-    }
-    
-    
     lazy var profileViewController: NSViewController = {
         return self.storyboard?.instantiateController(withIdentifier: "ProfileVC") as! NSViewController
     }()
@@ -95,9 +75,6 @@ class ChatViewController: NSViewController {
     lazy var friendsViewController: NSViewController = {
         return self.storyboard?.instantiateController(withIdentifier: "FriendsVC") as! NSViewController
     }()
-    
-    
-    
     
     @IBAction func profileButtonClicked(_ sender: NSButton) {
         self.view.window?.contentViewController?.presentAsSheet(profileViewController)
@@ -124,13 +101,13 @@ class ChatViewController: NSViewController {
             switch res {
             case .success(let messages):
                 DispatchQueue.main.async {
-                UserData.shared.avatarName = messages.avatar
-                UserData.shared.date = messages.date
-                UserData.shared.message = messages.message
-                UserData.shared.username = messages.username
-                UserData.shared.subChannelID = messages.subChannelID
-                self.chatTextField.stringValue = ""
-                self.chatTableView.scrollRowToVisible(self.messages.count - 1)
+                    UserData.shared.avatarName = messages.avatar
+                    UserData.shared.date = messages.date
+                    UserData.shared.message = messages.message
+                    UserData.shared.username = messages.username
+                    UserData.shared.subChannelID = messages.subChannelID
+                    self.chatTextField.stringValue = ""
+                    self.chatTableView.scrollRowToVisible(self.messages.count - 1)
                 }
             case .failure(let error):
                 print(error)
@@ -138,6 +115,8 @@ class ChatViewController: NSViewController {
         }
     }
 }
+
+
 extension ChatViewController: NSTableViewDelegate {
     
 }
@@ -149,7 +128,7 @@ extension ChatViewController: NSTableViewDataSource {
     }
     
     func tableView(_ tableView: NSTableView, viewFor tableColumn: NSTableColumn?, row: Int) -> NSView? {
-           let cell = tableView.makeView(withIdentifier: NSUserInterfaceItemIdentifier(rawValue: "messageCell"), owner: nil) as? ChatTableCell
+        let cell = tableView.makeView(withIdentifier: NSUserInterfaceItemIdentifier(rawValue: "messageCell"), owner: nil) as? ChatTableCell
         let message = messages[row]
         print(message.username)
         cell?.avatarImage.image = NSImage(named: message.avatar)
@@ -157,7 +136,7 @@ extension ChatViewController: NSTableViewDataSource {
         cell?.usernameLabel.stringValue = message.username
         cell?.messageField.stringValue = message.message
         return cell
-
+        
     }
     
     func tableView(_ tableView: NSTableView, heightOfRow row: Int) -> CGFloat {

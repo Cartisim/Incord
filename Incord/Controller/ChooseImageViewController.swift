@@ -64,6 +64,7 @@ class ChooseImageViewController: NSViewController {
                                     print(err)
                                 }
                             })
+                               NotificationCenter.default.post(name: RELOAD_COLLECTION, object: nil)
                             self.dismiss(self)
                         } else {
                             print("no image")

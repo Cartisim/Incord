@@ -21,6 +21,8 @@ let DATA_CHANGED = Notification.Name("loadData")
 let NOTIF_USER_DATA_DID_CHANGE = Notification.Name("notifUserDataChanged")
 let CHANNEL_DID_CHANGE = Notification.Name("noftifyChannelChaned")
 let SUB_CHANNEL_DID_CHANGE = Notification.Name("notifySubChannel")
+let RELOAD_COLLECTION = Notification.Name("reloadCollection")
+let RELOAD_TABLEVIEW = Notification.Name("reloadTableView")
 
 //URLS
 let BASE_URL = "http://localhost:8080/api"

@@ -14,6 +14,7 @@ class Messages {
     func addMessage(avatar: String, username: String, Date: String, message: String, subChannelID: Int, completion: @escaping (Result<Message, Error>) -> ()) {
         let body = Message(avatar: avatar, username: username, date: Date, message: message, subChannelID: subChannelID)
         guard let url = URL(string: MESSAGE_URL) else { return }
+        print(url)
         var request = URLRequest(url: url)
         request.httpMethod = "POST"
         request.addValue("application/json", forHTTPHeaderField: "Content-Type")

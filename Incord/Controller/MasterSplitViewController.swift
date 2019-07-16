@@ -22,7 +22,7 @@ class MasterSplitViewController: NSSplitViewController {
     func detailViews() {
         if let leftVC = leftItem.viewController as? MasterViewController {
             if let rightVC = rightItem.viewController.children[1].children[0] as? ChatViewController {
-                rightVC.getMessages()
+                rightVC.viewDidLoad()
                 leftVC.rightVC = rightVC
                 
             }

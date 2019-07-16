@@ -47,7 +47,11 @@ class CreateSubChannelViewController: NSViewController {
         SubChannels.shared.addSubChannel(title: subChannelTextField.stringValue, channelID: UserData.shared.channelID, completion: { (res) in
             switch res {
             case .success(let subChannel):
+                DispatchQueue.main.async {
                 UserData.shared.subChannelID = subChannel.id!
+                NotificationCenter.default.post(name: RELOAD_TABLEVIEW, object: nil)
+                self.dismiss(self)
+                }
             case .failure(let err):
                 print(err)
             }

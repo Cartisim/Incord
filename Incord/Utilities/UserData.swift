@@ -124,6 +124,4 @@ class UserData {
              defaults.set(newValue, forKey:  USERNAME_KEY)
         }
     }
-    
-    
 }
