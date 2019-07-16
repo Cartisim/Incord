@@ -12,13 +12,6 @@ import KeychainSwift
 class UserData {
     
     //Computed properties Getters/Setters
-    fileprivate var _avatar = ""
-    fileprivate var _id = ""
-    fileprivate var _email = ""
-    fileprivate var _username = ""
-    fileprivate var _createAccountID = ""
-    fileprivate var _channelID = ""
-    
     var keychain = KeychainSwift()
     let defaults = UserDefaults.standard
     static let shared = UserData()
@@ -99,21 +92,36 @@ class UserData {
             defaults.set(newValue, forKey:  SUB_CHANNEL_KEY)
         }
     }
-    var email: String {
+    var subChannelID: Int {
         get {
-            return _email
+            return defaults.value(forKey: SUB_CHANNEL_ID_KEY) as! Int
         }
         set {
-            _email = newValue
+            defaults.set(newValue, forKey:  SUB_CHANNEL_ID_KEY)
         }
     }
-    
-    var username: String {
+    var date: String {
         get {
-            return _username
+            return defaults.value(forKey: DATE_KEY) as! String
         }
         set {
-            _username = newValue
+            defaults.set(newValue, forKey:  DATE_KEY)
+        }
+    }
+    var message: String {
+        get {
+            return defaults.value(forKey: MESSAGE_KEY) as! String
+        }
+        set {
+            defaults.set(newValue, forKey:  MESSAGE_KEY)
+        }
+    }
+    var username: String {
+        get {
+              return defaults.value(forKey: USERNAME_KEY) as! String
+        }
+        set {
+             defaults.set(newValue, forKey:  USERNAME_KEY)
         }
     }
     

@@ -47,7 +47,7 @@ class CreateSubChannelViewController: NSViewController {
         SubChannels.shared.addSubChannel(title: subChannelTextField.stringValue, channelID: UserData.shared.channelID, completion: { (res) in
             switch res {
             case .success(let subChannel):
-                print(subChannel.channelID)
+                UserData.shared.subChannelID = subChannel.id!
             case .failure(let err):
                 print(err)
             }

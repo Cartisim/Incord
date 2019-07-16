@@ -22,6 +22,7 @@ class MasterViewController: NSViewController {
     var images = [ChannelImage]()
     var subchannels = [SubChannel]()
     var subchannel: SubChannel?
+    var rightVC: ChatViewController?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -37,7 +38,6 @@ class MasterViewController: NSViewController {
             switch res {
             case .success(let channels):
                 channels.forEach({ (channel) in
-                    print(channel.channel, channel.id as Any, channel.imageString)
                     DispatchQueue.main.async {
                         self.channels = channels
                         self.channelCollectionView.reloadData()
@@ -155,12 +155,18 @@ extension MasterViewController: NSCollectionViewDataSource  {
 extension MasterViewController: NSTableViewDelegate {
     
     func tableViewSelectionDidChange(_ notification: Notification) {
-            let indexPath = subChannelTableView.selectedRow
+             if let indexPath = subChannelTableView?.selectedRow {
             let subChannel = subchannels[indexPath]
             UserData.shared.subChannel = subChannel.title
             NotificationCenter.default.post(name: SUB_CHANNEL_DID_CHANGE, object: nil)
+            rightVC?.getMessages()
+            rightVC?.chatTableView.reloadData()
+            print(rightVC?.messages.count)
+        
+        }
+        }
     }
-}
+
 extension MasterViewController: NSTableViewDataSource {
     
     func numberOfRows(in tableView: NSTableView) -> Int {

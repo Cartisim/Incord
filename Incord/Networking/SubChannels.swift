@@ -35,7 +35,6 @@ class SubChannels {
         }.resume()
     }
     
-    //TODO:- Add Revtrieval methods
     func getSubChannels(channelID: Int, completion: @escaping (Result<[SubChannel], Error>) -> ()) {
         guard let url = URL(string: "\( CHANNEL_URL)/\(channelID + 1)/sub_channel") else { return }
         print(url)
@@ -58,12 +57,7 @@ class SubChannels {
     func getSubChannel() {
         
     }
-    
-    //TODO:- Add Update methods
-    func updateSubChannel() {
-        
-    }
-    
+
     //TODO:- Add Delete Methods
     func deleteSubChannel() {
         

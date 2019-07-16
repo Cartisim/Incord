@@ -13,13 +13,15 @@ final class Message: Codable {
     var id: Int?
     var avatar: String
     var username: String
-    var date: Date
+    var date: String
     var message: String
+    var subChannelID: Int
     
-    init(avatar: String, username: String, date: Date, message: String) {
+    init(avatar: String, username: String, date: String, message: String, subChannelID: Int) {
         self.avatar = avatar
         self.username = username
         self.date = date
         self.message = message
+        self.subChannelID = subChannelID
     }
 }

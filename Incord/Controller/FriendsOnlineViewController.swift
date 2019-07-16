@@ -20,7 +20,7 @@ class FriendsOnlineViewController: NSViewController {
         // Do view setup here.
         onlineTableView.dataSource = self
         onlineTableView.delegate = self
-        loadData()
+        onlineTableView.reloadData()
     }
     
     override func viewWillAppear() {
@@ -32,7 +32,7 @@ class FriendsOnlineViewController: NSViewController {
             switch res {
             case .success(let users):
                 users.forEach({ (user) in
-                    print(user.avatar, user.email, user.id as Any, user.username)
+//                    print(user.avatar, user.email, user.id as Any, user.username)
                     DispatchQueue.main.async {
                         self.users = users
                         self.onlineTableView.reloadData()
@@ -42,10 +42,6 @@ class FriendsOnlineViewController: NSViewController {
                 print(err)
             }
         }
-    }
-    
-    func loadData() {
-        onlineTableView.reloadData()
     }
 }
 

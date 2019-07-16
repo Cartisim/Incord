@@ -17,29 +17,39 @@ class ChatViewController: NSViewController {
     
     var clickBackground: BackgroundView!
     var avatarString = "avatar1"
+    var dateStringValue: String!
+    var messages = [Message]()
+    var message: Message?
+    var leftVC: MasterViewController?
     static let shared = ChatViewController()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do view setup here.
         if UserData.shared.isLoggedIn != true {
-           profileImageButton.image = NSImage(named: self.avatarString)
+            profileImageButton.image = NSImage(named: self.avatarString)
         }
+        chatTableView.delegate = self
+        chatTableView.dataSource = self
+        chatTableView.reloadData()
     }
     override func viewWillAppear() {
+        
         setUpViewController()
-
-            Users.shared.currentUser { (res) in
-                switch res {
-                case .success(let user):
- NotificationCenter.default.post(name: NOTIF_USER_DATA_DID_CHANGE, object: nil)
-                    print(user)
-                case .failure(let err):
-                    self.profileImageButton.image = NSImage(named: self.avatarString)
-                    print(err)
+        Users.shared.currentUser { (res) in
+            switch res {
+            case .success(let user):
+                NotificationCenter.default.post(name: NOTIF_USER_DATA_DID_CHANGE, object: nil)
+                print(user)
+            case .failure(let err):
+                DispatchQueue.main.async {
+                self.profileImageButton.image = NSImage(named: self.avatarString)
                 }
+                print(err)
             }
-            
         }
+        
+    }
     
     
     func setUpViewController() {
@@ -47,8 +57,36 @@ class ChatViewController: NSViewController {
         chatTextField.layer?.cornerRadius = 8
         customButtonView.wantsLayer = true
         customButtonView.layer?.cornerRadius = 8
-          NotificationCenter.default.addObserver(self, selector: #selector(userDataDidChange), name: NOTIF_USER_DATA_DID_CHANGE, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(userDataDidChange), name: NOTIF_USER_DATA_DID_CHANGE, object: nil)
     }
+    
+    @objc func userDataDidChange(_ notif: Notification) {
+        DispatchQueue.main.async {
+            if UserData.shared.isLoggedIn {
+                self.profileImageButton.image = NSImage(named: UserData.shared.avatarName)
+            } else {
+                self.profileImageButton.image = NSImage(named: "avatar1")
+            }
+        }
+    }
+
+    func getMessages() {
+        Messages.shared.getMessages(subChannelID: UserData.shared.subChannelID){ (res) in
+            switch res {
+            case .success(let chats):
+                chats.forEach({ (message) in
+                    DispatchQueue.main.async {
+                        self.messages = chats
+                        self.chatTableView.reloadData()
+                        self.chatTableView.scrollRowToVisible(self.messages.count - 1)
+                    }
+                })
+            case .failure(let err):
+                print("fail- \(err)")
+            }
+        }
+    }
+    
     
     lazy var profileViewController: NSViewController = {
         return self.storyboard?.instantiateController(withIdentifier: "ProfileVC") as! NSViewController
@@ -59,15 +97,7 @@ class ChatViewController: NSViewController {
     }()
     
     
-    @objc func userDataDidChange(_ notif: Notification) {
-        DispatchQueue.main.async {
-        if UserData.shared.isLoggedIn {
-            self.profileImageButton.image = NSImage(named: UserData.shared.avatarName)
-        } else {
-            self.profileImageButton.image = NSImage(named: "avatar1")
-        }
-        }
-    }
+    
     
     @IBAction func profileButtonClicked(_ sender: NSButton) {
         self.view.window?.contentViewController?.presentAsSheet(profileViewController)
@@ -86,6 +116,51 @@ class ChatViewController: NSViewController {
     }
     
     @IBAction func AddFileClicked(_ sender: NSButton) {
+        let currentDate = Date()
+        let formatter = DateFormatter()
+        formatter.dateFormat = "MMM d, h:mm a"
+        dateStringValue = formatter.string(from: currentDate)
+        Messages.shared.addMessage(avatar: UserData.shared.avatarName, username: UserData.shared.username, Date: dateStringValue, message: chatTextField.stringValue, subChannelID: UserData.shared.subChannelID) { (res) in
+            switch res {
+            case .success(let messages):
+                DispatchQueue.main.async {
+                UserData.shared.avatarName = messages.avatar
+                UserData.shared.date = messages.date
+                UserData.shared.message = messages.message
+                UserData.shared.username = messages.username
+                UserData.shared.subChannelID = messages.subChannelID
+                self.chatTextField.stringValue = ""
+                self.chatTableView.scrollRowToVisible(self.messages.count - 1)
+                }
+            case .failure(let error):
+                print(error)
+            }
+        }
+    }
+}
+extension ChatViewController: NSTableViewDelegate {
+    
+}
+
+extension ChatViewController: NSTableViewDataSource {
+    func numberOfRows(in tableView: NSTableView) -> Int {
+        print("counting \(messages.count)")
+        return messages.count
     }
     
+    func tableView(_ tableView: NSTableView, viewFor tableColumn: NSTableColumn?, row: Int) -> NSView? {
+           let cell = tableView.makeView(withIdentifier: NSUserInterfaceItemIdentifier(rawValue: "messageCell"), owner: nil) as? ChatTableCell
+        let message = messages[row]
+        print(message.username)
+        cell?.avatarImage.image = NSImage(named: message.avatar)
+        cell?.dateLabel.stringValue = message.date
+        cell?.usernameLabel.stringValue = message.username
+        cell?.messageField.stringValue = message.message
+        return cell
+
+    }
+    
+    func tableView(_ tableView: NSTableView, heightOfRow row: Int) -> CGFloat {
+        return 150.0
+    }
 }

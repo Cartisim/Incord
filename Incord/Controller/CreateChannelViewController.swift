@@ -57,7 +57,6 @@ class CreateChannelViewController: NSViewController {
         Channels.shared.addChannel(image: "", channel: createChannelTextField.stringValue, completion: { (res) in
             switch res {
             case .success(let channel):
-                print(channel)
                 DispatchQueue.main.async {
                     UserData.shared.channelID = channel.id!
                     UserData.shared.channel = channel.channel

@@ -726,7 +726,7 @@
                 </splitViewController>
                 <customObject id="z7f-VM-Bft" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="256" y="1101"/>
+            <point key="canvasLocation" x="367" y="1332"/>
         </scene>
         <!--Friends Online View Controller-->
         <scene sceneID="hIz-AP-VOD">
@@ -751,7 +751,7 @@
                                             <tableColumns>
                                                 <tableColumn width="197" minWidth="40" maxWidth="1000" id="5sg-D5-E3B">
                                                     <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border">
-                                                        <font key="font" metaFont="controlContent" size="11"/>
+                                                        <font key="font" metaFont="message" size="11"/>
                                                         <color key="textColor" name="headerTextColor" catalog="System" colorSpace="catalog"/>
                                                         <color key="backgroundColor" name="headerColor" catalog="System" colorSpace="catalog"/>
                                                     </tableHeaderCell>
@@ -866,7 +866,7 @@
                                             <tableColumns>
                                                 <tableColumn width="617" minWidth="40" maxWidth="1000" id="Vvl-DA-bCf">
                                                     <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border">
-                                                        <font key="font" metaFont="controlContent" size="11"/>
+                                                        <font key="font" metaFont="message" size="11"/>
                                                         <color key="textColor" name="headerTextColor" catalog="System" colorSpace="catalog"/>
                                                         <color key="backgroundColor" name="headerColor" catalog="System" colorSpace="catalog"/>
                                                     </tableHeaderCell>
@@ -958,7 +958,7 @@
                 </viewController>
                 <customObject id="QMM-65-I7x" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="461" y="1706"/>
+            <point key="canvasLocation" x="557" y="2121"/>
         </scene>
         <!--Profile View Controller-->
         <scene sceneID="gBT-cV-0Vh">
@@ -1224,15 +1224,15 @@
                 </viewController>
                 <customObject id="RUB-3W-88v" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1125" y="1706"/>
+            <point key="canvasLocation" x="1215" y="2131"/>
         </scene>
-        <!--Split View Controller-->
+        <!--Master Split View Controller-->
         <scene sceneID="Ynk-XW-aUZ">
             <objects>
-                <splitViewController id="oWB-gi-l4d" sceneMemberID="viewController">
+                <splitViewController id="oWB-gi-l4d" customClass="MasterSplitViewController" customModule="Incord" customModuleProvider="target" sceneMemberID="viewController">
                     <splitViewItems>
                         <splitViewItem id="fNf-qH-rGE"/>
-                        <splitViewItem id="5v9-Hf-EhR"/>
+                        <splitViewItem id="axG-bW-cTb"/>
                     </splitViewItems>
                     <splitView key="splitView" dividerStyle="thin" vertical="YES" id="rLz-gg-yWH">
                         <rect key="frame" x="0.0" y="0.0" width="348" height="300"/>
@@ -1242,14 +1242,16 @@
                         </connections>
                     </splitView>
                     <connections>
+                        <outlet property="leftItem" destination="fNf-qH-rGE" id="vGe-d2-zEm"/>
+                        <outlet property="rightItem" destination="axG-bW-cTb" id="vij-z0-jpX"/>
                         <outlet property="splitView" destination="rLz-gg-yWH" id="MMg-Fb-Pe0"/>
                         <segue destination="Tvh-xN-KoC" kind="relationship" relationship="splitItems" id="7aA-Wk-wfu"/>
-                        <segue destination="WTF-bH-dRT" kind="relationship" relationship="splitItems" id="79b-fY-VJi"/>
+                        <segue destination="WTF-bH-dRT" kind="relationship" relationship="splitItems" id="y9L-nW-uGB"/>
                     </connections>
                 </splitViewController>
                 <customObject id="dJl-pt-6J4" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="24" y="652"/>
+            <point key="canvasLocation" x="84" y="652"/>
         </scene>
         <!--Split View Controller-->
         <scene sceneID="uPe-EO-h2R">
@@ -1274,20 +1276,20 @@
                 </splitViewController>
                 <customObject id="LaB-xS-uHi" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="537" y="652"/>
+            <point key="canvasLocation" x="557" y="652"/>
         </scene>
         <!--Tool Bar View Controller-->
         <scene sceneID="ggV-z2-QUY">
             <objects>
                 <viewController id="9Ld-VN-uie" customClass="ToolBarViewController" customModule="Incord" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" id="q40-JV-O7B">
-                        <rect key="frame" x="0.0" y="0.0" width="734" height="100"/>
+                        <rect key="frame" x="0.0" y="0.0" width="734" height="83"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <subviews>
                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="dds-sO-KvQ">
-                                <rect key="frame" x="18" y="31" width="151" height="37"/>
+                                <rect key="frame" x="18" y="31" width="151" height="25"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="37" id="wQR-CD-jKa"/>
+                                    <constraint firstAttribute="height" constant="25" id="wQR-CD-jKa"/>
                                 </constraints>
                                 <textFieldCell key="cell" lineBreakMode="clipping" title="#Your Channel" id="nd9-RN-Uas">
                                     <font key="font" size="22" name="AvenirNext-DemiBoldItalic"/>
@@ -1296,7 +1298,7 @@
                                 </textFieldCell>
                             </textField>
                             <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="UoQ-SM-35i">
-                                <rect key="frame" x="655" y="53" width="59" height="27"/>
+                                <rect key="frame" x="655" y="41" width="59" height="27"/>
                                 <constraints>
                                     <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="59" id="Jfq-8O-gsg"/>
                                     <constraint firstAttribute="height" constant="27" id="Y5y-bp-ERY"/>
@@ -1310,7 +1312,7 @@
                                 </connections>
                             </button>
                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="D3Q-cP-wEt">
-                                <rect key="frame" x="98" y="13" width="84" height="18"/>
+                                <rect key="frame" x="48" y="13" width="84" height="18"/>
                                 <textFieldCell key="cell" lineBreakMode="clipping" title="#SubChannel" id="ufv-WN-ihJ">
                                     <font key="font" size="13" name="AvenirNext-Italic"/>
                                     <color key="textColor" name="ButtonColor"/>
@@ -1322,13 +1324,13 @@
                             <constraint firstAttribute="trailing" secondItem="UoQ-SM-35i" secondAttribute="trailing" constant="20" id="2aI-Pp-V9R"/>
                             <constraint firstItem="D3Q-cP-wEt" firstAttribute="top" secondItem="dds-sO-KvQ" secondAttribute="bottom" id="4Yh-jI-hiY"/>
                             <constraint firstItem="dds-sO-KvQ" firstAttribute="leading" secondItem="q40-JV-O7B" secondAttribute="leading" constant="20" symbolic="YES" id="6G6-Yq-fKj"/>
-                            <constraint firstItem="UoQ-SM-35i" firstAttribute="top" secondItem="q40-JV-O7B" secondAttribute="top" constant="20" id="9gN-he-4br"/>
+                            <constraint firstItem="UoQ-SM-35i" firstAttribute="top" secondItem="q40-JV-O7B" secondAttribute="top" constant="15" id="9gN-he-4br"/>
                             <constraint firstAttribute="bottom" secondItem="dds-sO-KvQ" secondAttribute="bottom" constant="31" id="GWj-4h-SzL"/>
                             <constraint firstItem="UoQ-SM-35i" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="dds-sO-KvQ" secondAttribute="trailing" constant="8" symbolic="YES" id="K4l-U2-ArI"/>
-                            <constraint firstItem="dds-sO-KvQ" firstAttribute="top" secondItem="q40-JV-O7B" secondAttribute="top" constant="32" id="NXF-ZF-Myo"/>
+                            <constraint firstItem="dds-sO-KvQ" firstAttribute="top" secondItem="q40-JV-O7B" secondAttribute="top" constant="27" id="NXF-ZF-Myo"/>
                             <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="dds-sO-KvQ" secondAttribute="trailing" constant="442" id="VZJ-sr-q0k"/>
                             <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="D3Q-cP-wEt" secondAttribute="trailing" constant="452" id="wAQ-RA-43f"/>
-                            <constraint firstItem="D3Q-cP-wEt" firstAttribute="leading" secondItem="q40-JV-O7B" secondAttribute="leading" constant="100" id="xlt-IF-71q"/>
+                            <constraint firstItem="D3Q-cP-wEt" firstAttribute="leading" secondItem="q40-JV-O7B" secondAttribute="leading" constant="50" id="xlt-IF-71q"/>
                         </constraints>
                     </view>
                     <connections>
@@ -1338,7 +1340,7 @@
                 </viewController>
                 <customObject id="0Y8-aE-C8n" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="936" y="1001"/>
+            <point key="canvasLocation" x="826" y="1725"/>
         </scene>
         <!--Chat View Controller-->
         <scene sceneID="6iC-PR-lPl">
@@ -1354,6 +1356,7 @@
                                     <textField focusRingType="none" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="ME8-4e-hwE">
                                         <rect key="frame" x="0.0" y="0.0" width="528" height="77"/>
                                         <constraints>
+                                            <constraint firstAttribute="width" constant="528" id="APe-Cx-C1B"/>
                                             <constraint firstAttribute="height" constant="77" id="zqE-0C-Tsi"/>
                                         </constraints>
                                         <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" focusRingType="none" drawsBackground="YES" id="J79-e3-BBf">
@@ -1411,7 +1414,7 @@
                                             <tableColumns>
                                                 <tableColumn width="611" minWidth="40" maxWidth="1000" id="2Qa-9C-cXN">
                                                     <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border">
-                                                        <font key="font" metaFont="controlContent" size="11"/>
+                                                        <font key="font" metaFont="message" size="11"/>
                                                         <color key="textColor" name="headerTextColor" catalog="System" colorSpace="catalog"/>
                                                         <color key="backgroundColor" name="headerColor" catalog="System" colorSpace="catalog"/>
                                                     </tableHeaderCell>
@@ -1422,12 +1425,12 @@
                                                     </textFieldCell>
                                                     <tableColumnResizingMask key="resizingMask" resizeWithTable="YES" userResizable="YES"/>
                                                     <prototypeCellViews>
-                                                        <tableCellView id="67o-al-Gxn" customClass="ChatTableCell" customModule="Incord" customModuleProvider="target">
+                                                        <tableCellView identifier="messageCell" id="67o-al-Gxn" customClass="ChatTableCell" customModule="Incord" customModuleProvider="target">
                                                             <rect key="frame" x="1" y="1" width="611" height="150"/>
                                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                             <subviews>
                                                                 <stackView distribution="fill" orientation="horizontal" alignment="top" spacing="22" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="GT8-dp-Tfj">
-                                                                    <rect key="frame" x="24" y="19" width="507" height="100"/>
+                                                                    <rect key="frame" x="24" y="19" width="517" height="100"/>
                                                                     <subviews>
                                                                         <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="m6P-uM-4L7">
                                                                             <rect key="frame" x="0.0" y="40" width="60" height="60"/>
@@ -1438,7 +1441,7 @@
                                                                             <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="avatar1" id="yBH-Nz-Aic"/>
                                                                         </imageView>
                                                                         <stackView distribution="fill" orientation="vertical" alignment="leading" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="RxT-8n-tvh">
-                                                                            <rect key="frame" x="82" y="0.0" width="425" height="100"/>
+                                                                            <rect key="frame" x="82" y="0.0" width="435" height="100"/>
                                                                             <subviews>
                                                                                 <stackView distribution="fill" orientation="vertical" alignment="trailing" spacing="2" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="1Q0-Ve-cXg">
                                                                                     <rect key="frame" x="0.0" y="61" width="88" height="39"/>
@@ -1452,14 +1455,20 @@
                                                                                             </textFieldCell>
                                                                                         </textField>
                                                                                         <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="0Jr-6k-Oqs">
-                                                                                            <rect key="frame" x="26" y="0.0" width="64" height="15"/>
+                                                                                            <rect key="frame" x="13" y="0.0" width="77" height="15"/>
                                                                                             <textFieldCell key="cell" lineBreakMode="clipping" title="06/13/2019" id="bPu-XJ-Y6P">
                                                                                                 <font key="font" size="11" name="AvenirNext-Italic"/>
-                                                                                                <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                                                                                <color key="textColor" name="ButtonColor"/>
                                                                                                 <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                                                                             </textFieldCell>
                                                                                         </textField>
                                                                                     </subviews>
+                                                                                    <constraints>
+                                                                                        <constraint firstItem="0Jr-6k-Oqs" firstAttribute="leading" secondItem="1Q0-Ve-cXg" secondAttribute="leading" constant="15" id="Ej3-ST-6i1"/>
+                                                                                        <constraint firstItem="0Jr-6k-Oqs" firstAttribute="top" secondItem="ZEq-Jf-xHC" secondAttribute="bottom" constant="2" id="LSV-dH-lwl"/>
+                                                                                        <constraint firstItem="ZEq-Jf-xHC" firstAttribute="leading" secondItem="1Q0-Ve-cXg" secondAttribute="leading" id="Rp5-mq-cbJ"/>
+                                                                                        <constraint firstItem="ZEq-Jf-xHC" firstAttribute="top" secondItem="1Q0-Ve-cXg" secondAttribute="top" id="Xfx-Gp-zFz"/>
+                                                                                    </constraints>
                                                                                     <visibilityPriorities>
                                                                                         <integer value="1000"/>
                                                                                         <integer value="1000"/>
@@ -1470,18 +1479,22 @@
                                                                                     </customSpacing>
                                                                                 </stackView>
                                                                                 <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" translatesAutoresizingMaskIntoConstraints="NO" id="bdB-EV-TSU">
-                                                                                    <rect key="frame" x="-2" y="0.0" width="429" height="53"/>
+                                                                                    <rect key="frame" x="8" y="0.0" width="429" height="53"/>
                                                                                     <constraints>
                                                                                         <constraint firstAttribute="width" constant="425" id="GRg-8J-Fcc"/>
                                                                                         <constraint firstAttribute="height" constant="53" id="rhI-SG-NxK"/>
                                                                                     </constraints>
                                                                                     <textFieldCell key="cell" selectable="YES" title="Multiline Label" id="0sl-f1-ing">
                                                                                         <font key="font" size="13" name="AvenirNext-Regular"/>
-                                                                                        <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                                                                        <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                                                                                         <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                                                                     </textFieldCell>
                                                                                 </textField>
                                                                             </subviews>
+                                                                            <constraints>
+                                                                                <constraint firstItem="bdB-EV-TSU" firstAttribute="leading" secondItem="RxT-8n-tvh" secondAttribute="leading" constant="10" id="Das-JU-7KS"/>
+                                                                                <constraint firstItem="bdB-EV-TSU" firstAttribute="top" secondItem="1Q0-Ve-cXg" secondAttribute="bottom" constant="8" id="Tbf-Ko-2bd"/>
+                                                                            </constraints>
                                                                             <visibilityPriorities>
                                                                                 <integer value="1000"/>
                                                                                 <integer value="1000"/>
@@ -1640,7 +1653,7 @@
                         </constraints>
                     </view>
                     <connections>
-                        <outlet property="chatTableView" destination="qiQ-Ce-gsO" id="6g5-VA-Z9j"/>
+                        <outlet property="chatTableView" destination="qiQ-Ce-gsO" id="frd-RY-Vn8"/>
                         <outlet property="chatTextField" destination="ME8-4e-hwE" id="zs3-Ns-3eE"/>
                         <outlet property="customButtonView" destination="hHF-oo-nNC" id="Uqo-TJ-HdW"/>
                         <outlet property="profileImageButton" destination="b6b-Cr-GIi" id="laf-a8-lOD"/>
@@ -1739,7 +1752,7 @@
                                             <tableColumns>
                                                 <tableColumn identifier="subChannel" width="227" minWidth="40" maxWidth="1000" id="5ku-xS-PvJ">
                                                     <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border">
-                                                        <font key="font" metaFont="controlContent" size="11"/>
+                                                        <font key="font" metaFont="message" size="11"/>
                                                         <color key="textColor" name="headerTextColor" catalog="System" colorSpace="catalog"/>
                                                         <color key="backgroundColor" name="headerColor" catalog="System" colorSpace="catalog"/>
                                                     </tableHeaderCell>

@@ -35,6 +35,7 @@
 		0981017A22D887D50006B64F /* ChooseImageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0981017922D887D50006B64F /* ChooseImageViewController.swift */; };
 		0981017C22D895240006B64F /* ChannelCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0981017B22D895240006B64F /* ChannelCell.xib */; };
 		0981017E22D895980006B64F /* ChannelCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0981017D22D895980006B64F /* ChannelCell.swift */; };
+		09897B0922DD519D0059B19F /* MasterSplitViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09897B0822DD519D0059B19F /* MasterSplitViewController.swift */; };
 		09954C7A22D8166200C582F1 /* Channels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09954C7922D8166200C582F1 /* Channels.swift */; };
 		09A95B8722B2525D002F17CE /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09A95B8622B2525D002F17CE /* AppDelegate.swift */; };
 		09A95B8B22B2525F002F17CE /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 09A95B8A22B2525F002F17CE /* Assets.xcassets */; };
@@ -83,6 +84,7 @@
 		0981017922D887D50006B64F /* ChooseImageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChooseImageViewController.swift; sourceTree = "<group>"; };
 		0981017B22D895240006B64F /* ChannelCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ChannelCell.xib; sourceTree = "<group>"; };
 		0981017D22D895980006B64F /* ChannelCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChannelCell.swift; sourceTree = "<group>"; };
+		09897B0822DD519D0059B19F /* MasterSplitViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MasterSplitViewController.swift; sourceTree = "<group>"; };
 		09954C7922D8166200C582F1 /* Channels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Channels.swift; sourceTree = "<group>"; };
 		09A95B8322B2525D002F17CE /* Incord.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Incord.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		09A95B8622B2525D002F17CE /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -208,6 +210,7 @@
 		09A95B9822B2627F002F17CE /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				09897B0822DD519D0059B19F /* MasterSplitViewController.swift */,
 				09A95B9A22B262BE002F17CE /* ChatViewController.swift */,
 				09A95BA322B26A71002F17CE /* MasterViewController.swift */,
 				093AE1D322BCC0C7003F0535 /* LoginViewController.swift */,
@@ -418,6 +421,7 @@
 				0981017E22D895980006B64F /* ChannelCell.swift in Sources */,
 				09DF1CE022C3301100562564 /* UserData.swift in Sources */,
 				093AE1DA22BCD2C5003F0535 /* ChannelView.swift in Sources */,
+				09897B0922DD519D0059B19F /* MasterSplitViewController.swift in Sources */,
 				093AE1D422BCC0C7003F0535 /* LoginViewController.swift in Sources */,
 				091630C122C1E83F00420996 /* AuthToken.swift in Sources */,
 				093AE1EE22BCF382003F0535 /* OnlineFriendsTableCell.swift in Sources */,
