@@ -89,6 +89,7 @@ class MasterViewController: NSViewController {
     }
     
     func getAllChannels() {
+       
         Channels.shared.getChannels { (res) in
             switch res {
             case .success(let channels):
