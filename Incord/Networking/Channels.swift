@@ -7,39 +7,16 @@
 //
 
 import Foundation
+import Starscream
 
 class Channels {
     
     static let shared = Channels()
-    
-    func addChannel(image: String, channel: String, completion: @escaping (Result<Channel, Error>) -> ()) {
-        let body = Channel(imageString: image, channel: channel)
-        guard let url = URL(string: CHANNEL_URL) else { return }
-        print(url)
-        var request = URLRequest(url: url)
-        request.httpMethod = "POST"
-        request.addValue("application/json", forHTTPHeaderField: "Content-Type")
-        request.addValue("Bearer \(UserData.shared.token)", forHTTPHeaderField: "Authorization")
-        request.httpBody = try? JSONEncoder().encode(body)
-        
-        URLSession.shared.dataTask(with: request) { (data, response, error) in
-            if let error = error {
-                completion(.failure(error))
-                return
-            }
-            do {
-                let channel = try JSONDecoder().decode(Channel.self, from: data!)
-                completion(.success(channel))
-            } catch let err {
-                completion(.failure(err))
-            }
-        }.resume()
-    }
+    var images = [ChannelImage]()
     
     func addChannelImage(image: Data, completion: @escaping (Result<ChannelImage, Error>) -> ()) {
         let addImage = ChannelImage(image: image)
-        guard let url = URL(string: "\(CHANNEL_URL)/image/\(UserData.shared.channelID)/channelImage") else { return }
-        print(url)
+        guard let url = URL(string: "\(CHANNEL_URL)/image/\(UserData.shared.channelID + 1)/channelImage") else { return }
         var request = URLRequest(url: url)
         request.httpMethod = "POST"
         request.addValue("application/json", forHTTPHeaderField: "Content-Type")
@@ -57,11 +34,11 @@ class Channels {
             } catch let err {
                 completion(.failure(err))
             }
-        }.resume()
+            }.resume()
     }
-  
+    
     func getChannels(completion: @escaping (Result<[Channel], Error>) -> ()) {
-         guard let url = URL(string: "\(CHANNEL_URL)") else { return }
+        guard let url = URL(string: "\(CHANNEL_URL)") else { return }
         print(url)
         var request = URLRequest(url: url)
         request.httpMethod = "GET"
@@ -73,32 +50,36 @@ class Channels {
             }
             do {
                 let channels = try JSONDecoder().decode([Channel].self, from: data!)
+                channels.forEach { (channel) in
+                     print(channel.channel, channel.imageString, channel.id as Any)
+                    UserData.shared.channelID = channel.id!
+                }
                 completion(.success(channels))
             } catch let err {
                 completion(.failure(err))
             }
-        }.resume()
+            }.resume()
     }
     
     func getChannel(channel: Int, completion: @escaping (Result<Channel, Error>) -> ()) {
-            guard let url = URL(string: "\(CHANNEL_URL)/\(channel + 1)") else { return }
-            var request = URLRequest(url: url)
-            request.httpMethod = "GET"
-            print(url)
-            URLSession.shared.dataTask(with: request) { data, response, error in
-                if let error = error {
-                    completion(.failure(error))
-                    return
-                }
-                
-                do {
-                    let currentChannel = try JSONDecoder().decode(Channel.self, from: data!)
-                    completion(.success(currentChannel))
-                } catch let err {
-                    completion(.failure(err))
-                }
-                }.resume()
+        guard let url = URL(string: "\(CHANNEL_URL)/\(channel)") else { return }
+        var request = URLRequest(url: url)
+        request.httpMethod = "GET"
+        print(url)
+        URLSession.shared.dataTask(with: request) { data, response, error in
+            if let error = error {
+                completion(.failure(error))
+                return
+            }
+            
+            do {
+                let currentChannel = try JSONDecoder().decode(Channel.self, from: data!)
+                completion(.success(currentChannel))
+            } catch let err {
+                completion(.failure(err))
+            }
+            }.resume()
     }
     
-     
+    
 }

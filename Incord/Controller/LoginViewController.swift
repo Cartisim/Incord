@@ -68,8 +68,8 @@ class LoginViewController: NSViewController {
             Authentication.shared.login(email: emailTextField.stringValue, password: passwordTextField.stringValue, completion: { (res) in
                 switch res {
                 case .success(let user):
+                    print(user)
                     DispatchQueue.main.async {
-                        print(user)
                          NotificationCenter.default.post(name: NOTIF_USER_DATA_DID_CHANGE, object: nil)
                         self.progressIndicator.stopAnimation(self)
                         self.progressIndicator.isHidden = true

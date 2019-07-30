@@ -44,6 +44,7 @@ class ToolBarViewController: NSViewController {
     @objc func channelDidChange(_ notif: Notification) {
         DispatchQueue.main.async {
             self.channelLabel.stringValue = "#\(UserData.shared.channel)"
+            self.subChannelLabel.stringValue = "#SubChannel"
     }
     }
     @objc func subChannelDidChange(_ notif: Notification) {

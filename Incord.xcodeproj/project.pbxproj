@@ -3,56 +3,60 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 51;
+	objectVersion = 52;
 	objects = {
 
 /* Begin PBXBuildFile section */
-		0910AA0922C18CEC008657B3 /* Authentication.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0910AA0822C18CEC008657B3 /* Authentication.swift */; };
-		09116CFD22C4A4EA00762A93 /* Users.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09116CFC22C4A4EA00762A93 /* Users.swift */; };
-		09144D9822D820B800FD7EF8 /* ChannelImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09144D9722D820B800FD7EF8 /* ChannelImage.swift */; };
-		09162E6322C1DFD100420996 /* CreateAccount.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09162E6222C1DFD100420996 /* CreateAccount.swift */; };
-		091630C122C1E83F00420996 /* AuthToken.swift in Sources */ = {isa = PBXBuildFile; fileRef = 091630C022C1E83F00420996 /* AuthToken.swift */; };
-		093AE1CC22BC59BA003F0535 /* CreateAccountView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 093AE1CB22BC59BA003F0535 /* CreateAccountView.swift */; };
-		093AE1D022BC5CA7003F0535 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 093AE1CF22BC5CA7003F0535 /* LoginView.swift */; };
-		093AE1D222BC7260003F0535 /* BackgroundView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 093AE1D122BC7260003F0535 /* BackgroundView.swift */; };
-		093AE1D422BCC0C7003F0535 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 093AE1D322BCC0C7003F0535 /* LoginViewController.swift */; };
-		093AE1D622BCC1B7003F0535 /* CreateAccountViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 093AE1D522BCC1B7003F0535 /* CreateAccountViewController.swift */; };
-		093AE1D822BCD07B003F0535 /* CreateChannelViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 093AE1D722BCD07B003F0535 /* CreateChannelViewController.swift */; };
-		093AE1DA22BCD2C5003F0535 /* ChannelView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 093AE1D922BCD2C5003F0535 /* ChannelView.swift */; };
-		093AE1DC22BCD5DD003F0535 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 093AE1DB22BCD5DD003F0535 /* ProfileViewController.swift */; };
-		093AE1DE22BCD5F8003F0535 /* FriendsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 093AE1DD22BCD5F8003F0535 /* FriendsViewController.swift */; };
-		093AE1E122BCD630003F0535 /* FriendsOnlineViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 093AE1DF22BCD630003F0535 /* FriendsOnlineViewController.swift */; };
-		093AE1E622BCD971003F0535 /* ToolBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 093AE1E522BCD971003F0535 /* ToolBarViewController.swift */; };
-		093AE1EC22BCF375003F0535 /* FriendsTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 093AE1EB22BCF375003F0535 /* FriendsTableCell.swift */; };
-		093AE1EE22BCF382003F0535 /* OnlineFriendsTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 093AE1ED22BCF382003F0535 /* OnlineFriendsTableCell.swift */; };
-		093AE1F022BCF38F003F0535 /* ChatTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 093AE1EF22BCF38F003F0535 /* ChatTableCell.swift */; };
+		0928C13722E16EF200728284 /* KeychainSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 0928C13622E16EF200728284 /* KeychainSwift */; };
 		093AE1F322BCF52E003F0535 /* Avatars.xib in Resources */ = {isa = PBXBuildFile; fileRef = 093AE1F222BCF52E003F0535 /* Avatars.xib */; };
-		093AE1F522BCF56F003F0535 /* AvatarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 093AE1F422BCF56F003F0535 /* AvatarViewController.swift */; };
-		093AE1F722BCF595003F0535 /* AvatarCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 093AE1F622BCF595003F0535 /* AvatarCell.swift */; };
 		093AE1F922BCF5DA003F0535 /* AvatarCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 093AE1F822BCF5DA003F0535 /* AvatarCell.xib */; };
-		09541D1622C58CD100BED9D4 /* WebSockets.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09541D1522C58CD100BED9D4 /* WebSockets.swift */; };
-		0969CBA422D9E2990080057E /* CreateSubChannelViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0969CBA322D9E2990080057E /* CreateSubChannelViewController.swift */; };
-		0981017A22D887D50006B64F /* ChooseImageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0981017922D887D50006B64F /* ChooseImageViewController.swift */; };
+		097B0A0222E0BDC300114B1E /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09A95B9F22B267A3002F17CE /* Constants.swift */; };
+		097B0A0322E0BDC900114B1E /* UserData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09DF1CDF22C3301100562564 /* UserData.swift */; };
+		097B0A0422E0BDCC00114B1E /* Authentication.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0910AA0822C18CEC008657B3 /* Authentication.swift */; };
+		097B0A0522E0BDCF00114B1E /* Users.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09116CFC22C4A4EA00762A93 /* Users.swift */; };
+		097B0A0622E0BDD200114B1E /* Messages.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09DB4D2122C4FBF500387E4E /* Messages.swift */; };
+		097B0A0722E0BDD400114B1E /* SubChannels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09DB4F8522C4FCE600387E4E /* SubChannels.swift */; };
+		097B0A0922E0BDDB00114B1E /* Channels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09954C7922D8166200C582F1 /* Channels.swift */; };
+		097B0A0A22E0BDDE00114B1E /* MasterSplitViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09897B0822DD519D0059B19F /* MasterSplitViewController.swift */; };
+		097B0A0B22E0BDE100114B1E /* ChatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09A95B9A22B262BE002F17CE /* ChatViewController.swift */; };
+		097B0A0C22E0BDE400114B1E /* MasterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09A95BA322B26A71002F17CE /* MasterViewController.swift */; };
+		097B0A0D22E0BDE700114B1E /* CreateAccountViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 093AE1D522BCC1B7003F0535 /* CreateAccountViewController.swift */; };
+		097B0A0E22E0BDE900114B1E /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 093AE1D322BCC0C7003F0535 /* LoginViewController.swift */; };
+		097B0A0F22E0BDEC00114B1E /* CreateChannelViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 093AE1D722BCD07B003F0535 /* CreateChannelViewController.swift */; };
+		097B0A1022E0BDF000114B1E /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 093AE1DB22BCD5DD003F0535 /* ProfileViewController.swift */; };
+		097B0A1122E0BDF300114B1E /* FriendsOnlineViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 093AE1DF22BCD630003F0535 /* FriendsOnlineViewController.swift */; };
+		097B0A1222E0BDF500114B1E /* ChooseImageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0981017922D887D50006B64F /* ChooseImageViewController.swift */; };
+		097B0A1322E0BDF700114B1E /* CreateSubChannelViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0969CBA322D9E2990080057E /* CreateSubChannelViewController.swift */; };
+		097B0A1422E0BDFA00114B1E /* ToolBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 093AE1E522BCD971003F0535 /* ToolBarViewController.swift */; };
+		097B0A1522E0BDFC00114B1E /* AvatarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 093AE1F422BCF56F003F0535 /* AvatarViewController.swift */; };
+		097B0A1622E0BDFF00114B1E /* FriendsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 093AE1DD22BCD5F8003F0535 /* FriendsViewController.swift */; };
+		097B0A1722E0BE0400114B1E /* ChatBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09A95B9C22B26353002F17CE /* ChatBarView.swift */; };
+		097B0A1822E0BE0700114B1E /* MasterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09A95BA522B26B33002F17CE /* MasterView.swift */; };
+		097B0A1922E0BE0A00114B1E /* ChannelView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 093AE1D922BCD2C5003F0535 /* ChannelView.swift */; };
+		097B0A1A22E0BE0D00114B1E /* BackgroundView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 093AE1D122BC7260003F0535 /* BackgroundView.swift */; };
+		097B0A1B22E0BE1000114B1E /* ChatTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 093AE1EF22BCF38F003F0535 /* ChatTableCell.swift */; };
+		097B0A1C22E0BE1500114B1E /* ChannelCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0981017D22D895980006B64F /* ChannelCell.swift */; };
+		097B0A1D22E0BE1800114B1E /* OnlineFriendsTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 093AE1ED22BCF382003F0535 /* OnlineFriendsTableCell.swift */; };
+		097B0A1E22E0BE1B00114B1E /* AvatarCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 093AE1F622BCF595003F0535 /* AvatarCell.swift */; };
+		097B0A1F22E0BE1F00114B1E /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 093AE1CF22BC5CA7003F0535 /* LoginView.swift */; };
+		097B0A2022E0BE2100114B1E /* FriendsTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 093AE1EB22BCF375003F0535 /* FriendsTableCell.swift */; };
+		097B0A2122E0BE2600114B1E /* CreateAccountView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 093AE1CB22BC59BA003F0535 /* CreateAccountView.swift */; };
+		097B0A2222E0BE2900114B1E /* CustomButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09A95BA122B267F7002F17CE /* CustomButtonView.swift */; };
+		097B0A2322E0BE2F00114B1E /* CreateAccount.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09162E6222C1DFD100420996 /* CreateAccount.swift */; };
+		097B0A2422E0BE3200114B1E /* ChannelImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09144D9722D820B800FD7EF8 /* ChannelImage.swift */; };
+		097B0A2522E0BE3500114B1E /* SubChannel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09DB4F8322C4FCD700387E4E /* SubChannel.swift */; };
+		097B0A2622E0BE3800114B1E /* Message.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09DB4F8122C4FCC700387E4E /* Message.swift */; };
+		097B0A2722E0BE3B00114B1E /* Channel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09DB4F7F22C4FCBE00387E4E /* Channel.swift */; };
+		097B0A2822E0BE3E00114B1E /* AuthToken.swift in Sources */ = {isa = PBXBuildFile; fileRef = 091630C022C1E83F00420996 /* AuthToken.swift */; };
+		097B0A2922E0BE4800114B1E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09A95B8622B2525D002F17CE /* AppDelegate.swift */; };
 		0981017C22D895240006B64F /* ChannelCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0981017B22D895240006B64F /* ChannelCell.xib */; };
-		0981017E22D895980006B64F /* ChannelCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0981017D22D895980006B64F /* ChannelCell.swift */; };
-		09897B0922DD519D0059B19F /* MasterSplitViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09897B0822DD519D0059B19F /* MasterSplitViewController.swift */; };
-		09954C7A22D8166200C582F1 /* Channels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09954C7922D8166200C582F1 /* Channels.swift */; };
-		09A95B8722B2525D002F17CE /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09A95B8622B2525D002F17CE /* AppDelegate.swift */; };
+		09820CFA22E68C0B008F955F /* Starscream in Frameworks */ = {isa = PBXBuildFile; productRef = 09820CF922E68C0B008F955F /* Starscream */; };
+		0983B54D22E2E27A00C47C41 /* SocketConnection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0983B54C22E2E27A00C47C41 /* SocketConnection.swift */; };
 		09A95B8B22B2525F002F17CE /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 09A95B8A22B2525F002F17CE /* Assets.xcassets */; };
 		09A95B8E22B2525F002F17CE /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 09A95B8C22B2525F002F17CE /* Main.storyboard */; };
-		09A95B9B22B262BE002F17CE /* ChatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09A95B9A22B262BE002F17CE /* ChatViewController.swift */; };
-		09A95B9D22B26353002F17CE /* ChatBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09A95B9C22B26353002F17CE /* ChatBarView.swift */; };
-		09A95BA022B267A3002F17CE /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09A95B9F22B267A3002F17CE /* Constants.swift */; };
-		09A95BA222B267F7002F17CE /* CustomButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09A95BA122B267F7002F17CE /* CustomButtonView.swift */; };
-		09A95BA422B26A71002F17CE /* MasterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09A95BA322B26A71002F17CE /* MasterViewController.swift */; };
-		09A95BA622B26B33002F17CE /* MasterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09A95BA522B26B33002F17CE /* MasterView.swift */; };
-		09DB4D2222C4FBF500387E4E /* Messages.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09DB4D2122C4FBF500387E4E /* Messages.swift */; };
-		09DB4F8022C4FCBE00387E4E /* Channel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09DB4F7F22C4FCBE00387E4E /* Channel.swift */; };
-		09DB4F8222C4FCC700387E4E /* Message.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09DB4F8122C4FCC700387E4E /* Message.swift */; };
-		09DB4F8422C4FCD700387E4E /* SubChannel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09DB4F8322C4FCD700387E4E /* SubChannel.swift */; };
-		09DB4F8622C4FCE600387E4E /* SubChannels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09DB4F8522C4FCE600387E4E /* SubChannels.swift */; };
-		09DF1CE022C3301100562564 /* UserData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09DF1CDF22C3301100562564 /* UserData.swift */; };
-		A8D15497C580A30DDFD6774D /* Pods_Incord.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 70D583F843A756A5C7D349F2 /* Pods_Incord.framework */; };
+		09CE06D222F043B000EC255F /* ChannelSocket.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09CE06D122F043B000EC255F /* ChannelSocket.swift */; };
+		09CE06D422F043C400EC255F /* SubChannelSocket.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09CE06D322F043C400EC255F /* SubChannelSocket.swift */; };
+		09CE06D622F043D600EC255F /* MessagesSocket.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09CE06D522F043D600EC255F /* MessagesSocket.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -79,11 +83,11 @@
 		093AE1F422BCF56F003F0535 /* AvatarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AvatarViewController.swift; sourceTree = "<group>"; };
 		093AE1F622BCF595003F0535 /* AvatarCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AvatarCell.swift; sourceTree = "<group>"; };
 		093AE1F822BCF5DA003F0535 /* AvatarCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AvatarCell.xib; sourceTree = "<group>"; };
-		09541D1522C58CD100BED9D4 /* WebSockets.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebSockets.swift; sourceTree = "<group>"; };
 		0969CBA322D9E2990080057E /* CreateSubChannelViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateSubChannelViewController.swift; sourceTree = "<group>"; };
 		0981017922D887D50006B64F /* ChooseImageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChooseImageViewController.swift; sourceTree = "<group>"; };
 		0981017B22D895240006B64F /* ChannelCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ChannelCell.xib; sourceTree = "<group>"; };
 		0981017D22D895980006B64F /* ChannelCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChannelCell.swift; sourceTree = "<group>"; };
+		0983B54C22E2E27A00C47C41 /* SocketConnection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = SocketConnection.swift; path = "../../../../../../../../System/Volumes/Data/Users/cartisim/Documents/TeachingDevelopment/Chat App/Incord/Incord/Networking/SocketConnection.swift"; sourceTree = "<group>"; };
 		09897B0822DD519D0059B19F /* MasterSplitViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MasterSplitViewController.swift; sourceTree = "<group>"; };
 		09954C7922D8166200C582F1 /* Channels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Channels.swift; sourceTree = "<group>"; };
 		09A95B8322B2525D002F17CE /* Incord.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Incord.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -98,15 +102,15 @@
 		09A95BA122B267F7002F17CE /* CustomButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomButtonView.swift; sourceTree = "<group>"; };
 		09A95BA322B26A71002F17CE /* MasterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MasterViewController.swift; sourceTree = "<group>"; };
 		09A95BA522B26B33002F17CE /* MasterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MasterView.swift; sourceTree = "<group>"; };
+		09CE06D122F043B000EC255F /* ChannelSocket.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ChannelSocket.swift; path = "../../../../../../../../System/Volumes/Data/Users/cartisim/Documents/TeachingDevelopment/Chat App/Incord/Incord/Networking/ChannelSocket.swift"; sourceTree = "<group>"; };
+		09CE06D322F043C400EC255F /* SubChannelSocket.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = SubChannelSocket.swift; path = "../../../../../../../../System/Volumes/Data/Users/cartisim/Documents/TeachingDevelopment/Chat App/Incord/Incord/Networking/SubChannelSocket.swift"; sourceTree = "<group>"; };
+		09CE06D522F043D600EC255F /* MessagesSocket.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = MessagesSocket.swift; path = "../../../../../../../../System/Volumes/Data/Users/cartisim/Documents/TeachingDevelopment/Chat App/Incord/Incord/Networking/MessagesSocket.swift"; sourceTree = "<group>"; };
 		09DB4D2122C4FBF500387E4E /* Messages.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Messages.swift; sourceTree = "<group>"; };
 		09DB4F7F22C4FCBE00387E4E /* Channel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Channel.swift; sourceTree = "<group>"; };
 		09DB4F8122C4FCC700387E4E /* Message.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Message.swift; sourceTree = "<group>"; };
 		09DB4F8322C4FCD700387E4E /* SubChannel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubChannel.swift; sourceTree = "<group>"; };
 		09DB4F8522C4FCE600387E4E /* SubChannels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubChannels.swift; sourceTree = "<group>"; };
 		09DF1CDF22C3301100562564 /* UserData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserData.swift; sourceTree = "<group>"; };
-		1411E929D44EE55341137355 /* Pods-Incord.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Incord.release.xcconfig"; path = "Target Support Files/Pods-Incord/Pods-Incord.release.xcconfig"; sourceTree = "<group>"; };
-		403699CB42A42662375C9E5F /* Pods-Incord.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Incord.debug.xcconfig"; path = "Target Support Files/Pods-Incord/Pods-Incord.debug.xcconfig"; sourceTree = "<group>"; };
-		70D583F843A756A5C7D349F2 /* Pods_Incord.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Incord.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -114,7 +118,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A8D15497C580A30DDFD6774D /* Pods_Incord.framework in Frameworks */,
+				0928C13722E16EF200728284 /* KeychainSwift in Frameworks */,
+				09820CFA22E68C0B008F955F /* Starscream in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -144,7 +149,6 @@
 				09A95B8522B2525D002F17CE /* Incord */,
 				09A95B8422B2525D002F17CE /* Products */,
 				32242C9E6744BA2A0C221671 /* Pods */,
-				E608FA4E2A8D66E23468CF2D /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -232,10 +236,13 @@
 			children = (
 				0910AA0822C18CEC008657B3 /* Authentication.swift */,
 				09116CFC22C4A4EA00762A93 /* Users.swift */,
-				09DB4D2122C4FBF500387E4E /* Messages.swift */,
-				09DB4F8522C4FCE600387E4E /* SubChannels.swift */,
-				09541D1522C58CD100BED9D4 /* WebSockets.swift */,
+				0983B54C22E2E27A00C47C41 /* SocketConnection.swift */,
+				09CE06D122F043B000EC255F /* ChannelSocket.swift */,
 				09954C7922D8166200C582F1 /* Channels.swift */,
+				09CE06D322F043C400EC255F /* SubChannelSocket.swift */,
+				09DB4F8522C4FCE600387E4E /* SubChannels.swift */,
+				09CE06D522F043D600EC255F /* MessagesSocket.swift */,
+				09DB4D2122C4FBF500387E4E /* Messages.swift */,
 			);
 			path = Networking;
 			sourceTree = "<group>";
@@ -252,18 +259,8 @@
 		32242C9E6744BA2A0C221671 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				403699CB42A42662375C9E5F /* Pods-Incord.debug.xcconfig */,
-				1411E929D44EE55341137355 /* Pods-Incord.release.xcconfig */,
 			);
 			path = Pods;
-			sourceTree = "<group>";
-		};
-		E608FA4E2A8D66E23468CF2D /* Frameworks */ = {
-			isa = PBXGroup;
-			children = (
-				70D583F843A756A5C7D349F2 /* Pods_Incord.framework */,
-			);
-			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -273,17 +270,19 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 09A95B9322B2525F002F17CE /* Build configuration list for PBXNativeTarget "Incord" */;
 			buildPhases = (
-				3109DC539D7F339F3C09113E /* [CP] Check Pods Manifest.lock */,
 				09A95B7F22B2525D002F17CE /* Sources */,
 				09A95B8022B2525D002F17CE /* Frameworks */,
 				09A95B8122B2525D002F17CE /* Resources */,
-				C037BEA2C2019B2DF154F413 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
 			dependencies = (
 			);
 			name = Incord;
+			packageProductDependencies = (
+				0928C13622E16EF200728284 /* KeychainSwift */,
+				09820CF922E68C0B008F955F /* Starscream */,
+			);
 			productName = Incord;
 			productReference = 09A95B8322B2525D002F17CE /* Incord.app */;
 			productType = "com.apple.product-type.application";
@@ -317,6 +316,10 @@
 				Base,
 			);
 			mainGroup = 09A95B7A22B2525D002F17CE;
+			packageReferences = (
+				0928C13522E16EF200728284 /* XCRemoteSwiftPackageReference "keychain-swift" */,
+				09820CF822E68C0B008F955F /* XCRemoteSwiftPackageReference "Starscream" */,
+			);
 			productRefGroup = 09A95B8422B2525D002F17CE /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -341,93 +344,54 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
-/* Begin PBXShellScriptBuildPhase section */
-		3109DC539D7F339F3C09113E /* [CP] Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-			);
-			inputPaths = (
-				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
-				"${PODS_ROOT}/Manifest.lock",
-			);
-			name = "[CP] Check Pods Manifest.lock";
-			outputFileListPaths = (
-			);
-			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-Incord-checkManifestLockResult.txt",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
-			showEnvVarsInLog = 0;
-		};
-		C037BEA2C2019B2DF154F413 /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-Incord/Pods-Incord-frameworks-${CONFIGURATION}-input-files.xcfilelist",
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-Incord/Pods-Incord-frameworks-${CONFIGURATION}-output-files.xcfilelist",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Incord/Pods-Incord-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-/* End PBXShellScriptBuildPhase section */
-
 /* Begin PBXSourcesBuildPhase section */
 		09A95B7F22B2525D002F17CE /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				093AE1DE22BCD5F8003F0535 /* FriendsViewController.swift in Sources */,
-				09DB4F8222C4FCC700387E4E /* Message.swift in Sources */,
-				093AE1F522BCF56F003F0535 /* AvatarViewController.swift in Sources */,
-				093AE1D622BCC1B7003F0535 /* CreateAccountViewController.swift in Sources */,
-				093AE1E622BCD971003F0535 /* ToolBarViewController.swift in Sources */,
-				093AE1F022BCF38F003F0535 /* ChatTableCell.swift in Sources */,
-				093AE1F722BCF595003F0535 /* AvatarCell.swift in Sources */,
-				09DB4D2222C4FBF500387E4E /* Messages.swift in Sources */,
-				093AE1E122BCD630003F0535 /* FriendsOnlineViewController.swift in Sources */,
-				093AE1D222BC7260003F0535 /* BackgroundView.swift in Sources */,
-				09162E6322C1DFD100420996 /* CreateAccount.swift in Sources */,
-				093AE1D822BCD07B003F0535 /* CreateChannelViewController.swift in Sources */,
-				09A95BA222B267F7002F17CE /* CustomButtonView.swift in Sources */,
-				09144D9822D820B800FD7EF8 /* ChannelImage.swift in Sources */,
-				09A95B9D22B26353002F17CE /* ChatBarView.swift in Sources */,
-				09A95BA622B26B33002F17CE /* MasterView.swift in Sources */,
-				09DB4F8622C4FCE600387E4E /* SubChannels.swift in Sources */,
-				093AE1D022BC5CA7003F0535 /* LoginView.swift in Sources */,
-				09A95BA422B26A71002F17CE /* MasterViewController.swift in Sources */,
-				09DB4F8422C4FCD700387E4E /* SubChannel.swift in Sources */,
-				09A95B9B22B262BE002F17CE /* ChatViewController.swift in Sources */,
-				09A95B8722B2525D002F17CE /* AppDelegate.swift in Sources */,
-				09954C7A22D8166200C582F1 /* Channels.swift in Sources */,
-				093AE1CC22BC59BA003F0535 /* CreateAccountView.swift in Sources */,
-				093AE1EC22BCF375003F0535 /* FriendsTableCell.swift in Sources */,
-				09A95BA022B267A3002F17CE /* Constants.swift in Sources */,
-				09116CFD22C4A4EA00762A93 /* Users.swift in Sources */,
-				09DB4F8022C4FCBE00387E4E /* Channel.swift in Sources */,
-				0969CBA422D9E2990080057E /* CreateSubChannelViewController.swift in Sources */,
-				093AE1DC22BCD5DD003F0535 /* ProfileViewController.swift in Sources */,
-				0981017E22D895980006B64F /* ChannelCell.swift in Sources */,
-				09DF1CE022C3301100562564 /* UserData.swift in Sources */,
-				093AE1DA22BCD2C5003F0535 /* ChannelView.swift in Sources */,
-				09897B0922DD519D0059B19F /* MasterSplitViewController.swift in Sources */,
-				093AE1D422BCC0C7003F0535 /* LoginViewController.swift in Sources */,
-				091630C122C1E83F00420996 /* AuthToken.swift in Sources */,
-				093AE1EE22BCF382003F0535 /* OnlineFriendsTableCell.swift in Sources */,
-				0910AA0922C18CEC008657B3 /* Authentication.swift in Sources */,
-				0981017A22D887D50006B64F /* ChooseImageViewController.swift in Sources */,
-				09541D1622C58CD100BED9D4 /* WebSockets.swift in Sources */,
+				097B0A2922E0BE4800114B1E /* AppDelegate.swift in Sources */,
+				097B0A2822E0BE3E00114B1E /* AuthToken.swift in Sources */,
+				097B0A2722E0BE3B00114B1E /* Channel.swift in Sources */,
+				097B0A2622E0BE3800114B1E /* Message.swift in Sources */,
+				097B0A2522E0BE3500114B1E /* SubChannel.swift in Sources */,
+				097B0A2422E0BE3200114B1E /* ChannelImage.swift in Sources */,
+				097B0A2322E0BE2F00114B1E /* CreateAccount.swift in Sources */,
+				097B0A2222E0BE2900114B1E /* CustomButtonView.swift in Sources */,
+				0983B54D22E2E27A00C47C41 /* SocketConnection.swift in Sources */,
+				097B0A2122E0BE2600114B1E /* CreateAccountView.swift in Sources */,
+				097B0A2022E0BE2100114B1E /* FriendsTableCell.swift in Sources */,
+				097B0A1F22E0BE1F00114B1E /* LoginView.swift in Sources */,
+				097B0A1E22E0BE1B00114B1E /* AvatarCell.swift in Sources */,
+				097B0A1D22E0BE1800114B1E /* OnlineFriendsTableCell.swift in Sources */,
+				097B0A1C22E0BE1500114B1E /* ChannelCell.swift in Sources */,
+				09CE06D422F043C400EC255F /* SubChannelSocket.swift in Sources */,
+				097B0A1B22E0BE1000114B1E /* ChatTableCell.swift in Sources */,
+				097B0A1A22E0BE0D00114B1E /* BackgroundView.swift in Sources */,
+				097B0A1922E0BE0A00114B1E /* ChannelView.swift in Sources */,
+				097B0A1822E0BE0700114B1E /* MasterView.swift in Sources */,
+				097B0A1722E0BE0400114B1E /* ChatBarView.swift in Sources */,
+				097B0A1622E0BDFF00114B1E /* FriendsViewController.swift in Sources */,
+				097B0A1522E0BDFC00114B1E /* AvatarViewController.swift in Sources */,
+				097B0A1422E0BDFA00114B1E /* ToolBarViewController.swift in Sources */,
+				097B0A1322E0BDF700114B1E /* CreateSubChannelViewController.swift in Sources */,
+				097B0A1222E0BDF500114B1E /* ChooseImageViewController.swift in Sources */,
+				097B0A1122E0BDF300114B1E /* FriendsOnlineViewController.swift in Sources */,
+				097B0A1022E0BDF000114B1E /* ProfileViewController.swift in Sources */,
+				097B0A0F22E0BDEC00114B1E /* CreateChannelViewController.swift in Sources */,
+				097B0A0E22E0BDE900114B1E /* LoginViewController.swift in Sources */,
+				097B0A0D22E0BDE700114B1E /* CreateAccountViewController.swift in Sources */,
+				097B0A0C22E0BDE400114B1E /* MasterViewController.swift in Sources */,
+				097B0A0B22E0BDE100114B1E /* ChatViewController.swift in Sources */,
+				097B0A0A22E0BDDE00114B1E /* MasterSplitViewController.swift in Sources */,
+				097B0A0922E0BDDB00114B1E /* Channels.swift in Sources */,
+				09CE06D622F043D600EC255F /* MessagesSocket.swift in Sources */,
+				097B0A0722E0BDD400114B1E /* SubChannels.swift in Sources */,
+				097B0A0622E0BDD200114B1E /* Messages.swift in Sources */,
+				097B0A0522E0BDCF00114B1E /* Users.swift in Sources */,
+				097B0A0422E0BDCC00114B1E /* Authentication.swift in Sources */,
+				09CE06D222F043B000EC255F /* ChannelSocket.swift in Sources */,
+				097B0A0322E0BDC900114B1E /* UserData.swift in Sources */,
+				097B0A0222E0BDC300114B1E /* Constants.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -562,7 +526,6 @@
 		};
 		09A95B9422B2525F002F17CE /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 403699CB42A42662375C9E5F /* Pods-Incord.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = Incord/Incord.entitlements;
@@ -585,7 +548,6 @@
 		};
 		09A95B9522B2525F002F17CE /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 1411E929D44EE55341137355 /* Pods-Incord.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = Incord/Incord.entitlements;
@@ -628,6 +590,38 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		0928C13522E16EF200728284 /* XCRemoteSwiftPackageReference "keychain-swift" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/evgenyneu/keychain-swift.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 16.0.1;
+			};
+		};
+		09820CF822E68C0B008F955F /* XCRemoteSwiftPackageReference "Starscream" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/daltoniam/Starscream.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 3.1.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		0928C13622E16EF200728284 /* KeychainSwift */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 0928C13522E16EF200728284 /* XCRemoteSwiftPackageReference "keychain-swift" */;
+			productName = KeychainSwift;
+		};
+		09820CF922E68C0B008F955F /* Starscream */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 09820CF822E68C0B008F955F /* XCRemoteSwiftPackageReference "Starscream" */;
+			productName = Starscream;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 09A95B7B22B2525D002F17CE /* Project object */;
 }

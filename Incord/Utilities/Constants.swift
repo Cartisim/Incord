@@ -23,6 +23,7 @@ let CHANNEL_DID_CHANGE = Notification.Name("noftifyChannelChaned")
 let SUB_CHANNEL_DID_CHANGE = Notification.Name("notifySubChannel")
 let RELOAD_COLLECTION = Notification.Name("reloadCollection")
 let RELOAD_TABLEVIEW = Notification.Name("reloadTableView")
+let NEW_MESSAGE = Notification.Name("newMessage")
 
 //URLS
 let BASE_URL = "http://localhost:8080/api"
@@ -30,7 +31,7 @@ let CREATE_URL = "\(BASE_URL)/create_account"
 let LOGIN_URL = "\(CREATE_URL)/login"
 let CHANNEL_URL = "\(BASE_URL)/channel"
 let MESSAGE_URL = "\(BASE_URL)/message"
-let SOCKET_URL = "ws://localhost:8080/api/channel"
+let SOCKET_URL = "ws://localhost:8080/api"
 
 // Headers
 let HEADER = [

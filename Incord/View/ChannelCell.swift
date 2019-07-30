@@ -20,7 +20,4 @@ class ChannelCell: NSCollectionViewItem {
         super.viewDidLoad()
         // Do view setup here.
     }
-//    func cellConfiguration(index: Int) {
-//        channelImage.image = NSImage(named:"\(channels)")
-//    }
 }

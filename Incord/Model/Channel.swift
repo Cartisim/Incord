@@ -14,7 +14,8 @@ final class Channel: Codable {
     var imageString: String
     var channel: String
     
-    init(imageString: String, channel: String) {
+    init(id: Int, imageString: String, channel: String) {
+        self.id = id
         self.imageString = imageString
         self.channel = channel
     }

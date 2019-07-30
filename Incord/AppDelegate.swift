@@ -7,28 +7,27 @@
 //
 
 import Cocoa
-import KeychainSwift
+
 
 @NSApplicationMain
 class AppDelegate: NSObject, NSApplicationDelegate {
-
-
-
+    
+    func applicationWillFinishLaunching(_ notification: Notification) {
+        NotificationCenter.default.post(name: NOTIF_USER_DATA_DID_CHANGE, object: nil)
+        SocketConnection.shared.connectToSocket()
+    }
+    
     func applicationDidFinishLaunching(_ aNotification: Notification) {
-//        guard UserData.shared.token == nil else { return true }
-        print(UserData.shared.token)
         
     }
     
     func applicationDidBecomeActive(_ notification: Notification) {
-//        WebSockets.shared.socketConnected()
+
     }
 
     func applicationWillTerminate(_ aNotification: Notification) {
-        // Insert code here to tear down your application
-//        WebSockets.shared.socketDisconnect()
-    }
 
+    }
 
 }
 

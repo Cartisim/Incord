@@ -9,6 +9,7 @@
 import Foundation
 
 struct ChannelImage: Codable {
+    var id: Int?
     var image: Data
     
     init(image: Data) {

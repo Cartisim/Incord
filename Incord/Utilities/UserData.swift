@@ -16,6 +16,18 @@ class UserData {
     let defaults = UserDefaults.standard
     static let shared = UserData()
     
+    fileprivate var _imageString = ""
+    fileprivate var _channel = ""
+    fileprivate var _channelID: Int = 0
+    fileprivate var _subChannel = ""
+    fileprivate var _subChannelID: Int = 0
+    fileprivate var _date = ""
+    fileprivate var _username = ""
+    fileprivate var _messageID = 0
+    fileprivate var _message = ""
+    fileprivate var _avatar = ""
+    fileprivate var _id = ""
+    
     var token: String {
         get {
             return keychain.get(TOKEN_KEY) ?? ""
@@ -44,10 +56,10 @@ class UserData {
     
     var avatarName: String {
         get {
-            return defaults.value(forKey: AVATAR_KEY) as! String
+            return _avatar
         }
         set {
-            defaults.set(newValue, forKey: AVATAR_KEY)
+           _avatar = newValue
         }
     }
     
@@ -61,67 +73,92 @@ class UserData {
     }
     var id: String {
         get {
-            return defaults.value(forKey: ID_KEY) as! String
+            return _id
         }
         set {
-            defaults.set(newValue, forKey: ID_KEY)
+            _id = newValue
+            }
         }
-    }
     
     var channelID: Int {
         get {
-            return defaults.value(forKey: CHANNEL_ID_KEY) as! Int
+            return _channelID
         }
         set {
-            defaults.set(newValue, forKey:  CHANNEL_ID_KEY)
+            _channelID = newValue
         }
     }
+    
     var channel: String {
         get {
-            return defaults.value(forKey: CHANNEL_KEY) as! String
+            return _channel
         }
         set {
-            defaults.set(newValue, forKey:  CHANNEL_KEY)
+            _channel = newValue
         }
     }
+    
+    var imageString: String {
+        get {
+            return _imageString
+        }
+        set {
+            _imageString = newValue
+        }
+    }
+    
     var subChannel: String {
         get {
-            return defaults.value(forKey: SUB_CHANNEL_KEY) as! String
+            return _subChannel
         }
         set {
-            defaults.set(newValue, forKey:  SUB_CHANNEL_KEY)
+            _subChannel = newValue
         }
     }
+    
     var subChannelID: Int {
         get {
-            return defaults.value(forKey: SUB_CHANNEL_ID_KEY) as! Int
+            return _subChannelID
         }
         set {
-            defaults.set(newValue, forKey:  SUB_CHANNEL_ID_KEY)
+            _subChannelID = newValue
         }
     }
+    
     var date: String {
         get {
-            return defaults.value(forKey: DATE_KEY) as! String
+            return _date
         }
         set {
-            defaults.set(newValue, forKey:  DATE_KEY)
+            _date = newValue
         }
     }
+
     var message: String {
         get {
-            return defaults.value(forKey: MESSAGE_KEY) as! String
+            return _message
         }
         set {
-            defaults.set(newValue, forKey:  MESSAGE_KEY)
+            _message = newValue
         }
     }
-    var username: String {
+
+    var messageID: Int {
         get {
-              return defaults.value(forKey: USERNAME_KEY) as! String
+            return _messageID
         }
         set {
-             defaults.set(newValue, forKey:  USERNAME_KEY)
+            _messageID = newValue
+        }
+    }
+    
+    var username: String {
+        get {
+            return _username
+        }
+        set {
+            _username = newValue
         }
     }
 }
+

@@ -10,33 +10,9 @@ import Foundation
 
 class SubChannels {
     static let shared = SubChannels()
-   
-    func addSubChannel(title: String, channelID: Int, completion: @escaping (Result<SubChannel, Error>) -> ()) {
-        let body = SubChannel(title: title, channelID: channelID)
-        guard let url = URL(string: "\(BASE_URL)/sub_channel") else { return }
-        print(url)
-        var request = URLRequest(url: url)
-        request.httpMethod = "POST"
-        request.addValue("application/json", forHTTPHeaderField: "Content-Type")
-        request.addValue("Bearer \(UserData.shared.token)", forHTTPHeaderField: "Authorization")
-        request.httpBody = try? JSONEncoder().encode(body)
-        
-        URLSession.shared.dataTask(with: request) { (data, response, error) in
-            if let error = error {
-                completion(.failure(error))
-                return
-            }
-            do {
-                let title = try JSONDecoder().decode(SubChannel.self, from: data!)
-                completion(.success(title))
-            } catch let err {
-                completion(.failure(err))
-            }
-        }.resume()
-    }
-    
+    var subchannels = [SubChannel]()
     func getSubChannels(channelID: Int, completion: @escaping (Result<[SubChannel], Error>) -> ()) {
-        guard let url = URL(string: "\( CHANNEL_URL)/\(channelID + 1)/sub_channel") else { return }
+        guard let url = URL(string: "\( CHANNEL_URL)/\(channelID)/sub_channel") else { return }
         print(url)
         var request = URLRequest(url: url)
         request.httpMethod = "GET"

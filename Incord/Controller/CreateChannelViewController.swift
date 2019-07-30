@@ -8,12 +8,16 @@
 
 import Cocoa
 
+
 class CreateChannelViewController: NSViewController {
-    
+   
     @IBOutlet weak var createChannelTextField: NSTextField!
     @IBOutlet weak var progressIndicator: NSProgressIndicator!
     
+   
     var clickBackground: BackgroundView!
+    var channels = [Channel]()
+    var channel: Channel?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -21,7 +25,9 @@ class CreateChannelViewController: NSViewController {
         setUpView()
     }
     
-    
+    override func viewDidDisappear() {
+          createChannelTextField.stringValue = ""
+    }
     func setUpView() {
         clickBackground = BackgroundView()
         clickBackground.translatesAutoresizingMaskIntoConstraints = false
@@ -53,20 +59,22 @@ class CreateChannelViewController: NSViewController {
     }
     
     @IBAction func createChannelClicked(_ sender: NSButton) {
-        
-        Channels.shared.addChannel(image: "", channel: createChannelTextField.stringValue, completion: { (res) in
+        if UserData.shared
+            .isLoggedIn {
+            ChannelSocket.shared.addChannel(image: channel?.imageString ?? "", channel: createChannelTextField.stringValue, completion: { (res) in
             switch res {
             case .success(let channel):
                 DispatchQueue.main.async {
-                    UserData.shared.channelID = channel.id!
-                    UserData.shared.channel = channel.channel
-                      self.view.window?.contentViewController?.presentAsSheet(self.imageViewController)
+                            print(channel)
+                    self.view.window?.contentViewController?.presentAsSheet(self.imageViewController)
                 }
             case .failure(let err):
                 DispatchQueue.main.async {
+                      print("res")
                     print(err)
                 }
             }
         })
+    }
     }
 }

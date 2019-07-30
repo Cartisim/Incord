@@ -22,6 +22,10 @@ class CreateSubChannelViewController: NSViewController {
         setUpView()
     }
     
+    override func viewDidDisappear() {
+        subChannelTextField.stringValue = ""
+    }
+    
     func setUpView() {
         clickBackground = BackgroundView()
         clickBackground.translatesAutoresizingMaskIntoConstraints = false
@@ -44,7 +48,8 @@ class CreateSubChannelViewController: NSViewController {
     }
     
     @IBAction func createSubChannelClicked(_ sender: NSButton) {
-        SubChannels.shared.addSubChannel(title: subChannelTextField.stringValue, channelID: UserData.shared.channelID, completion: { (res) in
+        if UserData.shared.isLoggedIn {
+        SubChannelSocket.shared.addSubChannel(title: subChannelTextField.stringValue, channelID: UserData.shared.channelID, completion: { (res) in
             switch res {
             case .success(let subChannel):
                 DispatchQueue.main.async {
@@ -57,4 +62,5 @@ class CreateSubChannelViewController: NSViewController {
             }
         })
     }
+}
 }

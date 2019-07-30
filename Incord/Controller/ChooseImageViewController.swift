@@ -18,7 +18,15 @@ class ChooseImageViewController: NSViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do view setup here.
-        setUpView()
+        
+    }
+    
+    override func viewWillAppear() {
+          setUpView()
+          print("data \(UserData.shared.channelID)")
+    }
+    override func viewDidDisappear() {
+        channelImage.image = NSImage(named: "NSBonjour")
     }
     
     func setUpView() {
@@ -43,6 +51,7 @@ class ChooseImageViewController: NSViewController {
     }
     
     @IBAction func addImageClicked(_ sender: NSButton) {
+        if UserData.shared.isLoggedIn {
         let openPanel = NSOpenPanel()
         openPanel.allowsMultipleSelection = false
         openPanel.canChooseDirectories = false
@@ -55,7 +64,6 @@ class ChooseImageViewController: NSViewController {
                         self.channelImage.image = image
                         if self.channelImage.image != nil {
                             let channelIMG = self.jpegDataFrom(image: self.channelImage.image!)
-                            print(channelIMG)
                             Channels.shared.addChannelImage(image: channelIMG, completion: { (res) in
                                 switch res {
                                 case .success(let img):
@@ -65,6 +73,7 @@ class ChooseImageViewController: NSViewController {
                                 }
                             })
                                NotificationCenter.default.post(name: RELOAD_COLLECTION, object: nil)
+                           
                             self.dismiss(self)
                         } else {
                             print("no image")
@@ -74,7 +83,7 @@ class ChooseImageViewController: NSViewController {
             }
         }
     }
-    
+}
     func jpegDataFrom(image:NSImage) -> Data {
         let cgImage = image.cgImage(forProposedRect: nil, context: nil, hints: nil)!
         let bitmapRep = NSBitmapImageRep(cgImage: cgImage)

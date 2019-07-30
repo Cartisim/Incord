@@ -32,7 +32,6 @@ class FriendsOnlineViewController: NSViewController {
             switch res {
             case .success(let users):
                 users.forEach({ (user) in
-//                    print(user.avatar, user.email, user.id as Any, user.username)
                     DispatchQueue.main.async {
                         self.users = users
                         self.onlineTableView.reloadData()

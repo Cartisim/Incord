@@ -76,7 +76,6 @@ extension FriendsViewController: NSTableViewDelegate {
 
 extension FriendsViewController: NSTableViewDataSource {
     func numberOfRows(in tableView: NSTableView) -> Int {
-        print(users.count)
         return users.count
     }
     
