@@ -15,88 +15,101 @@ class MasterViewController: NSViewController {
     @IBOutlet weak var loginButton: NSButton!
     @IBOutlet weak var createAccountButton: NSButton!
     
-    //Variables
-    
     var rightVC: ChatViewController?
     static let shared = MasterViewController()
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        subChannelTableView.dataSource = self
-        subChannelTableView.delegate = self
+      setUpView()
+        print("loaded \(UserData.shared.channelID)")
     }
     override func viewWillAppear() {
-        if UserData.shared.isLoggedIn {
-            getAllChannels()
-        }
-        setUpView()
+        getChannels()
     }
     
     func setUpView() {
         channelCollectionView.wantsLayer = true
         channelCollectionView.layer?.backgroundColor = .clear
-        NotificationCenter.default.addObserver(self, selector: #selector(reloadCollection), name: RELOAD_COLLECTION, object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(reloadTableView), name: RELOAD_TABLEVIEW, object: nil)
         subChannelTableView.doubleAction = #selector(doubleClickCell)
+        subChannelTableView.dataSource = self
+        subChannelTableView.delegate = self
+       
+        NotificationCenter.default.addObserver(self, selector: #selector(newChannel), name: NEW_CHANNEL, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(newSubChannel), name: NEW_SUB_CHANNEL, object: nil)
+        let deleteChannelMenu = NSMenu()
+        deleteChannelMenu.addItem(withTitle: "Delete Channel", action: #selector(deleteChannel), keyEquivalent: "")
+        channelCollectionView.menu = deleteChannelMenu
+        let deleteSubChannelMenu = NSMenu()
+        deleteSubChannelMenu.addItem(withTitle: "Delete SubChannel", action: #selector(deleteSubChannel), keyEquivalent: "")
+        subChannelTableView.menu = deleteSubChannelMenu
     }
     
-    //Reload Method From Sheet View
-    @objc func reloadCollection(_ notif: Notification) {
+    @objc func newChannel(_ notif: Notification) {
         DispatchQueue.main.async {
-            self.getAllChannels()
+            ChannelSocket.shared.channels.removeAll()
+            self.getChannels()
             self.channelCollectionView.reloadData()
         }
     }
     
-    //Reload Method from SHeet View
-    @objc func reloadTableView(_ notif: Notification) {
+    @objc func newSubChannel(_ notif: Notification) {
         DispatchQueue.main.async {
-            self.getAllSubChannels()
+            SubChannelSocket.shared.subchannels.removeAll()
+            self.getSubChannels()
             self.subChannelTableView.reloadData()
         }
     }
     
-    @objc func doubleClickCell(sender: Any) {
-        MessagesSocket.shared.messages.removeAll()
-        self.rightVC?.chatTableView.reloadData()
-        if let indexPath = subChannelTableView?.selectedRow {
-            let subChannel = SubChannelSocket.shared.subchannels[indexPath]
-            UserData.shared.subChannel = subChannel.title
-            NotificationCenter.default.post(name: SUB_CHANNEL_DID_CHANGE, object: nil)
-            UserData.shared.subChannelID = subChannel.id!
-            Messages.shared.getMessages(subChannelID: UserData.shared.subChannelID) { (res) in
+    @objc func deleteChannel() {
+        ChannelSocket.shared.channels.removeAll()
+        Channel(id: UserData.shared.channelID, imageString: UserData.shared.imageString, channel: UserData.shared.channel).deleteChannel(id: UserData.shared.channelID) { (res) in
+            DispatchQueue.main.async {
                 switch res {
-                case .success(let chats):
-                    chats.forEach({ (messages) in
-                        DispatchQueue.main.async {
-                            let avatarName = messages.avatar
-                            let dateLabel = messages.date
-                            let messageLabel = messages.message
-                            let subchannelInt = messages.subChannelID
-                            let usernameLabel = messages.username
-                            let messageData = Message(avatar: avatarName, username: usernameLabel, date: dateLabel, message: messageLabel, subChannelID: subchannelInt)
-                            MessagesSocket.shared.messages.append(messageData)
-                            self.rightVC?.chatTableView.reloadData()
-                            self.rightVC?.chatTableView.scrollRowToVisible(MessagesSocket.shared.messages.count - 1)
-                            if  messages.username.isEmpty {
-                                MessagesSocket.shared.messages.removeAll()
-                                self.rightVC?.chatTableView.reloadData()
-                            }
-                        }
-                    })
-                case .failure(let err):
-                    print("fail- \(err)")
+                case .success:
+                    ChannelSocket.shared.channels.removeAll()
+                    self.getChannels()
+                    self.channelCollectionView.reloadData()
+                case .failure:
+                    print("failure")
                 }
             }
         }
     }
     
-    func getAllChannels() {
+    @objc func deleteSubChannel() {
+        SubChannelSocket.shared.subchannels.removeAll()
+        SubChannel(id: UserData.shared.subChannelID, title: UserData.shared.subChannel, channelID: UserData.shared.channelID).deleteSubChannel(id: UserData.shared.subChannelID) { (res) in
+            switch res {
+            case .success:
+                NotificationCenter.default.post(name: NEW_SUB_CHANNEL, object: nil)
+            case .failure:
+                print("failure")
+            }
+        }
+        
+    }
+    
+    @objc func doubleClickCell(sender: Any) {
+        clearChatView()
+        if let indexPath = subChannelTableView?.selectedRow {
+            let subChannel = SubChannelSocket.shared.subchannels[indexPath]
+            UserData.shared.subChannel = subChannel.title
+            NotificationCenter.default.post(name: SUB_CHANNEL_DID_CHANGE, object: nil)
+            UserData.shared.subChannelID = subChannel.id!
+            getMessages()
+        }
+    }
+    
+    func getChannels() {
         Channels.shared.getChannels { (res) in
             switch res {
             case .success(let channels):
                 channels.forEach({ (channel) in
                     DispatchQueue.main.async {
+                        UserData.shared.channelID = channel.id!
+                        UserData.shared.imageString = channel.imageString
+                        UserData.shared.channel = channel.channel
+                        
                         let channel = Channel(id: channel.id!, imageString: channel.imageString, channel: channel.channel)
                         ChannelSocket.shared.channels.append(channel)
                         self.channelCollectionView.reloadData()
@@ -108,14 +121,12 @@ class MasterViewController: NSViewController {
         }
     }
     
-    func getAllSubChannels() {
-        
+    func getSubChannels() {
         SubChannels.shared.getSubChannels(channelID: UserData.shared.channelID ) { (res) in
             switch res {
             case .success(let subchannels):
                 subchannels.forEach({ (subchannel) in
                     DispatchQueue.main.async {
-                        SubChannelSocket.shared.subchannels = subchannels
                         let subchannel = SubChannel(id: subchannel.id, title: subchannel.title, channelID: subchannel.channelID)
                         SubChannelSocket.shared.subchannels.append(subchannel)
                         self.subChannelTableView.reloadData()
@@ -125,6 +136,46 @@ class MasterViewController: NSViewController {
                 print(error)
             }
         }
+    }
+    
+    func getMessages() {
+        Messages.shared.getMessages(subChannelID: UserData.shared.subChannelID) { (res) in
+            switch res {
+            case .success(let chats):
+                chats.forEach({ (messages) in
+                    DispatchQueue.main.async {
+                        UserData.shared.avatarName = messages.avatar
+                        UserData.shared.date = messages.date
+                        UserData.shared.message = messages.message
+                        UserData.shared.subChannelID = messages.subChannelID
+                        UserData.shared.username = messages.username
+                        UserData.shared.messageID = messages.id!
+                        
+                        let messageData = Message(id: messages.id!, avatar: messages.avatar, username: messages.username, date: messages.date, message: messages.message, subChannelID: messages.subChannelID)
+                        MessagesSocket.shared.messages.append(messageData)
+                        NotificationCenter.default.post(name: NEW_MESSAGE, object: nil)
+                    }
+                })
+            case .failure(let err):
+                print("fail- \(err)")
+            }
+        }
+    }
+    
+    func clearChannels() {
+        ChannelSocket.shared.channels.removeAll()
+        channelCollectionView.reloadData()
+    }
+    
+    func clearSubChannel() {
+        clearChatView()
+        SubChannelSocket.shared.subchannels.removeAll()
+        subChannelTableView.reloadData()
+    }
+    
+    func clearChatView() {
+        MessagesSocket.shared.messages.removeAll()
+        self.rightVC?.chatTableView.reloadData()
     }
     
     //SheetViewController
@@ -153,37 +204,33 @@ class MasterViewController: NSViewController {
     }
     
     @IBAction func createChannelClicked(_ sender: NSButton) {
-        //           SocketConnection.shared.closeConnection()
         view.window?.contentViewController?.presentAsSheet(channelViewController)
     }
     
     @IBAction func createSubChannelClicked(_ sender: NSButton) {
-        view.window?.contentViewController?
-            .presentAsSheet(subChannelViewController)
+        view.window?.contentViewController?.presentAsSheet(subChannelViewController)
     }
 }
-
-
 
 extension MasterViewController: NSCollectionViewDelegate{
     
     func collectionView(_ collectionView: NSCollectionView, didSelectItemsAt indexPaths: Set<IndexPath>) {
-        
-        if let itemIndex = self.channelCollectionView.selectionIndexPaths.first?.item {
-            Channels.shared.getChannel(channel: itemIndex + 1) { (res) in
+        clearSubChannel()
+        if let indexPath = self.channelCollectionView.selectionIndexPaths.first?.item {
+            Channels.shared.getChannel(channel: indexPath + 1) { (res) in
                 switch res {
                 case .success(let channel):
                     DispatchQueue.main.async {
                         UserData.shared.channel = channel.channel
+                        UserData.shared.imageString = channel.imageString
                         UserData.shared.channelID = channel.id!
                         NotificationCenter.default.post(name: CHANNEL_DID_CHANGE, object: nil)
-                        self.getAllSubChannels()
+                        self.getSubChannels()
                     }
                 case .failure(let err):
                     print(err)
                 }
             }
-            
         }
     }
     
@@ -200,7 +247,9 @@ extension MasterViewController: NSCollectionViewDataSource  {
     }
     func collectionView(_ collectionView: NSCollectionView, itemForRepresentedObjectAt indexPath: IndexPath) -> NSCollectionViewItem {
         let cell = collectionView.makeItem(withIdentifier: NSUserInterfaceItemIdentifier(rawValue: "ChannelCell"), for: indexPath)
-        guard let channelCell = cell as? ChannelCell else { return NSCollectionViewItem() }
+        
+        guard let channelCell = cell as? ChannelCell else { return cell }
+        
         let url = URL(string: "\(CHANNEL_URL)/image/\(String(describing: ChannelSocket.shared.channels[indexPath.item].id!))/channelImage")!
         channelCell.channelLabel.stringValue = ChannelSocket.shared.channels[indexPath.item].channel
         channelCell.channelImage.load(url: url)
@@ -216,33 +265,17 @@ extension MasterViewController: NSTableViewDelegate {
 extension MasterViewController: NSTableViewDataSource {
     
     func numberOfRows(in tableView: NSTableView) -> Int {
-        return SubChannelSocket.shared.subchannels.count - 1
+        return SubChannelSocket.shared.subchannels.count
     }
     
     func tableView(_ tableView: NSTableView, viewFor tableColumn: NSTableColumn?, row: Int) -> NSView? {
         let cell = tableView.makeView(withIdentifier: NSUserInterfaceItemIdentifier(rawValue: "subChannel"), owner: self) as! NSTableCellView?
-        
         cell?.textField?.stringValue = "#\( SubChannelSocket.shared.subchannels[row].title)"
-        
         return cell
     }
     
     func tableView(_ tableView: NSTableView, heightOfRow row: Int) -> CGFloat {
         return 30.0
-    }
-}
-
-extension NSImageView {
-    func load(url: URL) {
-        DispatchQueue.global().async { [weak self] in
-            if let data = try? Data(contentsOf: url) {
-                if let image = NSImage(data: data) {
-                    DispatchQueue.main.async {
-                        self?.image = image
-                    }
-                }
-            }
-        }
     }
 }
 

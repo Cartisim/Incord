@@ -79,6 +79,7 @@ class Authentication {
         if  UserData.shared.isLoggedIn {
             UserData.shared.keychain.delete(UserData.shared.token)
             UserData.shared.isLoggedIn = false
+            ChannelSocket.shared.channels.removeAll()
             print("user logged out")
         } else {
             print("please login")

@@ -13,7 +13,6 @@ class FriendsOnlineViewController: NSViewController {
     @IBOutlet weak var onlineTableView: NSTableView!
     
     var users = [CreateAccount]()
-    var user: CreateAccount?
     
     override func viewDidLoad() {
         super.viewDidLoad()

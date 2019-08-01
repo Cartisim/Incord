@@ -18,13 +18,11 @@ class ProfileViewController: NSViewController {
     @IBOutlet weak var updateAccountButton: NSButton!
     @IBOutlet weak var progressIndicator: NSProgressIndicator!
     
-    var clickBackground: BackgroundView!
     let avatarPopover = NSPopover()
     var avatarString = "avatar1"
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do view setup here.
         setUpView()
     }
     
@@ -55,38 +53,35 @@ class ProfileViewController: NSViewController {
         progressIndicator.stopAnimation(self)
         progressIndicator.isHidden = true
         avatarPopover.delegate = self
-        clickBackground = BackgroundView()
-        clickBackground.translatesAutoresizingMaskIntoConstraints = false
-        view.addSubview(clickBackground, positioned: .above, relativeTo: view)
-        let topCn = NSLayoutConstraint(item: clickBackground!, attribute: .top, relatedBy: .equal, toItem: view, attribute: .top, multiplier: 1, constant: 380)
-        let leftCn = NSLayoutConstraint(item: clickBackground!, attribute: .left, relatedBy: .equal, toItem: view, attribute: .left, multiplier: 1, constant: 0)
-        let rightCn = NSLayoutConstraint(item: clickBackground!, attribute: .right, relatedBy: .equal, toItem: view, attribute: .right, multiplier: 1, constant: 0)
-        let bottomCn = NSLayoutConstraint(item: clickBackground!, attribute: .bottom, relatedBy: .equal, toItem: view, attribute: .bottom, multiplier: 1, constant: 0)
-        view.addConstraints([topCn, leftCn, rightCn, bottomCn])
-        let closeBackgroundClick = NSClickGestureRecognizer(target: self, action: #selector(closeModalClick(_:)))
-        clickBackground.addGestureRecognizer(closeBackgroundClick)
-        clickBackground.wantsLayer = true
-        clickBackground.layer?.backgroundColor = NSColor.cyan.cgColor
     }
+
+    lazy var pleaseLoginViewController: NSViewController = {
+       return self.storyboard!.instantiateController(withIdentifier: "PleaseLoginVC") as! NSViewController
+    }()
     
-    @objc func closeModalClick(_ recognizer: NSClickGestureRecognizer) {
-        dismiss(self)
+    lazy var passswordViewController: NSViewController = {
+        return self.storyboard!.instantiateController(withIdentifier: "PasswordVC") as! NSViewController
+    }()
+    
+    @IBAction func closeSheetClicked(_ sender: NSButton) {
+          dismiss(self)
     }
     
     @IBAction func updateAccountOnEnterClicked(_ sender: NSTextField) {
-        updateAccountButton.performClick(nil)
+//        updateAccountButton.performClick(nil)
     }
     
     @IBAction func updateAccountClicked(_ sender: NSButton) {
+        if UserData.shared.isLoggedIn && reEnterPasswordTextField.stringValue.isEmpty == false {
         self.progressIndicator.startAnimation(self)
         self.progressIndicator.isHidden = false
         if passwordTextField.stringValue == reEnterPasswordTextField.stringValue {
-            
             Users.shared.updateUser(username: usernameTextField.stringValue, email: emailTextField.stringValue, password: passwordTextField.stringValue, avatar: UserData.shared.avatarName) { (res) in
                 switch res {
                 case .success(let updatedProfile):
                     print("success \(updatedProfile)")
                     DispatchQueue.main.async {
+                        NotificationCenter.default.post(name: NOTIF_USER_DATA_DID_CHANGE, object: nil)
                         self.progressIndicator.stopAnimation(self)
                         self.progressIndicator.isHidden = true
                         self.dismiss(self)
@@ -103,8 +98,12 @@ class ProfileViewController: NSViewController {
             print("passwords must match")
             self.progressIndicator.stopAnimation(self)
             self.progressIndicator.isHidden = true
+            self.view.window?.contentViewController?.presentAsSheet(self.passswordViewController)
         }
-        
+        } else {
+            print("please login")
+            self.view.window?.contentViewController?.presentAsSheet(self.pleaseLoginViewController)
+        }
     }
     
     @IBAction func changeImageClicked(_ sender: NSButton) {

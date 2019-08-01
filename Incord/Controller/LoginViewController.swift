@@ -16,10 +16,10 @@ class LoginViewController: NSViewController {
     @IBOutlet weak var progressIndicator: NSProgressIndicator!
     @IBOutlet weak var statusLabel: NSTextField!
     
-    var clickBackground: BackgroundView!
+     var account = [CreateAccount]()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do view setup here.
         setUpView()
     }
     
@@ -27,20 +27,7 @@ class LoginViewController: NSViewController {
     func setUpView() {
         progressIndicator.stopAnimation(self)
         progressIndicator.isHidden = true
-        clickBackground = BackgroundView()
-        clickBackground.translatesAutoresizingMaskIntoConstraints = false
-        view.addSubview(clickBackground, positioned: .above, relativeTo: view)
-        let topCn = NSLayoutConstraint(item: clickBackground!, attribute: .top, relatedBy: .equal, toItem: view, attribute: .top, multiplier: 1, constant: 330)
-        let leftCn = NSLayoutConstraint(item: clickBackground!, attribute: .left, relatedBy: .equal, toItem: view, attribute: .left, multiplier: 1, constant: 0)
-        let rightCn = NSLayoutConstraint(item: clickBackground!, attribute: .right, relatedBy: .equal, toItem: view, attribute: .right, multiplier: 1, constant: 0)
-        let bottomCn = NSLayoutConstraint(item: clickBackground!, attribute: .bottom, relatedBy: .equal, toItem: view, attribute: .bottom, multiplier: 1, constant: 0)
-        view.addConstraints([topCn, leftCn, rightCn, bottomCn])
-        let closeBackgroundClick = NSClickGestureRecognizer(target: self, action: #selector(closeModalClick(_:)))
-        clickBackground.addGestureRecognizer(closeBackgroundClick)
-        clickBackground.wantsLayer = true
-        clickBackground.layer?.backgroundColor = NSColor.cyan.cgColor
     }
-    var account = [CreateAccount]()
     
     override func viewWillAppear() {
         if UserData.shared.isLoggedIn != true {
@@ -56,7 +43,8 @@ class LoginViewController: NSViewController {
         }
     }
     
-    @objc func closeModalClick(_ recognizer: NSClickGestureRecognizer) {
+  
+    @IBAction func closhSheetClicked(_ sender: NSButton) {
         dismiss(self)
     }
     
@@ -70,7 +58,8 @@ class LoginViewController: NSViewController {
                 case .success(let user):
                     print(user)
                     DispatchQueue.main.async {
-                         NotificationCenter.default.post(name: NOTIF_USER_DATA_DID_CHANGE, object: nil)
+                        NotificationCenter.default.post(name: NOTIF_USER_DATA_DID_CHANGE, object: nil)
+                        NotificationCenter.default.post(name: NEW_CHANNEL, object: nil)
                         self.progressIndicator.stopAnimation(self)
                         self.progressIndicator.isHidden = true
                         self.dismiss(self)
@@ -91,7 +80,7 @@ class LoginViewController: NSViewController {
         }
     }
     @IBAction func loginOnEnterClicked(_ sender: NSTextField) {
-        //        passwordTextField.performClick(nil)
+//        loginButton.performClick(nil)
     }
     
 }

@@ -49,8 +49,10 @@
 		097B0A2722E0BE3B00114B1E /* Channel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09DB4F7F22C4FCBE00387E4E /* Channel.swift */; };
 		097B0A2822E0BE3E00114B1E /* AuthToken.swift in Sources */ = {isa = PBXBuildFile; fileRef = 091630C022C1E83F00420996 /* AuthToken.swift */; };
 		097B0A2922E0BE4800114B1E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09A95B8622B2525D002F17CE /* AppDelegate.swift */; };
+		0980A0BB22F2C27400AC12D7 /* NSImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0980A0BA22F2C27400AC12D7 /* NSImage.swift */; };
+		0980A0BF22F2CAD500AC12D7 /* PleaseLoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0980A0BE22F2CAD500AC12D7 /* PleaseLoginViewController.swift */; };
+		0980A0C122F2CD2200AC12D7 /* PasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0980A0C022F2CD2200AC12D7 /* PasswordViewController.swift */; };
 		0981017C22D895240006B64F /* ChannelCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0981017B22D895240006B64F /* ChannelCell.xib */; };
-		09820CFA22E68C0B008F955F /* Starscream in Frameworks */ = {isa = PBXBuildFile; productRef = 09820CF922E68C0B008F955F /* Starscream */; };
 		0983B54D22E2E27A00C47C41 /* SocketConnection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0983B54C22E2E27A00C47C41 /* SocketConnection.swift */; };
 		09A95B8B22B2525F002F17CE /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 09A95B8A22B2525F002F17CE /* Assets.xcassets */; };
 		09A95B8E22B2525F002F17CE /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 09A95B8C22B2525F002F17CE /* Main.storyboard */; };
@@ -84,6 +86,9 @@
 		093AE1F622BCF595003F0535 /* AvatarCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AvatarCell.swift; sourceTree = "<group>"; };
 		093AE1F822BCF5DA003F0535 /* AvatarCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AvatarCell.xib; sourceTree = "<group>"; };
 		0969CBA322D9E2990080057E /* CreateSubChannelViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateSubChannelViewController.swift; sourceTree = "<group>"; };
+		0980A0BA22F2C27400AC12D7 /* NSImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = NSImage.swift; path = "../../../../../../../../System/Volumes/Data/Users/cartisim/Documents/TeachingDevelopment/Chat App/Incord/Incord/Utilities/NSImage.swift"; sourceTree = "<group>"; };
+		0980A0BE22F2CAD500AC12D7 /* PleaseLoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PleaseLoginViewController.swift; sourceTree = "<group>"; };
+		0980A0C022F2CD2200AC12D7 /* PasswordViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = PasswordViewController.swift; path = "../../../../../../../../System/Volumes/Data/Users/cartisim/Documents/TeachingDevelopment/Chat App/Incord/Incord/Controller/PasswordViewController.swift"; sourceTree = "<group>"; };
 		0981017922D887D50006B64F /* ChooseImageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChooseImageViewController.swift; sourceTree = "<group>"; };
 		0981017B22D895240006B64F /* ChannelCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ChannelCell.xib; sourceTree = "<group>"; };
 		0981017D22D895980006B64F /* ChannelCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChannelCell.swift; sourceTree = "<group>"; };
@@ -119,7 +124,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				0928C13722E16EF200728284 /* KeychainSwift in Frameworks */,
-				09820CFA22E68C0B008F955F /* Starscream in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -227,6 +231,8 @@
 				093AE1F422BCF56F003F0535 /* AvatarViewController.swift */,
 				0981017922D887D50006B64F /* ChooseImageViewController.swift */,
 				0969CBA322D9E2990080057E /* CreateSubChannelViewController.swift */,
+				0980A0BE22F2CAD500AC12D7 /* PleaseLoginViewController.swift */,
+				0980A0C022F2CD2200AC12D7 /* PasswordViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -252,6 +258,7 @@
 			children = (
 				09A95B9F22B267A3002F17CE /* Constants.swift */,
 				09DF1CDF22C3301100562564 /* UserData.swift */,
+				0980A0BA22F2C27400AC12D7 /* NSImage.swift */,
 			);
 			path = Utilities;
 			sourceTree = "<group>";
@@ -281,7 +288,6 @@
 			name = Incord;
 			packageProductDependencies = (
 				0928C13622E16EF200728284 /* KeychainSwift */,
-				09820CF922E68C0B008F955F /* Starscream */,
 			);
 			productName = Incord;
 			productReference = 09A95B8322B2525D002F17CE /* Incord.app */;
@@ -318,7 +324,6 @@
 			mainGroup = 09A95B7A22B2525D002F17CE;
 			packageReferences = (
 				0928C13522E16EF200728284 /* XCRemoteSwiftPackageReference "keychain-swift" */,
-				09820CF822E68C0B008F955F /* XCRemoteSwiftPackageReference "Starscream" */,
 			);
 			productRefGroup = 09A95B8422B2525D002F17CE /* Products */;
 			projectDirPath = "";
@@ -357,6 +362,7 @@
 				097B0A2422E0BE3200114B1E /* ChannelImage.swift in Sources */,
 				097B0A2322E0BE2F00114B1E /* CreateAccount.swift in Sources */,
 				097B0A2222E0BE2900114B1E /* CustomButtonView.swift in Sources */,
+				0980A0BB22F2C27400AC12D7 /* NSImage.swift in Sources */,
 				0983B54D22E2E27A00C47C41 /* SocketConnection.swift in Sources */,
 				097B0A2122E0BE2600114B1E /* CreateAccountView.swift in Sources */,
 				097B0A2022E0BE2100114B1E /* FriendsTableCell.swift in Sources */,
@@ -379,6 +385,7 @@
 				097B0A1022E0BDF000114B1E /* ProfileViewController.swift in Sources */,
 				097B0A0F22E0BDEC00114B1E /* CreateChannelViewController.swift in Sources */,
 				097B0A0E22E0BDE900114B1E /* LoginViewController.swift in Sources */,
+				0980A0BF22F2CAD500AC12D7 /* PleaseLoginViewController.swift in Sources */,
 				097B0A0D22E0BDE700114B1E /* CreateAccountViewController.swift in Sources */,
 				097B0A0C22E0BDE400114B1E /* MasterViewController.swift in Sources */,
 				097B0A0B22E0BDE100114B1E /* ChatViewController.swift in Sources */,
@@ -388,6 +395,7 @@
 				097B0A0722E0BDD400114B1E /* SubChannels.swift in Sources */,
 				097B0A0622E0BDD200114B1E /* Messages.swift in Sources */,
 				097B0A0522E0BDCF00114B1E /* Users.swift in Sources */,
+				0980A0C122F2CD2200AC12D7 /* PasswordViewController.swift in Sources */,
 				097B0A0422E0BDCC00114B1E /* Authentication.swift in Sources */,
 				09CE06D222F043B000EC255F /* ChannelSocket.swift in Sources */,
 				097B0A0322E0BDC900114B1E /* UserData.swift in Sources */,
@@ -600,14 +608,6 @@
 				minimumVersion = 16.0.1;
 			};
 		};
-		09820CF822E68C0B008F955F /* XCRemoteSwiftPackageReference "Starscream" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/daltoniam/Starscream.git";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 3.1.0;
-			};
-		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -615,11 +615,6 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 0928C13522E16EF200728284 /* XCRemoteSwiftPackageReference "keychain-swift" */;
 			productName = KeychainSwift;
-		};
-		09820CF922E68C0B008F955F /* Starscream */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 09820CF822E68C0B008F955F /* XCRemoteSwiftPackageReference "Starscream" */;
-			productName = Starscream;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

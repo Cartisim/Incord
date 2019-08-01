@@ -19,8 +19,20 @@ final class Channel: Codable {
         self.imageString = imageString
         self.channel = channel
     }
-}
-//TODO:- Add Delete Methods
-func deleteChannel() {
+
+func deleteChannel(id: Int, completion: @escaping (PassFailResult) -> Void) {
+    guard let url = URL(string: "\(CHANNEL_URL)/\(id)") else {return}
+    print(url)
+    var request = URLRequest(url: url)
+    request.httpMethod = "DELETE"
     
+    URLSession.shared.dataTask(with: request) { (_, response, _) in
+        if let httpResponse = response as? HTTPURLResponse, httpResponse.statusCode == 204 {
+            print(httpResponse.statusCode)
+            completion(.success)
+        } else {
+            completion(.failure)
+        }
+    }.resume()
+}
 }

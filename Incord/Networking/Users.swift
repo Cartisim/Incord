@@ -51,36 +51,34 @@ class Users {
             }
             }.resume()
     }
-
-func updateUser(username: String, email: String, password: String, avatar: String, completion: @escaping (Result<CreateAccount, Error>) -> ()) {
-    print("called")
-    let lowerCaseEmail = email.lowercased()
-    let body = [
-        "username": username,
-        "email": lowerCaseEmail,
-        "password": password,
-        "avatar": avatar
-    ]
-    guard let url = URL(string: "\(CREATE_URL)/\(UserData.shared.createAccountID)") else { return }
-    var request = URLRequest(url: url)
-    print(request)
-    request.httpMethod = "PUT"
-    request.addValue("application/json", forHTTPHeaderField: "Content-Type")
-    request.addValue("Bearer \(UserData.shared.token)", forHTTPHeaderField: "Authorization")
-    request.httpBody = try? JSONEncoder().encode(body)
     
-    URLSession.shared.dataTask(with: request) { data, response, error in
-        if let error = error {
-            completion(.failure(error))
-        }
-        do {
-            let updateUser = try JSONDecoder().decode(CreateAccount.self, from: data!)
-            completion(.success(updateUser))
-        } catch let err {
-            completion(.failure(err))
-        }
-    }.resume()
-}
-    
-    //TODO:- Add Delete User method
+    func updateUser(username: String, email: String, password: String, avatar: String, completion: @escaping (Result<CreateAccount, Error>) -> ()) {
+        print("called")
+        let lowerCaseEmail = email.lowercased()
+        let body = [
+            "username": username,
+            "email": lowerCaseEmail,
+            "password": password,
+            "avatar": avatar
+        ]
+        guard let url = URL(string: "\(CREATE_URL)/\(UserData.shared.createAccountID)") else { return }
+        var request = URLRequest(url: url)
+        print(request)
+        request.httpMethod = "PUT"
+        request.addValue("application/json", forHTTPHeaderField: "Content-Type")
+        request.addValue("Bearer \(UserData.shared.token)", forHTTPHeaderField: "Authorization")
+        request.httpBody = try? JSONEncoder().encode(body)
+        
+        URLSession.shared.dataTask(with: request) { data, response, error in
+            if let error = error {
+                completion(.failure(error))
+            }
+            do {
+                let updateUser = try JSONDecoder().decode(CreateAccount.self, from: data!)
+                completion(.success(updateUser))
+            } catch let err {
+                completion(.failure(err))
+            }
+            }.resume()
+    }
 }

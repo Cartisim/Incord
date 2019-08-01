@@ -8,9 +8,9 @@
 
 import Foundation
 
-typealias CompletionHandler = (_ Success: Bool) -> ()
-
-struct Constants {
+enum PassFailResult {
+    case failure
+    case success
 }
 
 //Notifications
@@ -24,12 +24,16 @@ let SUB_CHANNEL_DID_CHANGE = Notification.Name("notifySubChannel")
 let RELOAD_COLLECTION = Notification.Name("reloadCollection")
 let RELOAD_TABLEVIEW = Notification.Name("reloadTableView")
 let NEW_MESSAGE = Notification.Name("newMessage")
+let NEW_CHANNEL = Notification.Name("newChannel")
+let NEW_SUB_CHANNEL = Notification.Name("newSubChannel")
 
 //URLS
 let BASE_URL = "http://localhost:8080/api"
+let WEBSOCKET_URL = "ws://localhost:8080/api"
 let CREATE_URL = "\(BASE_URL)/create_account"
 let LOGIN_URL = "\(CREATE_URL)/login"
 let CHANNEL_URL = "\(BASE_URL)/channel"
+let SUBCHANNEL_URL = "\(BASE_URL)/sub_channel"
 let MESSAGE_URL = "\(BASE_URL)/message"
 let SOCKET_URL = "ws://localhost:8080/api"
 

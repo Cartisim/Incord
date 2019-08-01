@@ -13,9 +13,6 @@ class ToolBarViewController: NSViewController {
     @IBOutlet weak var channelLabel: NSTextField!
     @IBOutlet weak var subChannelLabel: NSTextField!
     
-    let channel = [Channel]()
-    static let shared = ToolBarViewController()
-    
     override func viewDidLoad() {
         super.viewDidLoad()
       setUpView()
@@ -28,16 +25,7 @@ class ToolBarViewController: NSViewController {
     
     @IBAction func logoutClicked(_ sender: NSButton) {
         Authentication.shared.logout()
-        print("logoutClicked")
-//        Users.shared.currentUser { (res) in
-//            switch res {
-//            case .success(let user):
-//
-//                print(user)
-//            case .failure(let err):
-//                print(err)
-//            }
-//        }
+        NotificationCenter.default.post(name: NOTIF_USER_DATA_DID_CHANGE, object: nil)
     }
     
     
