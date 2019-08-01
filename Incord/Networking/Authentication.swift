@@ -79,7 +79,10 @@ class Authentication {
         if  UserData.shared.isLoggedIn {
             UserData.shared.keychain.delete(UserData.shared.token)
             UserData.shared.isLoggedIn = false
-            ChannelSocket.shared.channels.removeAll()
+            UserData.shared.subChannel = ""
+            UserData.shared.channel = "Your Channel"
+            NotificationCenter.default.post(name: CLEAR_CHANNELS, object: nil)
+            NotificationCenter.default.post(name: CHANNEL_DID_CHANGE, object: nil)
             print("user logged out")
         } else {
             print("please login")

@@ -32,6 +32,10 @@ class CreateSubChannelViewController: NSViewController {
         return self.storyboard!.instantiateController(withIdentifier: "PleaseLoginVC") as! NSViewController
     }()
     
+    lazy var mismatchViewController: NSViewController = {
+        return self.storyboard?.instantiateController(withIdentifier: "MismatchVC") as! NSViewController
+    }()
+    
     @IBAction func closeSheetClicked(_ sender: NSButton) {
        dismiss(self)
         
@@ -54,6 +58,8 @@ class CreateSubChannelViewController: NSViewController {
                     print(err)
                 }
             })
+       } else if subChannelTextField.stringValue.isEmpty {
+        self.view.window?.contentViewController?.presentAsSheet(self.mismatchViewController)
        } else {
         print("please login")
         self.view.window?.contentViewController?.presentAsSheet(self.pleaseLoginViewController)

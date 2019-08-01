@@ -99,20 +99,40 @@ class ChatViewController: NSViewController, URLSessionWebSocketDelegate {
         return self.storyboard?.instantiateController(withIdentifier: "PleaseLoginVC") as! NSViewController
     }()
     
+    lazy var mismatchViewController: NSViewController = {
+        return self.storyboard!.instantiateController(withIdentifier: "MismatchVC") as! NSViewController
+    }()
+    
     @IBAction func profileButtonClicked(_ sender: NSButton) {
-        self.view.window?.contentViewController?.presentAsSheet(profileViewController)
+        if UserData.shared.isLoggedIn {
+            self.view.window?.contentViewController?.presentAsSheet(profileViewController)
+        } else {
+            self.view.window?.contentViewController?.presentAsSheet(pleaseLoginViewController)
+        }
         
     }
     @IBAction func profileImageClicked(_ sender: NSButton) {
+        if UserData.shared.isLoggedIn {
         self.view.window?.contentViewController?.presentAsSheet(profileViewController)
+        } else {
+            self.view.window?.contentViewController?.presentAsSheet(pleaseLoginViewController)
+        }
     }
     
     @IBAction func friendsButtonClicked(_ sender: NSButton) {
-        self.view.window?.contentViewController?.presentAsSheet(friendsViewController)
+        if UserData.shared.isLoggedIn {
+            self.view.window?.contentViewController?.presentAsSheet(friendsViewController)
+        } else {
+            self.view.window?.contentViewController?.presentAsSheet(pleaseLoginViewController)
+        }
     }
     
     @IBAction func friendsImageClicked(_ sender: NSButton) {
-        self.view.window?.contentViewController?.presentAsSheet(friendsViewController)
+        if UserData.shared.isLoggedIn {
+            self.view.window?.contentViewController?.presentAsSheet(friendsViewController)
+        } else {
+            self.view.window?.contentViewController?.presentAsSheet(pleaseLoginViewController)
+        }
     }
     
     
@@ -140,6 +160,8 @@ class ChatViewController: NSViewController, URLSessionWebSocketDelegate {
                     print(error)
                 }
             }
+        } else if UserData.shared.isLoggedIn && chatTextField.stringValue.isEmpty {
+             self.view.window?.contentViewController?.presentAsSheet(mismatchViewController)
         } else {
             print("login")
             self.view.window?.contentViewController?.presentAsSheet(pleaseLoginViewController)

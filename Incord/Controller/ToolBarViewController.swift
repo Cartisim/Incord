@@ -20,7 +20,7 @@ class ToolBarViewController: NSViewController {
     
     func setUpView() {
          NotificationCenter.default.addObserver(self, selector: #selector(channelDidChange), name: CHANNEL_DID_CHANGE, object: nil)
-          NotificationCenter.default.addObserver(self, selector: #selector(subChannelDidChange), name: SUB_CHANNEL_DID_CHANGE, object: nil)
+         NotificationCenter.default.addObserver(self, selector: #selector(subChannelDidChange), name: SUB_CHANNEL_DID_CHANGE, object: nil)
     }
     
     @IBAction func logoutClicked(_ sender: NSButton) {

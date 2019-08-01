@@ -24,18 +24,22 @@ class MasterViewController: NSViewController {
         print("loaded \(UserData.shared.channelID)")
     }
     override func viewWillAppear() {
+        if UserData.shared.isLoggedIn {
         getChannels()
+        }
     }
     
     func setUpView() {
         channelCollectionView.wantsLayer = true
         channelCollectionView.layer?.backgroundColor = .clear
+        channelCollectionView.allowsEmptySelection = false
         subChannelTableView.doubleAction = #selector(doubleClickCell)
         subChannelTableView.dataSource = self
         subChannelTableView.delegate = self
        
         NotificationCenter.default.addObserver(self, selector: #selector(newChannel), name: NEW_CHANNEL, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(newSubChannel), name: NEW_SUB_CHANNEL, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(clearChannels), name: CLEAR_CHANNELS, object: nil)
         let deleteChannelMenu = NSMenu()
         deleteChannelMenu.addItem(withTitle: "Delete Channel", action: #selector(deleteChannel), keyEquivalent: "")
         channelCollectionView.menu = deleteChannelMenu
@@ -162,9 +166,11 @@ class MasterViewController: NSViewController {
         }
     }
     
-    func clearChannels() {
+    @objc func clearChannels() {
         ChannelSocket.shared.channels.removeAll()
         channelCollectionView.reloadData()
+        SubChannelSocket.shared.subchannels.removeAll()
+        subChannelTableView.reloadData()
     }
     
     func clearSubChannel() {
@@ -195,6 +201,9 @@ class MasterViewController: NSViewController {
         return self.storyboard?.instantiateController(withIdentifier: "SubChannel") as! NSViewController
     }()
     
+    lazy var pleaseLoginViewController: NSViewController = {
+        return self.storyboard?.instantiateController(withIdentifier: "PleaseLoginVC") as! NSViewController
+    }()
     @IBAction func loginClicked(_ sender: NSButton) {
         view.window?.contentViewController?.presentAsSheet(loginViewController.self)
     }
@@ -216,6 +225,7 @@ extension MasterViewController: NSCollectionViewDelegate{
     
     func collectionView(_ collectionView: NSCollectionView, didSelectItemsAt indexPaths: Set<IndexPath>) {
         clearSubChannel()
+         if UserData.shared.isLoggedIn {
         if let indexPath = self.channelCollectionView.selectionIndexPaths.first?.item {
             Channels.shared.getChannel(channel: indexPath + 1) { (res) in
                 switch res {
@@ -232,10 +242,11 @@ extension MasterViewController: NSCollectionViewDelegate{
                 }
             }
         }
+    } else {
+     view.window?.contentViewController?.presentAsSheet(pleaseLoginViewController.self)
     }
-    
 }
-
+}
 
 extension MasterViewController: NSCollectionViewDataSource  {
     func collectionView(_ collectionView: NSCollectionView, numberOfItemsInSection section: Int) -> Int {

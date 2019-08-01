@@ -30,8 +30,12 @@ class ChooseImageViewController: NSViewController {
         self.progressIndicator.isHidden = true
     }
 
+    @IBAction func dismissClicked(_ sender: NSButton) {
+        dismiss(self)
+    }
+    
     @IBAction func addImageClicked(_ sender: NSButton) {
-        if UserData.shared.isLoggedIn {
+       if UserData.shared.isLoggedIn {
         let openPanel = NSOpenPanel()
         openPanel.allowsMultipleSelection = false
         openPanel.canChooseDirectories = false
@@ -60,7 +64,7 @@ class ChooseImageViewController: NSViewController {
                 }
             }
         }
-    }
+       }
 }
     func jpegDataFrom(image:NSImage) -> Data {
         let cgImage = image.cgImage(forProposedRect: nil, context: nil, hints: nil)!

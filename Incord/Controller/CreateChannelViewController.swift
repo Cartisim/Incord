@@ -42,6 +42,10 @@ class CreateChannelViewController: NSViewController {
         return self.storyboard?.instantiateController(withIdentifier: "PleaseLoginVC") as! NSViewController
      }()
     
+    lazy var mismatchViewController: NSViewController = {
+        return self.storyboard?.instantiateController(withIdentifier: "MismatchVC") as! NSViewController
+    }()
+    
     @IBAction func createChannelOnEnterClicked(_ sender: NSTextField) {
 //                channelButton.performClick(nil)
     }
@@ -68,6 +72,8 @@ class CreateChannelViewController: NSViewController {
                     }
                 }
             })
+        } else if createChannelTextField.stringValue.isEmpty {
+            self.view.window?.contentViewController?.presentAsSheet(self.mismatchViewController)
         } else {
             print("please login")
             self.view.window?.contentViewController?.presentAsSheet(self.pleaseLoginViewController)

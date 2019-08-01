@@ -55,8 +55,8 @@ class ProfileViewController: NSViewController {
         avatarPopover.delegate = self
     }
 
-    lazy var pleaseLoginViewController: NSViewController = {
-       return self.storyboard!.instantiateController(withIdentifier: "PleaseLoginVC") as! NSViewController
+    lazy var mismatchViewController: NSViewController = {
+       return self.storyboard!.instantiateController(withIdentifier: "MismatchVC") as! NSViewController
     }()
     
     lazy var passswordViewController: NSViewController = {
@@ -72,7 +72,7 @@ class ProfileViewController: NSViewController {
     }
     
     @IBAction func updateAccountClicked(_ sender: NSButton) {
-        if UserData.shared.isLoggedIn && reEnterPasswordTextField.stringValue.isEmpty == false {
+        if UserData.shared.isLoggedIn && reEnterPasswordTextField.stringValue.isEmpty == false, passwordTextField.stringValue.isEmpty == false, usernameTextField.stringValue.isEmpty == false, emailTextField.stringValue.isEmpty == false {
         self.progressIndicator.startAnimation(self)
         self.progressIndicator.isHidden = false
         if passwordTextField.stringValue == reEnterPasswordTextField.stringValue {
@@ -102,7 +102,7 @@ class ProfileViewController: NSViewController {
         }
         } else {
             print("please login")
-            self.view.window?.contentViewController?.presentAsSheet(self.pleaseLoginViewController)
+            self.view.window?.contentViewController?.presentAsSheet(self.mismatchViewController)
         }
     }
     

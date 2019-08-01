@@ -26,6 +26,7 @@ let RELOAD_TABLEVIEW = Notification.Name("reloadTableView")
 let NEW_MESSAGE = Notification.Name("newMessage")
 let NEW_CHANNEL = Notification.Name("newChannel")
 let NEW_SUB_CHANNEL = Notification.Name("newSubChannel")
+let CLEAR_CHANNELS = Notification.Name("clearChannels")
 
 //URLS
 let BASE_URL = "http://localhost:8080/api"
