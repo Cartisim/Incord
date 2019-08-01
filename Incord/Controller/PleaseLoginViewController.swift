@@ -14,5 +14,8 @@ class PleaseLoginViewController: NSViewController {
         super.viewDidLoad()
         // Do view setup here.
     }
+    @IBAction func dismissClicked(_ sender: NSButton) {
+        dismiss(self)
+    }
     
 }

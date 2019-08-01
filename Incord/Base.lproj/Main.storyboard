@@ -2570,7 +2570,10 @@
                                 <rect key="frame" x="99" y="27" width="352" height="202"/>
                                 <subviews>
                                     <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="xMf-j7-TZy">
-                                        <rect key="frame" x="68" y="172" width="217" height="30"/>
+                                        <rect key="frame" x="68" y="174" width="216" height="28"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="28" id="SGI-Pr-Z3U"/>
+                                        </constraints>
                                         <textFieldCell key="cell" lineBreakMode="clipping" title="Create a SubChannel" id="hbO-FT-aoe">
                                             <font key="font" size="22" name="AvenirNext-Regular"/>
                                             <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
@@ -2578,13 +2581,13 @@
                                         </textFieldCell>
                                     </textField>
                                     <stackView distribution="fill" orientation="vertical" alignment="centerX" spacing="19" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="5fL-sc-4pB">
-                                        <rect key="frame" x="0.0" y="0.0" width="352" height="76"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="352" height="78"/>
                                         <subviews>
                                             <stackView distribution="fill" orientation="horizontal" alignment="top" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="0CW-wx-66d">
-                                                <rect key="frame" x="17" y="45" width="318" height="31"/>
+                                                <rect key="frame" x="17" y="45" width="318" height="33"/>
                                                 <subviews>
                                                     <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="JJB-wR-xwA">
-                                                        <rect key="frame" x="-2" y="9" width="14" height="22"/>
+                                                        <rect key="frame" x="-2" y="11" width="14" height="22"/>
                                                         <textFieldCell key="cell" lineBreakMode="clipping" title="#" id="cnx-qf-qg3">
                                                             <font key="font" size="16" name="AvenirNext-MediumItalic"/>
                                                             <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
@@ -2592,7 +2595,7 @@
                                                         </textFieldCell>
                                                     </textField>
                                                     <stackView distribution="fill" orientation="vertical" alignment="leading" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="e62-QW-qJz">
-                                                        <rect key="frame" x="18" y="0.0" width="300" height="31"/>
+                                                        <rect key="frame" x="18" y="2" width="300" height="31"/>
                                                         <subviews>
                                                             <textField focusRingType="none" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="OEr-GS-HbU">
                                                                 <rect key="frame" x="-2" y="9" width="304" height="22"/>
@@ -2605,7 +2608,7 @@
                                                                     <action selector="subChannelTextFieldEntered:" target="78d-Iu-Jur" id="NRH-T2-Bb0"/>
                                                                 </connections>
                                                             </textField>
-                                                            <box verticalHuggingPriority="750" boxType="separator" translatesAutoresizingMaskIntoConstraints="NO" id="DRR-Jb-Fib">
+                                                            <box verticalHuggingPriority="750" verticalCompressionResistancePriority="749" boxType="separator" translatesAutoresizingMaskIntoConstraints="NO" id="DRR-Jb-Fib">
                                                                 <rect key="frame" x="0.0" y="-2" width="300" height="5"/>
                                                             </box>
                                                         </subviews>
@@ -2640,6 +2643,7 @@
                                             </button>
                                         </subviews>
                                         <constraints>
+                                            <constraint firstItem="0CW-wx-66d" firstAttribute="leading" secondItem="5fL-sc-4pB" secondAttribute="leading" constant="17" id="2jq-EG-EnM"/>
                                             <constraint firstItem="Q7F-5h-LjL" firstAttribute="leading" secondItem="5fL-sc-4pB" secondAttribute="leading" constant="89" id="Vmm-EK-OQU"/>
                                         </constraints>
                                         <visibilityPriorities>
@@ -2653,8 +2657,11 @@
                                     </stackView>
                                 </subviews>
                                 <constraints>
+                                    <constraint firstItem="xMf-j7-TZy" firstAttribute="leading" secondItem="DvW-I8-yjp" secondAttribute="leading" constant="70" id="6BR-T9-a4K"/>
+                                    <constraint firstItem="5fL-sc-4pB" firstAttribute="leading" secondItem="DvW-I8-yjp" secondAttribute="leading" id="Cyz-0O-bcK"/>
                                     <constraint firstAttribute="height" constant="202" id="VrK-7e-bMK"/>
                                     <constraint firstAttribute="width" constant="352" id="WWF-fL-CMF"/>
+                                    <constraint firstItem="xMf-j7-TZy" firstAttribute="centerX" secondItem="5fL-sc-4pB" secondAttribute="centerX" id="frN-Vn-UYF"/>
                                 </constraints>
                                 <visibilityPriorities>
                                     <integer value="1000"/>
@@ -2707,14 +2714,13 @@
         <!--Please Login View Controller-->
         <scene sceneID="XXK-Z1-3XC">
             <objects>
-                <viewController storyboardIdentifier="PleaseLoginVC" id="ktO-P0-D4s" customClass="PleaseLoginViewController" customModule="Incord" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="PleaseLoginVC" id="ktO-P0-D4s" customClass="PleaseLoginViewController" sceneMemberID="viewController">
                     <view key="view" identifier="PleaseLoginVC" id="Mnw-uZ-8f5">
-                        <rect key="frame" x="0.0" y="0.0" width="550" height="256"/>
+                        <rect key="frame" x="0.0" y="0.0" width="550" height="257"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <subviews>
-                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="W46-AV-iSZ">
-                                <rect key="frame" x="206" y="199" width="131" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="W46-AV-iSZ">
+                                <rect key="frame" x="206" y="200" width="131" height="30"/>
                                 <textFieldCell key="cell" lineBreakMode="clipping" title="Please Login" id="SKk-Nb-GwI">
                                     <font key="font" size="22" name="AvenirNext-Regular"/>
                                     <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
@@ -2722,7 +2728,7 @@
                                 </textFieldCell>
                             </textField>
                             <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="bpe-Wu-xxU">
-                                <rect key="frame" x="10" y="225" width="20" height="21"/>
+                                <rect key="frame" x="10" y="226" width="20" height="21"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="20" id="Tcw-aD-Med"/>
                                     <constraint firstAttribute="width" constant="20" id="z9F-K8-3y3"/>
@@ -2732,17 +2738,18 @@
                                     <font key="font" size="11" name="AvenirNext-Bold"/>
                                 </buttonCell>
                                 <connections>
-                                    <action selector="closeSheetClicked:" target="ktO-P0-D4s" id="76d-93-rtG"/>
+                                    <action selector="dismissClicked:" target="Mnw-uZ-8f5" id="gL6-b3-9K4"/>
                                 </connections>
                             </button>
-                            <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Dbk-Kx-LQ0">
-                                <rect key="frame" x="41" y="59" width="137" height="137"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="avatar9" id="ZPN-6T-bHS"/>
+                            <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Dbk-Kx-LQ0">
+                                <rect key="frame" x="50" y="60" width="128" height="137"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="137" id="iLn-w6-GpR"/>
+                                </constraints>
+                                <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="login" id="ZPN-6T-bHS"/>
                             </imageView>
-                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ewf-mZ-0wy">
-                                <rect key="frame" x="218" y="113" width="226" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="ewf-mZ-0wy">
+                                <rect key="frame" x="218" y="113" width="226" height="31"/>
                                 <textFieldCell key="cell" lineBreakMode="clipping" title="Your chatroom awaits!" id="UkK-r2-uUu">
                                     <font key="font" size="22" name="AvenirNext-Regular"/>
                                     <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
@@ -2751,8 +2758,18 @@
                             </textField>
                         </subviews>
                         <constraints>
+                            <constraint firstItem="W46-AV-iSZ" firstAttribute="top" secondItem="Mnw-uZ-8f5" secondAttribute="top" constant="27" id="7lb-zy-XlV"/>
+                            <constraint firstItem="Dbk-Kx-LQ0" firstAttribute="top" secondItem="Mnw-uZ-8f5" secondAttribute="top" constant="60" id="TPa-QE-7Xb"/>
+                            <constraint firstItem="W46-AV-iSZ" firstAttribute="leading" secondItem="Mnw-uZ-8f5" secondAttribute="leading" constant="208" id="Tf7-6x-plv"/>
+                            <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="W46-AV-iSZ" secondAttribute="trailing" symbolic="YES" id="Ucg-L5-HDy"/>
+                            <constraint firstItem="Dbk-Kx-LQ0" firstAttribute="centerY" secondItem="ewf-mZ-0wy" secondAttribute="centerY" id="WOv-ZL-noB"/>
                             <constraint firstItem="bpe-Wu-xxU" firstAttribute="top" secondItem="Mnw-uZ-8f5" secondAttribute="top" constant="10" id="WP8-Zw-h4I"/>
+                            <constraint firstItem="Dbk-Kx-LQ0" firstAttribute="centerY" secondItem="Mnw-uZ-8f5" secondAttribute="centerY" id="gW5-1L-mFb"/>
+                            <constraint firstAttribute="trailing" secondItem="ewf-mZ-0wy" secondAttribute="trailing" constant="108" id="ifR-Ir-BLq"/>
+                            <constraint firstAttribute="bottom" secondItem="ewf-mZ-0wy" secondAttribute="bottom" constant="113" id="lLb-Uh-NDu"/>
                             <constraint firstItem="bpe-Wu-xxU" firstAttribute="leading" secondItem="Mnw-uZ-8f5" secondAttribute="leading" constant="10" id="mDj-p0-Xi2"/>
+                            <constraint firstItem="ewf-mZ-0wy" firstAttribute="leading" secondItem="Dbk-Kx-LQ0" secondAttribute="trailing" constant="42" id="pR8-Me-KHt"/>
+                            <constraint firstItem="ewf-mZ-0wy" firstAttribute="top" secondItem="W46-AV-iSZ" secondAttribute="bottom" constant="56" id="rHJ-GU-c44"/>
                         </constraints>
                     </view>
                 </viewController>
@@ -2760,17 +2777,16 @@
             </objects>
             <point key="canvasLocation" x="-1900" y="2386"/>
         </scene>
-        <!--Passs-->
+        <!--Passwords View Controller-->
         <scene sceneID="viU-ee-667">
             <objects>
-                <viewController storyboardIdentifier="PasswordVC" id="KVT-fV-4Bg" customClass="Passs" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="PasswordVC" id="KVT-fV-4Bg" customClass="PasswordsViewController" sceneMemberID="viewController">
                     <view key="view" identifier="PasswordVC" id="D1G-sQ-21N">
                         <rect key="frame" x="0.0" y="0.0" width="550" height="256"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <subviews>
-                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="nuN-ao-B0G">
+                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="nuN-ao-B0G">
                                 <rect key="frame" x="218" y="113" width="284" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <textFieldCell key="cell" lineBreakMode="clipping" title="Your passwords must match" id="psu-Ao-Mag">
                                     <font key="font" size="22" name="AvenirNext-Regular"/>
                                     <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
@@ -2788,17 +2804,15 @@
                                     <font key="font" size="11" name="AvenirNext-Bold"/>
                                 </buttonCell>
                                 <connections>
-                                    <action selector="closeSheetClicked:" target="KVT-fV-4Bg" id="dQD-Cq-z1K"/>
+                                    <action selector="dismissClicked:" target="D1G-sQ-21N" id="DpQ-pi-qNC"/>
                                 </connections>
                             </button>
-                            <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="12U-Wa-ysY">
-                                <rect key="frame" x="41" y="59" width="137" height="137"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="NSLockLockedTemplate" id="jTd-32-Wvh"/>
+                            <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="12U-Wa-ysY">
+                                <rect key="frame" x="50" y="68" width="128" height="128"/>
+                                <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="padlock" id="jTd-32-Wvh"/>
                             </imageView>
-                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="GWZ-bs-ler">
+                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="GWZ-bs-ler">
                                 <rect key="frame" x="95" y="206" width="360" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <textFieldCell key="cell" lineBreakMode="clipping" title="There seems to be an inconsistency" id="9Q4-XG-PMC">
                                     <font key="font" size="22" name="AvenirNext-Regular"/>
                                     <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
@@ -2807,8 +2821,18 @@
                             </textField>
                         </subviews>
                         <constraints>
+                            <constraint firstItem="GWZ-bs-ler" firstAttribute="leading" secondItem="t9q-eV-OHU" secondAttribute="trailing" constant="67" id="2R5-4d-dyJ"/>
                             <constraint firstItem="t9q-eV-OHU" firstAttribute="leading" secondItem="D1G-sQ-21N" secondAttribute="leading" constant="10" id="9OR-cG-x2c"/>
+                            <constraint firstItem="12U-Wa-ysY" firstAttribute="top" secondItem="GWZ-bs-ler" secondAttribute="bottom" constant="10" id="ARG-u6-Gk5"/>
+                            <constraint firstAttribute="trailing" secondItem="GWZ-bs-ler" secondAttribute="trailing" constant="97" id="JIf-mZ-zUX"/>
+                            <constraint firstAttribute="bottom" secondItem="12U-Wa-ysY" secondAttribute="bottom" constant="68" id="MUO-qa-fHz"/>
+                            <constraint firstItem="GWZ-bs-ler" firstAttribute="top" secondItem="D1G-sQ-21N" secondAttribute="top" constant="20" id="MgL-r2-NEg"/>
+                            <constraint firstAttribute="trailing" secondItem="nuN-ao-B0G" secondAttribute="trailing" constant="50" id="Qgu-EM-guz"/>
+                            <constraint firstItem="nuN-ao-B0G" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="12U-Wa-ysY" secondAttribute="trailing" constant="8" symbolic="YES" id="VU8-AD-aqU"/>
+                            <constraint firstAttribute="bottom" secondItem="nuN-ao-B0G" secondAttribute="bottom" constant="113" id="XfV-5k-Jc0"/>
+                            <constraint firstItem="nuN-ao-B0G" firstAttribute="top" secondItem="GWZ-bs-ler" secondAttribute="bottom" constant="63" id="kd7-xS-B7k"/>
                             <constraint firstItem="t9q-eV-OHU" firstAttribute="top" secondItem="D1G-sQ-21N" secondAttribute="top" constant="10" id="ldg-he-6df"/>
+                            <constraint firstItem="12U-Wa-ysY" firstAttribute="leading" secondItem="D1G-sQ-21N" secondAttribute="leading" constant="50" id="t8W-Uk-uTf"/>
                         </constraints>
                     </view>
                 </viewController>
@@ -2819,10 +2843,10 @@
     </scenes>
     <resources>
         <image name="NSBonjour" width="32" height="32"/>
-        <image name="NSLockLockedTemplate" width="10" height="14"/>
         <image name="avatar1" width="512" height="512"/>
         <image name="avatar3" width="512" height="512"/>
-        <image name="avatar9" width="512" height="512"/>
+        <image name="login" width="128" height="128"/>
+        <image name="padlock" width="128" height="128"/>
         <namedColor name="ButtonColor">
             <color red="0.52899998426437378" green="0.54500001668930054" blue="0.5690000057220459" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
