@@ -14,7 +14,7 @@ class SubChannels {
     var subchannels = [SubChannel]()
     
     func getSubChannels(channelID: Int, completion: @escaping (Result<[SubChannel], Error>) -> ()) {
-        guard let url = URL(string: "\( CHANNEL_URL)/\(channelID)/sub_channel") else { return }
+        guard let url = URL(string: "\(BASE_URL)/channel/\(channelID)/sub_channel") else { return }
         var request = URLRequest(url: url)
         request.httpMethod = "GET"
         URLSession.shared.dataTask(with: request) { (data, response, error) in

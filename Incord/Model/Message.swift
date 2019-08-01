@@ -27,7 +27,7 @@ final class Message: Codable {
     }
     
     func deleteMessage(id: Int, completion: @escaping (PassFailResult) -> Void) {
-        guard let url = URL(string: "\(MESSAGE_URL)/\(id)") else {return}
+        guard let url = URL(string: "\(BASE_URL)/message/\(id)") else {return}
         print(url)
         var request = URLRequest(url: url)
         request.httpMethod = "DELETE"

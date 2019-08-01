@@ -54,15 +54,6 @@ class UserData {
         }
     }
     
-    var avatarName: String {
-        get {
-            return _avatar
-        }
-        set {
-           _avatar = newValue
-        }
-    }
-    
     var createAccountID: String {
         get {
             return defaults.value(forKey: ACCOUNT_ID_KEY) as! String
@@ -71,6 +62,16 @@ class UserData {
             defaults.set(newValue, forKey: ACCOUNT_ID_KEY)
         }
     }
+    
+    var avatarName: String {
+        get {
+            return _avatar
+        }
+        set {
+           _avatar = newValue
+        }
+    }
+  
     var id: String {
         get {
             return _id

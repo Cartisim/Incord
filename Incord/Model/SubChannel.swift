@@ -21,7 +21,7 @@ final class SubChannel: Codable {
     }
     
     func deleteSubChannel(id: Int, completion: @escaping (PassFailResult) -> Void) {
-        guard let url = URL(string: "\(SUBCHANNEL_URL)/\(id)") else {return}
+        guard let url = URL(string: "\(BASE_URL)/sub_channel/\(id)") else {return}
         print(url)
         var request = URLRequest(url: url)
         request.httpMethod = "DELETE"

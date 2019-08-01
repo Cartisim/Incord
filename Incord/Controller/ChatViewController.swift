@@ -170,7 +170,9 @@ class ChatViewController: NSViewController, URLSessionWebSocketDelegate {
 }
 
 extension ChatViewController: NSTableViewDelegate {
-    
+    func tableViewSelectionDidChange(_ notification: Notification) {
+        print("chat selected")
+    }
 }
 
 extension ChatViewController: NSTableViewDataSource {
