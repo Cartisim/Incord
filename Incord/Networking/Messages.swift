@@ -8,7 +8,7 @@
 
 import Foundation
 
-class Messages {
+class Messages: NSObject {
     
     static let shared = Messages()
     

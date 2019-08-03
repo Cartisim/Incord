@@ -9,31 +9,47 @@
 import Cocoa
 
 class ToolBarViewController: NSViewController {
-
+    
     @IBOutlet weak var channelLabel: NSTextField!
     @IBOutlet weak var subChannelLabel: NSTextField!
     
+    var users = [CreateAccount]()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-      setUpView()
-    }
-    
-    func setUpView() {
-         NotificationCenter.default.addObserver(self, selector: #selector(channelDidChange), name: CHANNEL_DID_CHANGE, object: nil)
-         NotificationCenter.default.addObserver(self, selector: #selector(subChannelDidChange), name: SUB_CHANNEL_DID_CHANGE, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(channelDidChange), name: CHANNEL_DID_CHANGE, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(subChannelDidChange), name: SUB_CHANNEL_DID_CHANGE, object: nil)
     }
     
     @IBAction func logoutClicked(_ sender: NSButton) {
-        Authentication.shared.logout()
-        NotificationCenter.default.post(name: NOTIF_USER_DATA_DID_CHANGE, object: nil)
+        if  UserData.shared.isLoggedIn {
+            UserData.shared.isLoggedIn = false
+            UserData.shared.avatarName = ""
+            UserData.shared.username = ""
+            UserData.shared.userEmail = ""
+            UserData.shared.id = ""
+            UserData.shared.subChannel = ""
+            UserData.shared.channel = "Your Channel"
+            NotificationCenter.default.post(name: CLEAR_CHANNELS, object: nil)
+            NotificationCenter.default.post(name: CHANNEL_DID_CHANGE, object: nil)
+            NotificationCenter.default.post(name: LOGGED_IN, object: nil)
+            MasterViewController.shared.clearChatView()
+            users.removeAll()
+        } else {
+            print("please login")
+            view.window?.contentViewController?.presentAsSheet(errorViewController)
+        }
     }
     
+    lazy var errorViewController: NSViewController = {
+        return self.storyboard?.instantiateController(withIdentifier: "ErrorVC") as! NSViewController
+    }()
     
     @objc func channelDidChange(_ notif: Notification) {
         DispatchQueue.main.async {
             self.channelLabel.stringValue = "#\(UserData.shared.channel)"
             self.subChannelLabel.stringValue = "#SubChannel"
-    }
+        }
     }
     @objc func subChannelDidChange(_ notif: Notification) {
         DispatchQueue.main.async {

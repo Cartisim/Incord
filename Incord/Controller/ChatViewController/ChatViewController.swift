@@ -23,68 +23,25 @@ class ChatViewController: NSViewController, URLSessionWebSocketDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do view setup here.
         chatTableView.delegate = self
         chatTableView.dataSource = self
         chatTableView.reloadData()
-        NotificationCenter.default.addObserver(self, selector: #selector(userDataDidChange), name: NOTIF_USER_DATA_DID_CHANGE, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(userDataDidChange), name: USER_DATA_CHANGED, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(newMessage), name: NEW_MESSAGE, object: nil)
-        NotificationCenter.default.post(name: NOTIF_USER_DATA_DID_CHANGE, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(reload), name: RELOAD, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(userLoggedIn), name: LOGGED_IN, object: nil)
+        NotificationCenter.default.post(name: LOGGED_IN, object: nil)
         let deleteMessageMenu = NSMenu()
         deleteMessageMenu.addItem(withTitle: "Delete Message", action: #selector(deleteMessage), keyEquivalent: "")
         chatTableView.menu = deleteMessageMenu
-    }
-    override func viewWillAppear() {
-        setUpViewController()
+        setUpView()
     }
     
-    func setUpViewController() {
+    func setUpView() {
         chatTextField.wantsLayer = true
         chatTextField.layer?.cornerRadius = 8
         customButtonView.wantsLayer = true
         customButtonView.layer?.cornerRadius = 8
-    }
-    
-    @objc func newMessage() {
-        DispatchQueue.main.async {
-            self.chatTableView.reloadData()
-            self.chatTableView.scrollRowToVisible(MessagesSocket.shared.messages.count - 1)
-        }
-    }
-    
-    @objc func deleteMessage() {
-        Message(id: UserData.shared.messageID, avatar: UserData.shared.avatarName, username: UserData.shared.username, date: UserData.shared.date, message: UserData.shared.message, subChannelID: UserData.shared.subChannelID).deleteMessage(id: UserData.shared.messageID) { (res) in
-            switch res {
-            case .success:
-                DispatchQueue.main.async {
-                    MessagesSocket.shared.messages.removeAll()
-                    MasterViewController.shared.getMessages()
-                }
-            case .failure:
-                print("failure")
-            }
-        }
-    }
-    
-    @objc func userDataDidChange(_ notif: Notification) {
-        DispatchQueue.main.async {
-            if UserData.shared.isLoggedIn {
-                Users.shared.currentUser { (res) in
-                    switch res {
-                    case .success(let currentUser):
-                        DispatchQueue.main.async {
-                            UserData.shared.avatarName = currentUser.avatar
-                            UserData.shared.userEmail = currentUser.email
-                            UserData.shared.id = currentUser.id!.uuidString
-                            UserData.shared.username = currentUser.username
-                            self.profileImageButton.image = NSImage(named: UserData.shared.avatarName)
-                        }
-                    case .failure(let err):
-                        print(err)
-                    }
-                }
-            }
-        }
     }
     
     lazy var profileViewController: NSViewController = {
@@ -103,6 +60,15 @@ class ChatViewController: NSViewController, URLSessionWebSocketDelegate {
         return self.storyboard!.instantiateController(withIdentifier: "MismatchVC") as! NSViewController
     }()
     
+    lazy var errorViewController: NSViewController = {
+        return self.storyboard?.instantiateController(withIdentifier: "ErrorVC") as! NSViewController
+    }()
+    
+    lazy var deleteViewController: NSViewController = {
+        return self.storyboard?.instantiateController(withIdentifier: "DeleteVC") as! NSViewController
+    }()
+    
+    
     @IBAction func profileButtonClicked(_ sender: NSButton) {
         if UserData.shared.isLoggedIn {
             self.view.window?.contentViewController?.presentAsSheet(profileViewController)
@@ -113,7 +79,7 @@ class ChatViewController: NSViewController, URLSessionWebSocketDelegate {
     }
     @IBAction func profileImageClicked(_ sender: NSButton) {
         if UserData.shared.isLoggedIn {
-        self.view.window?.contentViewController?.presentAsSheet(profileViewController)
+            self.view.window?.contentViewController?.presentAsSheet(profileViewController)
         } else {
             self.view.window?.contentViewController?.presentAsSheet(pleaseLoginViewController)
         }
@@ -137,31 +103,49 @@ class ChatViewController: NSViewController, URLSessionWebSocketDelegate {
     
     
     @IBAction func chatTextFieldEntered(_ sender: NSTextField) {
-        addMessageButton.performClick(nil)
+        //        addMessageButton.performClick(nil)
     }
     
     
     @IBAction func AddFileClicked(_ sender: NSButton) {
+        
         if UserData.shared.isLoggedIn && chatTextField.stringValue.isEmpty == false {
             let currentDate = Date()
             let formatter = DateFormatter()
             formatter.dateFormat = "MMM d, h:mm a"
-            
             dateStringValue = formatter.string(from: currentDate)
-            MessagesSocket.shared.addMessage(id: UserData.shared.messageID, avatar: UserData.shared.avatarName, username: UserData.shared.username, Date: dateStringValue, message: chatTextField.stringValue, subChannelID: UserData.shared.subChannelID) { (res) in
+            
+            let uuid = UUID(uuidString: UserData.shared.createAccountID)!
+            Users.shared.currentUser(id: uuid) { (res) in
                 switch res {
-                case .success(let messages):
-                    print(messages)
+                case .success(let currentUser):
                     DispatchQueue.main.async {
-                        self.chatTextField.stringValue = ""
-                        MasterViewController.shared.getMessages()
+                        MessagesSocket.shared.addMessage(id: UserData.shared.messageID, avatar: currentUser.avatar, username: currentUser.username, Date: self.dateStringValue, message: self.chatTextField.stringValue, subChannelID: UserData.shared.subChannelID, createAccountID: uuid) { (res) in
+                            switch res {
+                            case .success(let messages):
+                                print(messages)
+                                DispatchQueue.main.async {
+                                    self.chatTextField.stringValue = ""
+                                    print(UserData.shared.createAccountID)
+                                    print(UserData.shared.username)
+                                }
+                            case .failure(let error):
+                                print(error)
+                                self.view.window?.contentViewController?.presentAsSheet(self.errorViewController)
+                            }
+                        }
                     }
-                case .failure(let error):
-                    print(error)
+                case .failure(let err):
+                    print(err)
+                    DispatchQueue.main.async {
+                        self.view.window?.contentViewController?.presentAsSheet(self.errorViewController)
+                    }
                 }
             }
+            
+            
         } else if UserData.shared.isLoggedIn && chatTextField.stringValue.isEmpty {
-             self.view.window?.contentViewController?.presentAsSheet(mismatchViewController)
+            self.view.window?.contentViewController?.presentAsSheet(mismatchViewController)
         } else {
             print("login")
             self.view.window?.contentViewController?.presentAsSheet(pleaseLoginViewController)
@@ -169,28 +153,3 @@ class ChatViewController: NSViewController, URLSessionWebSocketDelegate {
     }
 }
 
-extension ChatViewController: NSTableViewDelegate {
-    func tableViewSelectionDidChange(_ notification: Notification) {
-        print("chat selected")
-    }
-}
-
-extension ChatViewController: NSTableViewDataSource {
-    func numberOfRows(in tableView: NSTableView) -> Int {
-        return MessagesSocket.shared.messages.count
-    }
-    
-    func tableView(_ tableView: NSTableView, viewFor tableColumn: NSTableColumn?, row: Int) -> NSView? {
-        let cell = tableView.makeView(withIdentifier: NSUserInterfaceItemIdentifier(rawValue: "messageCell"), owner: nil) as? ChatTableCell
-        let message = MessagesSocket.shared.messages[row]
-        cell?.avatarImage.image = NSImage(named: message.avatar)
-        cell?.dateLabel.stringValue = message.date
-        cell?.usernameLabel.stringValue = message.username
-        cell?.messageField.stringValue = message.message
-        return cell
-    }
-    
-    func tableView(_ tableView: NSTableView, heightOfRow row: Int) -> CGFloat {
-        return 150.0
-    }
-}

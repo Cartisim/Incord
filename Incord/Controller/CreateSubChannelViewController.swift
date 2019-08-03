@@ -36,6 +36,10 @@ class CreateSubChannelViewController: NSViewController {
         return self.storyboard?.instantiateController(withIdentifier: "MismatchVC") as! NSViewController
     }()
     
+    lazy var errorViewController: NSViewController = {
+        return self.storyboard?.instantiateController(withIdentifier: "ErrorVC") as! NSViewController
+    }()
+    
     @IBAction func closeSheetClicked(_ sender: NSButton) {
        dismiss(self)
         
@@ -56,13 +60,13 @@ class CreateSubChannelViewController: NSViewController {
                     }
                 case .failure(let err):
                     print(err)
+                    self.view.window?.contentViewController?.presentAsSheet(self.errorViewController)
                 }
             })
        } else if subChannelTextField.stringValue.isEmpty {
-        self.view.window?.contentViewController?.presentAsSheet(self.mismatchViewController)
+        view.window?.contentViewController?.presentAsSheet(mismatchViewController)
        } else {
-        print("please login")
-        self.view.window?.contentViewController?.presentAsSheet(self.pleaseLoginViewController)
+        view.window?.contentViewController?.presentAsSheet(pleaseLoginViewController)
         }
     }
 }

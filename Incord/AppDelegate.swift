@@ -13,21 +13,22 @@ import Cocoa
 class AppDelegate: NSObject, NSApplicationDelegate {
     
     func applicationWillFinishLaunching(_ notification: Notification) {
-        NotificationCenter.default.post(name: NOTIF_USER_DATA_DID_CHANGE, object: nil)
         SocketConnection.shared.connectToSocket()
     }
     
     func applicationDidFinishLaunching(_ aNotification: Notification) {
-        
     }
     
     func applicationDidBecomeActive(_ notification: Notification) {
-
+        
     }
-
+    
     func applicationWillTerminate(_ aNotification: Notification) {
-
+        SocketConnection.shared.closeConnection()
+        ChannelSocket.shared.closeChannelConnection()
+        SubChannelSocket.shared.closeSubChannelConnection()
+        MessagesSocket.shared.closeMessageConnection()
     }
-
+    
 }
 

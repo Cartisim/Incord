@@ -22,6 +22,10 @@ class FriendsViewController: NSViewController {
         getUsers()
     }
     
+    lazy var errorViewController: NSViewController = {
+             return self.storyboard?.instantiateController(withIdentifier: "ErrorVC") as! NSViewController
+         }()
+    
     func getUsers() {
         users.removeAll()
         Users.shared.allUsers { (res) in
@@ -36,6 +40,7 @@ class FriendsViewController: NSViewController {
                 })
             case .failure(let err):
                 print("There was an \(err)")
+                 self.view.window?.contentViewController?.presentAsSheet(self.errorViewController)
             }
         }
     }

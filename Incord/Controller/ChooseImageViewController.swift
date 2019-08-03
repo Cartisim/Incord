@@ -18,9 +18,6 @@ class ChooseImageViewController: NSViewController {
         setUpView()
     }
     
-    override func viewWillAppear() {
-          print("data \(UserData.shared.channelID)")
-    }
     override func viewDidDisappear() {
         channelImage.image = NSImage(named: "NSBonjour")
     }
@@ -29,6 +26,10 @@ class ChooseImageViewController: NSViewController {
         self.progressIndicator.stopAnimation(self)
         self.progressIndicator.isHidden = true
     }
+    
+    lazy var errorViewController: NSViewController = {
+               return self.storyboard?.instantiateController(withIdentifier: "ErrorVC") as! NSViewController
+           }()
 
     @IBAction func dismissClicked(_ sender: NSButton) {
         dismiss(self)
@@ -56,9 +57,11 @@ class ChooseImageViewController: NSViewController {
                                     print(err)
                                 }
                             })
+                            NotificationCenter.default.post(name: NEW_CHANNEL, object: nil)
                             self.dismiss(self)
                         } else {
                             print("no image")
+                            self.view.window?.contentViewController?.presentAsSheet(self.errorViewController)
                         }
                     }
                 }

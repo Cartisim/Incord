@@ -16,14 +16,16 @@ final class Message: Codable {
     var date: String
     var message: String
     var subChannelID: Int
+    var createAccountID: UUID?
     
-    init(id: Int?, avatar: String, username: String, date: String, message: String, subChannelID: Int) {
+    init(id: Int?, avatar: String, username: String, date: String, message: String, subChannelID: Int, createAccountID: UUID?) {
         self.id = id 
         self.avatar = avatar
         self.username = username
         self.date = date
         self.message = message
         self.subChannelID = subChannelID
+        self.createAccountID = createAccountID
     }
     
     func deleteMessage(id: Int, completion: @escaping (PassFailResult) -> Void) {

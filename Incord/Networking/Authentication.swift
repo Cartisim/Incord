@@ -8,7 +8,7 @@
 
 import Foundation
 
-class Authentication {
+class Authentication: NSObject {
     
     static let shared = Authentication()
     
@@ -73,20 +73,5 @@ class Authentication {
                 completion(.failure(error))
             }
             }.resume()
-    }
-    
-    func logout() {
-        if  UserData.shared.isLoggedIn {
-            UserData.shared.keychain.delete(UserData.shared.token)
-            UserData.shared.isLoggedIn = false
-            UserData.shared.subChannel = ""
-            UserData.shared.channel = "Your Channel"
-            NotificationCenter.default.post(name: CLEAR_CHANNELS, object: nil)
-            NotificationCenter.default.post(name: CHANNEL_DID_CHANGE, object: nil)
-            print("user logged out")
-        } else {
-            print("please login")
-            //TODO:- NSAlert Modal
-        }
     }
 }

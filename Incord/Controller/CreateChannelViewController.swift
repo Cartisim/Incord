@@ -46,12 +46,14 @@ class CreateChannelViewController: NSViewController {
         return self.storyboard?.instantiateController(withIdentifier: "MismatchVC") as! NSViewController
     }()
     
+    lazy var errorViewController: NSViewController = {
+             return self.storyboard?.instantiateController(withIdentifier: "ErrorVC") as! NSViewController
+         }()
+    
     @IBAction func createChannelOnEnterClicked(_ sender: NSTextField) {
 //                channelButton.performClick(nil)
     }
     
-    
-    //TODO-: Set ChannelID to start at 1 not 0
     @IBAction func createChannelClicked(_ sender: NSButton) {
         if UserData.shared.isLoggedIn && createChannelTextField.stringValue.isEmpty == false {
             print(createChannelTextField.stringValue.isEmpty)
@@ -60,23 +62,23 @@ class CreateChannelViewController: NSViewController {
                 case .success(let channel):
                     DispatchQueue.main.async {
                         UserData.shared.channel = channel.channel
-                        UserData.shared.channelID = channel.id!
+                        UserData.shared.channelID = channel.id! + 1
                         UserData.shared.imageString = channel.imageString
-                        print("CLicked \(UserData.shared.channelID)")
                         self.view.window?.contentViewController?.presentAsSheet(self.imageViewController)
                     }
                     print(channel)
                 case .failure(let err):
                     DispatchQueue.main.async {
                         print(err)
+                         self.view.window?.contentViewController?.presentAsSheet(self.errorViewController)
                     }
                 }
             })
         } else if createChannelTextField.stringValue.isEmpty {
-            self.view.window?.contentViewController?.presentAsSheet(self.mismatchViewController)
+            view.window?.contentViewController?.presentAsSheet(mismatchViewController)
         } else {
             print("please login")
-            self.view.window?.contentViewController?.presentAsSheet(self.pleaseLoginViewController)
+            view.window?.contentViewController?.presentAsSheet(pleaseLoginViewController)
         }
     }
 }

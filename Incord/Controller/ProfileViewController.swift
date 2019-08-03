@@ -27,8 +27,19 @@ class ProfileViewController: NSViewController {
     }
     
     override func viewWillAppear() {
+        getCurrentUser()
+    }
+    
+    func setUpView() {
+        progressIndicator.stopAnimation(self)
+        progressIndicator.isHidden = true
+        avatarPopover.delegate = self
+    }
+    
+    func getCurrentUser() {
         if UserData.shared.isLoggedIn {
-            Users.shared.currentUser { (res) in
+            let uuid = UUID(uuidString: UserData.shared.createAccountID)
+            Users.shared.currentUser(id: uuid!) { (res) in
                 switch res {
                 case .success(let user):
                     print(user)
@@ -49,60 +60,60 @@ class ProfileViewController: NSViewController {
         }
     }
     
-    func setUpView() {
-        progressIndicator.stopAnimation(self)
-        progressIndicator.isHidden = true
-        avatarPopover.delegate = self
-    }
-
     lazy var mismatchViewController: NSViewController = {
-       return self.storyboard!.instantiateController(withIdentifier: "MismatchVC") as! NSViewController
+        return self.storyboard!.instantiateController(withIdentifier: "MismatchVC") as! NSViewController
     }()
     
     lazy var passswordViewController: NSViewController = {
         return self.storyboard!.instantiateController(withIdentifier: "PasswordVC") as! NSViewController
     }()
     
+    lazy var errorViewController: NSViewController = {
+        return self.storyboard!.instantiateController(withIdentifier: "ErrorVC") as! NSViewController
+    }()
+    
     @IBAction func closeSheetClicked(_ sender: NSButton) {
-          dismiss(self)
+        dismiss(self)
     }
     
     @IBAction func updateAccountOnEnterClicked(_ sender: NSTextField) {
-//        updateAccountButton.performClick(nil)
+        //        updateAccountButton.performClick(nil)
     }
     
     @IBAction func updateAccountClicked(_ sender: NSButton) {
         if UserData.shared.isLoggedIn && reEnterPasswordTextField.stringValue.isEmpty == false, passwordTextField.stringValue.isEmpty == false, usernameTextField.stringValue.isEmpty == false, emailTextField.stringValue.isEmpty == false {
-        self.progressIndicator.startAnimation(self)
-        self.progressIndicator.isHidden = false
-        if passwordTextField.stringValue == reEnterPasswordTextField.stringValue {
-            Users.shared.updateUser(username: usernameTextField.stringValue, email: emailTextField.stringValue, password: passwordTextField.stringValue, avatar: UserData.shared.avatarName) { (res) in
-                switch res {
-                case .success(let updatedProfile):
-                    print("success \(updatedProfile)")
-                    DispatchQueue.main.async {
-                        NotificationCenter.default.post(name: NOTIF_USER_DATA_DID_CHANGE, object: nil)
-                        self.progressIndicator.stopAnimation(self)
-                        self.progressIndicator.isHidden = true
-                        self.dismiss(self)
-                    }
-                case .failure(let err):
-                    print(err)
-                    DispatchQueue.main.async {
-                        self.progressIndicator.stopAnimation(self)
-                        self.progressIndicator.isHidden = true
+            self.progressIndicator.startAnimation(self)
+            self.progressIndicator.isHidden = false
+            if passwordTextField.stringValue == reEnterPasswordTextField.stringValue {
+                Users.shared.updateUser(username: usernameTextField.stringValue, email: emailTextField.stringValue, password: passwordTextField.stringValue, avatar: UserData.shared.avatarName) { (res) in
+                    switch res {
+                    case .success(let updatedProfile):
+                        print("success \(updatedProfile)")
+                        DispatchQueue.main.async {
+                            NotificationCenter.default.post(name: USER_DATA_CHANGED, object: nil)
+                            NotificationCenter.default.post(name: GET_ALL_USERS, object: nil)
+                            self.progressIndicator.stopAnimation(self)
+                            self.progressIndicator.isHidden = true
+                            self.dismiss(self)
+                        }
+                    case .failure(let err):
+                        print(err)
+                        DispatchQueue.main.async {
+                            self.progressIndicator.stopAnimation(self)
+                            self.progressIndicator.isHidden = true
+                            self.view.window?.contentViewController?.presentAsSheet(self.errorViewController)
+                        }
                     }
                 }
+            } else {
+                print("passwords must match")
+                progressIndicator.stopAnimation(self)
+                progressIndicator.isHidden = true
+                view.window?.contentViewController?.presentAsSheet(passswordViewController)
             }
         } else {
-            print("passwords must match")
-            self.progressIndicator.stopAnimation(self)
-            self.progressIndicator.isHidden = true
-            self.view.window?.contentViewController?.presentAsSheet(self.passswordViewController)
-        }
-        } else {
             print("please login")
-            self.view.window?.contentViewController?.presentAsSheet(self.mismatchViewController)
+            view.window?.contentViewController?.presentAsSheet(mismatchViewController)
         }
     }
     

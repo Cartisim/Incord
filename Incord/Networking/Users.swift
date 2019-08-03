@@ -8,13 +8,13 @@
 
 import Foundation
 
-class Users {
+class Users: NSObject {
     
     static let shared = Users()
+    var users = [CreateAccount]()
     
-    func currentUser(completion: @escaping (Result<CreateAccount, Error>) -> ()) {
-        if  UserData.shared.isLoggedIn {
-            guard let url = URL(string: "\(CREATE_URL)/\(UserData.shared.createAccountID)") else { return }
+    func currentUser(id: UUID, completion: @escaping (Result<CreateAccount, Error>) -> ()) {
+            guard let url = URL(string: "\(CREATE_URL)/\(id)") else { return }
             var request = URLRequest(url: url)
             request.httpMethod = "GET"
             
@@ -26,13 +26,15 @@ class Users {
                 
                 do {
                     let currentUser = try JSONDecoder().decode(CreateAccount.self, from: data!)
+                    let user = CreateAccount(username: currentUser.username, email: currentUser.email, avatar: currentUser.avatar)
+                    self.users.append(user)
                     completion(.success(currentUser))
                 } catch let err {
                     completion(.failure(err))
                 }
                 }.resume()
-        }
     }
+    
     
     func allUsers(completion: @escaping (Result<[CreateAccount], Error>) -> ()) {
         

@@ -20,13 +20,15 @@ class FriendsOnlineViewController: NSViewController {
         onlineTableView.dataSource = self
         onlineTableView.delegate = self
         onlineTableView.reloadData()
+        NotificationCenter.default.addObserver(self, selector: #selector(getUsers), name: GET_ALL_USERS, object: nil)
+        NotificationCenter.default.post(name: GET_ALL_USERS, object: nil)
     }
     
-    override func viewWillAppear() {
-        getUsers()
-    }
+      lazy var errorViewController: NSViewController = {
+               return self.storyboard?.instantiateController(withIdentifier: "ErrorVC") as! NSViewController
+           }()
     
-    func getUsers() {
+    @objc func getUsers() {
         Users.shared.allUsers { (res) in
             switch res {
             case .success(let users):
@@ -38,6 +40,7 @@ class FriendsOnlineViewController: NSViewController {
                 })
             case .failure(let err):
                 print(err)
+                 self.view.window?.contentViewController?.presentAsSheet(self.errorViewController)
             }
         }
     }

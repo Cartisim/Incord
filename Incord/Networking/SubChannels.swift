@@ -8,7 +8,7 @@
 
 import Foundation
 
-class SubChannels {
+class SubChannels: NSObject {
     
     static let shared = SubChannels()
     var subchannels = [SubChannel]()
