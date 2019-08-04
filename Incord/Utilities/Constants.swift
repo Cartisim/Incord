@@ -25,6 +25,7 @@ let RELOAD = Notification.Name("reload")
 let LOGGED_IN = Notification.Name("loggedIn")
 let LOGGED_OUT = Notification.Name("loggedOut")
 let GET_ALL_USERS = Notification.Name("getUsers")
+
 //URLS
 let BASE_URL = "http://localhost:8080/api"
 let WEBSOCKET_URL = "ws://localhost:8080/api"

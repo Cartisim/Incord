@@ -11,16 +11,19 @@ import Cocoa
 extension MasterViewController: NSCollectionViewDelegate{
     
     func collectionView(_ collectionView: NSCollectionView, didSelectItemsAt indexPaths: Set<IndexPath>) {
-        clearSubChannel()
+        clearChatView()
+        clearSubChannels()
         if UserData.shared.isLoggedIn {
             if let indexPath = self.channelCollectionView.selectionIndexPaths.first?.item {
-                Channels.shared.getChannel(channel: indexPath + 1) { (res) in
+                Channels.shared.getChannel(channel: ChannelSocket.shared.channels[indexPath].id! ) { (res) in
                     switch res {
                     case .success(let channel):
                         DispatchQueue.main.async {
                             UserData.shared.channel = channel.channel
                             UserData.shared.imageString = channel.imageString
                             UserData.shared.channelID = channel.id!
+                            let channels = Channel(id: channel.id!, imageString: channel.imageString, channel: channel.channel)
+                            ChannelSocket.shared.channels.append(channels)
                             NotificationCenter.default.post(name: CHANNEL_DID_CHANGE, object: nil)
                             self.getSubChannels()
                         }

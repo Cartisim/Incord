@@ -27,6 +27,7 @@ class UserData {
     fileprivate var _message = ""
     fileprivate var _avatar = ""
     fileprivate var _id = ""
+    fileprivate var  _imgData = Data()
     
     var token: String {
         get {
@@ -159,6 +160,14 @@ class UserData {
         }
         set {
             _username = newValue
+        }
+    }
+    
+    var imgData: Data {
+        get {
+            return _imgData
+        } set {
+            _imgData = newValue
         }
     }
 }

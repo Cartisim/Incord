@@ -20,46 +20,38 @@ extension MasterViewController {
     
     @objc func newSubChannel(_ notif: Notification) {
         DispatchQueue.main.async {
-            SubChannelSocket.shared.subchannels.removeAll()
+            self.clearSubChannels()
             self.getSubChannels()
-            self.subChannelTableView.reloadData()
         }
     }
     
-    @objc func deleteChannel() {
-        ChannelSocket.shared.channels.removeAll()
-        Channel(id: UserData.shared.channelID, imageString: UserData.shared.imageString, channel: UserData.shared.channel).deleteChannel(id: UserData.shared.channelID) { (res) in
-            DispatchQueue.main.async {
-                switch res {
-                case .success:
-                    ChannelSocket.shared.channels.removeAll()
-                    self.getChannels()
-                    self.channelCollectionView.reloadData()
-                case .failure:
-                    print("failure")
-                }
-            }
-        }
-    }
-    
-    @objc func deleteSubChannel() {
-        SubChannelSocket.shared.subchannels.removeAll()
-        SubChannel(id: UserData.shared.subChannelID, title: UserData.shared.subChannel, channelID: UserData.shared.channelID).deleteSubChannel(id: UserData.shared.subChannelID) { (res) in
+    @objc func deleteImage() {
+        ChannelImage(image: UserData.shared.imgData).deleteImage(id: UserData.shared.channelID) { (res) in
             switch res {
             case .success:
-                NotificationCenter.default.post(name: NEW_SUB_CHANNEL, object: nil)
+                print("success")
+                DispatchQueue.main.async {
+                    self.getChannels()
+                    self.clearChannels()
+                    NotificationCenter.default.post(name: CHANNEL_DID_CHANGE, object: nil)
+                    NotificationCenter.default.post(name: CLEAR_CHANNELS, object: nil)
+                }
             case .failure:
                 print("failure")
             }
         }
     }
     
-    @objc func clearChannels() {
-        ChannelSocket.shared.channels.removeAll()
-        channelCollectionView.reloadData()
-        SubChannelSocket.shared.subchannels.removeAll()
-        subChannelTableView.reloadData()
+    
+    @objc func deleteSubChannel() {
+        SubChannel(id: UserData.shared.subChannelID, title: UserData.shared.subChannel, channelID: UserData.shared.channelID).deleteSubChannel(id: UserData.shared.subChannelID) { (res) in
+            switch res {
+            case .success:
+                 SubChannelSocket.shared.subchannels.removeAll()
+                NotificationCenter.default.post(name: NEW_SUB_CHANNEL, object: nil)
+            case .failure:
+                print("failure")
+            }
+        }
     }
-    
-    
 }

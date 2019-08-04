@@ -23,7 +23,6 @@ class MasterViewController: NSViewController {
         setUpView()
         NotificationCenter.default.addObserver(self, selector: #selector(newChannel), name: NEW_CHANNEL, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(newSubChannel), name: NEW_SUB_CHANNEL, object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(clearChannels), name: CLEAR_CHANNELS, object: nil)
     }
 
     func setUpView() {
@@ -34,7 +33,7 @@ class MasterViewController: NSViewController {
         subChannelTableView.dataSource = self
         subChannelTableView.delegate = self
         let deleteChannelMenu = NSMenu()
-        deleteChannelMenu.addItem(withTitle: "Delete Channel", action: #selector(deleteChannel), keyEquivalent: "")
+         deleteChannelMenu.addItem(withTitle: "Delete Image", action: #selector(deleteImage), keyEquivalent: "")
         channelCollectionView.menu = deleteChannelMenu
         let deleteSubChannelMenu = NSMenu()
         deleteSubChannelMenu.addItem(withTitle: "Delete SubChannel", action: #selector(deleteSubChannel), keyEquivalent: "")
@@ -94,7 +93,6 @@ class MasterViewController: NSViewController {
                         UserData.shared.subChannelID = messages.subChannelID
                         UserData.shared.username = messages.username
                         UserData.shared.messageID = messages.id!
-//                        UserData.shared.createAccountID = messages.createAccountID!.uuidString
     
                         let messageData = Message(id: messages.id!, avatar: messages.avatar, username: messages.username, date: messages.date, message: messages.message, subChannelID: messages.subChannelID, createAccountID: messages.createAccountID)
                         MessagesSocket.shared.messages.append(messageData)
@@ -107,17 +105,22 @@ class MasterViewController: NSViewController {
         }
     }
     
-    func clearSubChannel() {
-        clearChatView()
-        SubChannelSocket.shared.subchannels.removeAll()
-        subChannelTableView.reloadData()
-    }
-    
     func clearChatView() {
         MessagesSocket.shared.messages.removeAll()
         //        self.rightVC?.chatTableView.reloadData()
         NotificationCenter.default.post(name: RELOAD, object: nil)
     }
+    
+    func clearChannels() {
+          ChannelSocket.shared.channels.removeAll()
+          channelCollectionView.reloadData()
+          clearSubChannels()
+      }
+      
+      func clearSubChannels() {
+          SubChannelSocket.shared.subchannels.removeAll()
+          subChannelTableView.reloadData()
+      }
     
     //SheetViewController
     lazy var createAccountViewController: NSViewController = {

@@ -19,6 +19,7 @@ class ToolBarViewController: NSViewController {
         super.viewDidLoad()
         NotificationCenter.default.addObserver(self, selector: #selector(channelDidChange), name: CHANNEL_DID_CHANGE, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(subChannelDidChange), name: SUB_CHANNEL_DID_CHANGE, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(channelsCleared), name: CLEAR_CHANNELS, object: nil)
     }
     
     @IBAction func logoutClicked(_ sender: NSButton) {
@@ -44,6 +45,14 @@ class ToolBarViewController: NSViewController {
     lazy var errorViewController: NSViewController = {
         return self.storyboard?.instantiateController(withIdentifier: "ErrorVC") as! NSViewController
     }()
+    
+    @objc func channelsCleared(_ notif: Notification) {
+        DispatchQueue.main.async {
+            ChannelSocket.shared.channels.removeAll()
+            self.channelLabel.stringValue = "#Your Channel"
+            self.subChannelLabel.stringValue = "#SubChannel"
+        }
+    }
     
     @objc func channelDidChange(_ notif: Notification) {
         DispatchQueue.main.async {
