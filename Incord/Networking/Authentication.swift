@@ -72,6 +72,9 @@ class Authentication: NSObject {
             } catch let error {
                 completion(.failure(error))
             }
-            }.resume()
+        }.resume()
+        
     }
+    
+    
 }

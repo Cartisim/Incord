@@ -62,6 +62,7 @@ class CreateAccountViewController: NSViewController {
         self.progressIndicator.isHidden = false
         if UserData.shared.isLoggedIn != true {
             if passwordTextField.stringValue == reEnterPasswordTextField.stringValue, userNameTextField.stringValue.isEmpty == false, emailTextField.stringValue.isEmpty == false {
+                
                 Authentication.shared.createUser(username: userNameTextField.stringValue, email: emailTextField.stringValue, password: passwordTextField.stringValue, avatar: UserData.shared.avatarName, completion: { (res) in
                     switch res {
                     case .success(let user):
