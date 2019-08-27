@@ -27,7 +27,7 @@ class UserData {
     fileprivate var _message = ""
     fileprivate var _avatar = ""
     fileprivate var _id = ""
-    fileprivate var  _imgData = Data()
+    fileprivate var _imgData = Data()
     
     var token: String {
         get {

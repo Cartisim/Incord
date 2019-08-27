@@ -10,6 +10,11 @@
 		0913C3B422F2D7E200291AA0 /* KeychainSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 0913C3B322F2D7E200291AA0 /* KeychainSwift */; };
 		0913C3B822F2D89A00291AA0 /* PasswordViewController copy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0913C3B722F2D89A00291AA0 /* PasswordViewController copy.swift */; };
 		0913C61C22F2DD1200291AA0 /* MismatchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0913C61B22F2DD1200291AA0 /* MismatchViewController.swift */; };
+		0932BF38231523E9008CC425 /* SocketConnection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0932BF37231523E9008CC425 /* SocketConnection.swift */; };
+		0932BF3A23152419008CC425 /* SubChannelSocket.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0932BF3923152419008CC425 /* SubChannelSocket.swift */; };
+		0932BF3C23152443008CC425 /* ChannelSocket.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0932BF3B23152443008CC425 /* ChannelSocket.swift */; };
+		0932BF3E2315247E008CC425 /* MessagesSocket.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0932BF3D2315247E008CC425 /* MessagesSocket.swift */; };
+		0932BF46231527A9008CC425 /* NSImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0932BF45231527A9008CC425 /* NSImage.swift */; };
 		093AE1F322BCF52E003F0535 /* Avatars.xib in Resources */ = {isa = PBXBuildFile; fileRef = 093AE1F222BCF52E003F0535 /* Avatars.xib */; };
 		093AE1F922BCF5DA003F0535 /* AvatarCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 093AE1F822BCF5DA003F0535 /* AvatarCell.xib */; };
 		097B0A0222E0BDC300114B1E /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09A95B9F22B267A3002F17CE /* Constants.swift */; };
@@ -57,18 +62,13 @@
 		097E15B222F56BAB0057389E /* MasterViewController+CollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 097E15B122F56BAB0057389E /* MasterViewController+CollectionView.swift */; };
 		097E15B422F56CA50057389E /* MasterViewController+Notifications.swift in Sources */ = {isa = PBXBuildFile; fileRef = 097E15B322F56CA50057389E /* MasterViewController+Notifications.swift */; };
 		097E15B622F5A9940057389E /* DeleteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 097E15B522F5A9940057389E /* DeleteViewController.swift */; };
-		0980A0BB22F2C27400AC12D7 /* NSImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0980A0BA22F2C27400AC12D7 /* NSImage.swift */; };
 		0981017C22D895240006B64F /* ChannelCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0981017B22D895240006B64F /* ChannelCell.xib */; };
-		0983B54D22E2E27A00C47C41 /* SocketConnection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0983B54C22E2E27A00C47C41 /* SocketConnection.swift */; };
 		098A293422F3CC13000C3EE7 /* ErrorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 098A293322F3CC13000C3EE7 /* ErrorViewController.swift */; };
 		098A293722F3D2CF000C3EE7 /* LoggedInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 098A293622F3D2CE000C3EE7 /* LoggedInViewController.swift */; };
 		098A293922F3D300000C3EE7 /* LoggedOutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 098A293822F3D300000C3EE7 /* LoggedOutViewController.swift */; };
 		09A95B8B22B2525F002F17CE /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 09A95B8A22B2525F002F17CE /* Assets.xcassets */; };
 		09A95B8E22B2525F002F17CE /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 09A95B8C22B2525F002F17CE /* Main.storyboard */; };
 		09CB200022F2DF13008D071A /* PleaseLoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09CB1FFF22F2DF06008D071A /* PleaseLoginViewController.swift */; };
-		09CE06D222F043B000EC255F /* ChannelSocket.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09CE06D122F043B000EC255F /* ChannelSocket.swift */; };
-		09CE06D422F043C400EC255F /* SubChannelSocket.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09CE06D322F043C400EC255F /* SubChannelSocket.swift */; };
-		09CE06D622F043D600EC255F /* MessagesSocket.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09CE06D522F043D600EC255F /* MessagesSocket.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -79,6 +79,13 @@
 		09144D9722D820B800FD7EF8 /* ChannelImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChannelImage.swift; sourceTree = "<group>"; };
 		09162E6222C1DFD100420996 /* CreateAccount.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateAccount.swift; sourceTree = "<group>"; };
 		091630C022C1E83F00420996 /* AuthToken.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthToken.swift; sourceTree = "<group>"; };
+		0932BF3223152374008CC425 /* SocketConnection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = SocketConnection.swift; path = "../../../../../../System/Volumes/Data/Users/cartisim/Documents/TeachingDevelopment/Chat App/Incord/Incord/Networking/SocketConnection.swift"; sourceTree = "<group>"; };
+		0932BF342315238C008CC425 /* SocketConnection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = SocketConnection.swift; path = "../../../../../../../System/Volumes/Data/Users/cartisim/Documents/TeachingDevelopment/Chat App/Incord/Incord/Networking/SocketConnection.swift"; sourceTree = "<group>"; };
+		0932BF37231523E9008CC425 /* SocketConnection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SocketConnection.swift; sourceTree = "<group>"; };
+		0932BF3923152419008CC425 /* SubChannelSocket.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubChannelSocket.swift; sourceTree = "<group>"; };
+		0932BF3B23152443008CC425 /* ChannelSocket.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChannelSocket.swift; sourceTree = "<group>"; };
+		0932BF3D2315247E008CC425 /* MessagesSocket.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessagesSocket.swift; sourceTree = "<group>"; };
+		0932BF45231527A9008CC425 /* NSImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NSImage.swift; sourceTree = "<group>"; };
 		093AE1CB22BC59BA003F0535 /* CreateAccountView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateAccountView.swift; sourceTree = "<group>"; };
 		093AE1CF22BC5CA7003F0535 /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
 		093AE1D122BC7260003F0535 /* BackgroundView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackgroundView.swift; sourceTree = "<group>"; };
@@ -104,11 +111,9 @@
 		097E15B122F56BAB0057389E /* MasterViewController+CollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MasterViewController+CollectionView.swift"; sourceTree = "<group>"; };
 		097E15B322F56CA50057389E /* MasterViewController+Notifications.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MasterViewController+Notifications.swift"; sourceTree = "<group>"; };
 		097E15B522F5A9940057389E /* DeleteViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeleteViewController.swift; sourceTree = "<group>"; };
-		0980A0BA22F2C27400AC12D7 /* NSImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = NSImage.swift; path = "../../../../../../../../System/Volumes/Data/Users/cartisim/Documents/TeachingDevelopment/Chat App/Incord/Incord/Utilities/NSImage.swift"; sourceTree = "<group>"; };
 		0981017922D887D50006B64F /* ChooseImageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChooseImageViewController.swift; sourceTree = "<group>"; };
 		0981017B22D895240006B64F /* ChannelCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ChannelCell.xib; sourceTree = "<group>"; };
 		0981017D22D895980006B64F /* ChannelCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChannelCell.swift; sourceTree = "<group>"; };
-		0983B54C22E2E27A00C47C41 /* SocketConnection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = SocketConnection.swift; path = "../../../../../../../../System/Volumes/Data/Users/cartisim/Documents/TeachingDevelopment/Chat App/Incord/Incord/Networking/SocketConnection.swift"; sourceTree = "<group>"; };
 		09897B0822DD519D0059B19F /* MasterSplitViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MasterSplitViewController.swift; sourceTree = "<group>"; };
 		098A293322F3CC13000C3EE7 /* ErrorViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorViewController.swift; sourceTree = "<group>"; };
 		098A293622F3D2CE000C3EE7 /* LoggedInViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoggedInViewController.swift; sourceTree = "<group>"; };
@@ -127,9 +132,6 @@
 		09A95BA322B26A71002F17CE /* MasterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MasterViewController.swift; sourceTree = "<group>"; };
 		09A95BA522B26B33002F17CE /* MasterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MasterView.swift; sourceTree = "<group>"; };
 		09CB1FFF22F2DF06008D071A /* PleaseLoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PleaseLoginViewController.swift; sourceTree = "<group>"; };
-		09CE06D122F043B000EC255F /* ChannelSocket.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ChannelSocket.swift; path = "../../../../../../../../System/Volumes/Data/Users/cartisim/Documents/TeachingDevelopment/Chat App/Incord/Incord/Networking/ChannelSocket.swift"; sourceTree = "<group>"; };
-		09CE06D322F043C400EC255F /* SubChannelSocket.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = SubChannelSocket.swift; path = "../../../../../../../../System/Volumes/Data/Users/cartisim/Documents/TeachingDevelopment/Chat App/Incord/Incord/Networking/SubChannelSocket.swift"; sourceTree = "<group>"; };
-		09CE06D522F043D600EC255F /* MessagesSocket.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = MessagesSocket.swift; path = "../../../../../../../../System/Volumes/Data/Users/cartisim/Documents/TeachingDevelopment/Chat App/Incord/Incord/Networking/MessagesSocket.swift"; sourceTree = "<group>"; };
 		09DB4D2122C4FBF500387E4E /* Messages.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Messages.swift; sourceTree = "<group>"; };
 		09DB4F7F22C4FCBE00387E4E /* Channel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Channel.swift; sourceTree = "<group>"; };
 		09DB4F8122C4FCC700387E4E /* Message.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Message.swift; sourceTree = "<group>"; };
@@ -205,6 +207,7 @@
 		09A95B7A22B2525D002F17CE = {
 			isa = PBXGroup;
 			children = (
+				0932BF3223152374008CC425 /* SocketConnection.swift */,
 				09A95B8522B2525D002F17CE /* Incord */,
 				09A95B8422B2525D002F17CE /* Products */,
 				32242C9E6744BA2A0C221671 /* Pods */,
@@ -223,6 +226,7 @@
 			isa = PBXGroup;
 			children = (
 				09A95B8C22B2525F002F17CE /* Main.storyboard */,
+				0932BF342315238C008CC425 /* SocketConnection.swift */,
 				093AE1C822BC55D6003F0535 /* Xibs */,
 				09A95B9E22B2678B002F17CE /* Utilities */,
 				09A95B9922B26288002F17CE /* Networking */,
@@ -296,12 +300,12 @@
 			children = (
 				0910AA0822C18CEC008657B3 /* Authentication.swift */,
 				09116CFC22C4A4EA00762A93 /* Users.swift */,
-				0983B54C22E2E27A00C47C41 /* SocketConnection.swift */,
-				09CE06D122F043B000EC255F /* ChannelSocket.swift */,
+				0932BF37231523E9008CC425 /* SocketConnection.swift */,
+				0932BF3B23152443008CC425 /* ChannelSocket.swift */,
 				09954C7922D8166200C582F1 /* Channels.swift */,
-				09CE06D322F043C400EC255F /* SubChannelSocket.swift */,
+				0932BF3923152419008CC425 /* SubChannelSocket.swift */,
 				09DB4F8522C4FCE600387E4E /* SubChannels.swift */,
-				09CE06D522F043D600EC255F /* MessagesSocket.swift */,
+				0932BF3D2315247E008CC425 /* MessagesSocket.swift */,
 				09DB4D2122C4FBF500387E4E /* Messages.swift */,
 			);
 			path = Networking;
@@ -311,8 +315,8 @@
 			isa = PBXGroup;
 			children = (
 				09A95B9F22B267A3002F17CE /* Constants.swift */,
+				0932BF45231527A9008CC425 /* NSImage.swift */,
 				09DF1CDF22C3301100562564 /* UserData.swift */,
-				0980A0BA22F2C27400AC12D7 /* NSImage.swift */,
 			);
 			path = Utilities;
 			sourceTree = "<group>";
@@ -412,22 +416,22 @@
 				097B0A2822E0BE3E00114B1E /* AuthToken.swift in Sources */,
 				097B0A2722E0BE3B00114B1E /* Channel.swift in Sources */,
 				097B0A2622E0BE3800114B1E /* Message.swift in Sources */,
+				0932BF38231523E9008CC425 /* SocketConnection.swift in Sources */,
 				097B0A2522E0BE3500114B1E /* SubChannel.swift in Sources */,
 				097B0A2422E0BE3200114B1E /* ChannelImage.swift in Sources */,
 				097B0A2322E0BE2F00114B1E /* CreateAccount.swift in Sources */,
 				097B0A2222E0BE2900114B1E /* CustomButtonView.swift in Sources */,
-				0980A0BB22F2C27400AC12D7 /* NSImage.swift in Sources */,
+				0932BF3E2315247E008CC425 /* MessagesSocket.swift in Sources */,
 				098A293922F3D300000C3EE7 /* LoggedOutViewController.swift in Sources */,
-				0983B54D22E2E27A00C47C41 /* SocketConnection.swift in Sources */,
 				09CB200022F2DF13008D071A /* PleaseLoginViewController.swift in Sources */,
 				097B0A2122E0BE2600114B1E /* CreateAccountView.swift in Sources */,
+				0932BF3C23152443008CC425 /* ChannelSocket.swift in Sources */,
 				097B0A2022E0BE2100114B1E /* FriendsTableCell.swift in Sources */,
 				098A293422F3CC13000C3EE7 /* ErrorViewController.swift in Sources */,
 				097B0A1F22E0BE1F00114B1E /* LoginView.swift in Sources */,
 				097B0A1E22E0BE1B00114B1E /* AvatarCell.swift in Sources */,
 				097B0A1D22E0BE1800114B1E /* OnlineFriendsTableCell.swift in Sources */,
 				097B0A1C22E0BE1500114B1E /* ChannelCell.swift in Sources */,
-				09CE06D422F043C400EC255F /* SubChannelSocket.swift in Sources */,
 				097B0A1B22E0BE1000114B1E /* ChatTableCell.swift in Sources */,
 				097B0A1A22E0BE0D00114B1E /* BackgroundView.swift in Sources */,
 				097B0A1922E0BE0A00114B1E /* ChannelView.swift in Sources */,
@@ -452,17 +456,17 @@
 				097B0A0B22E0BDE100114B1E /* ChatViewController.swift in Sources */,
 				097B0A0A22E0BDDE00114B1E /* MasterSplitViewController.swift in Sources */,
 				097B0A0922E0BDDB00114B1E /* Channels.swift in Sources */,
-				09CE06D622F043D600EC255F /* MessagesSocket.swift in Sources */,
 				097E15A822F56A080057389E /* ChatViewController+Notifications.swift in Sources */,
 				098A293722F3D2CF000C3EE7 /* LoggedInViewController.swift in Sources */,
 				097B0A0722E0BDD400114B1E /* SubChannels.swift in Sources */,
 				0913C3B822F2D89A00291AA0 /* PasswordViewController copy.swift in Sources */,
 				097B0A0622E0BDD200114B1E /* Messages.swift in Sources */,
 				097B0A0522E0BDCF00114B1E /* Users.swift in Sources */,
+				0932BF3A23152419008CC425 /* SubChannelSocket.swift in Sources */,
 				097B0A0422E0BDCC00114B1E /* Authentication.swift in Sources */,
-				09CE06D222F043B000EC255F /* ChannelSocket.swift in Sources */,
 				097B0A0322E0BDC900114B1E /* UserData.swift in Sources */,
 				097B0A0222E0BDC300114B1E /* Constants.swift in Sources */,
+				0932BF46231527A9008CC425 /* NSImage.swift in Sources */,
 				097E15B222F56BAB0057389E /* MasterViewController+CollectionView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
