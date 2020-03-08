@@ -19,8 +19,10 @@ class SubChannelSocket: NSObject {
         let json = try? JSONEncoder().encode(body)
         var request = URLRequest(url: URL(string: "\(WEBSOCKET_URL)/sub_channel")!)
         request.timeoutInterval = 5
+         request.httpMethod = "POST"
         request.addValue("application/json", forHTTPHeaderField: "Content-Type")
-        request.httpMethod = "POST"
+        request.addValue("Bearer \(UserData.shared.token)", forHTTPHeaderField: "Authorization")
+
         let urlSession = URLSession(configuration: .default)
         let webSocketTask = urlSession.webSocketTask(with: request)
         webSocketTask.resume()

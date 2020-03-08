@@ -17,8 +17,11 @@ class SubChannels: NSObject {
         guard let url = URL(string: "\(BASE_URL)/channel/\(channelID)/sub_channel") else { return }
         var request = URLRequest(url: url)
         request.httpMethod = "GET"
+        request.addValue("Bearer \(UserData.shared.token)", forHTTPHeaderField: "Authorization")
+       
         URLSession.shared.dataTask(with: request) { (data, response, error) in
             if let error = error {
+                 print("tokenr",UserData.shared.token)
                 completion(.failure(error))
                 return
             }

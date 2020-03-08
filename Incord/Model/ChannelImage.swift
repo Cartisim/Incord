@@ -21,6 +21,7 @@ struct ChannelImage: Codable {
         print(url)
         var request = URLRequest(url: url)
         request.httpMethod = "DELETE"
+         request.addValue("Bearer \(UserData.shared.token)", forHTTPHeaderField: "Authorization")
 
         URLSession.shared.dataTask(with: request) { (data, response, error) in
             if let httpResponse = response as? HTTPURLResponse, httpResponse.statusCode == 204 {

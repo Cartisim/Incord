@@ -30,6 +30,7 @@ class ToolBarViewController: NSViewController {
             logoutButton.title = ""
         } else{
             logoutButton.title = "Logout"
+            view.addSubview(logoutButton)
         }
     }
     
@@ -43,11 +44,14 @@ class ToolBarViewController: NSViewController {
             UserData.shared.subChannel = ""
             UserData.shared.channel = "Your Channel"
             NotificationCenter.default.post(name: CLEAR_CHANNELS, object: nil)
+            NotificationCenter.default.post(name: SUB_CHANNEL_DID_CHANGE, object: nil)
             NotificationCenter.default.post(name: CHANNEL_DID_CHANGE, object: nil)
             NotificationCenter.default.post(name: LOGGED_IN, object: nil)
+            NotificationCenter.default.post(name: CLEAR_CONTROLLER, object: nil)
             MasterViewController.shared.clearChatView()
             users.removeAll()
             setTitle()
+            logoutButton.removeFromSuperview()
         } else {
             print("please login")
             view.window?.contentViewController?.presentAsSheet(errorViewController)

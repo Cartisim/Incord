@@ -23,6 +23,7 @@ class MasterViewController: NSViewController {
         setUpView()
         NotificationCenter.default.addObserver(self, selector: #selector(newChannel), name: NEW_CHANNEL, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(newSubChannel), name: NEW_SUB_CHANNEL, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(clearController), name: CLEAR_CONTROLLER, object: nil)
     }
 
     func setUpView() {
@@ -33,7 +34,7 @@ class MasterViewController: NSViewController {
         subChannelTableView.dataSource = self
         subChannelTableView.delegate = self
         let deleteChannelMenu = NSMenu()
-         deleteChannelMenu.addItem(withTitle: "Delete Image", action: #selector(deleteImage), keyEquivalent: "")
+         deleteChannelMenu.addItem(withTitle: "Delete Channel", action: #selector(deleteChannelImage), keyEquivalent: "")
         channelCollectionView.menu = deleteChannelMenu
         let deleteSubChannelMenu = NSMenu()
         deleteSubChannelMenu.addItem(withTitle: "Delete SubChannel", action: #selector(deleteSubChannel), keyEquivalent: "")

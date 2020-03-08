@@ -15,49 +15,46 @@ extension ChatViewController {
     }
     
     @objc func deleteMessage() {
-        
-        if let indexPath = chatTableView?.selectedRow {
-              if MessagesSocket.shared.messages[indexPath].createAccountID?.uuidString != UserData.shared.createAccountID {
+        if chatTableView.selectedRow >= 0 {
+            if let indexPath = chatTableView?.selectedRow {
+                if MessagesSocket.shared.messages[indexPath].createAccountID?.uuidString != UserData.shared.createAccountID {
                     print("break it")
-                 self.view.window?.contentViewController?.presentAsSheet(self.deleteViewController)
-              } else {
-                 print("thats true")
-                 Messages.shared.getMessage(messageID: UserData.shared.messageID) { (res) in
-                     switch res {
-                     case .success(let messages):
-                         print(messages.createAccountID as Any)
-                         print(UserData.shared.createAccountID)
-                         DispatchQueue.main.async {
-                             let uuid = UUID(uuidString: UserData.shared.createAccountID)
-                             if  messages.createAccountID?.uuidString == UserData.shared.createAccountID {
-                                 Message(id: UserData.shared.messageID, avatar: UserData.shared.avatarName, username: UserData.shared.username, date: UserData.shared.date, message: UserData.shared.message, subChannelID: UserData.shared.subChannelID, createAccountID: uuid).deleteMessage(id: UserData.shared.messageID) { (res) in
-                                     switch res {
-                                     case .success:
-                                         DispatchQueue.main.async {
-                                             MessagesSocket.shared.messages.removeAll()
-                                             MasterViewController.shared.getMessages()
-                                             self.chatTableView.reloadData()
-                                         }
-                                     case .failure:
-                                         print("failure")
-                                         DispatchQueue.main.async {
-//                                             self.view.window?.contentViewController?.presentAsSheet(self.errorViewController)
-                                         }
-                                     }
-                                 }
-                             } else {
-                                 print("No go")
-                               
-                             }
-                         }
-                     case .failure(let err):
-                         print(err)
-                         
-                     }
-                 }
-              }
+                    self.view.window?.contentViewController?.presentAsSheet(self.deleteViewController)
+                } else {
+                    print("thats true")
+                    Messages.shared.getMessage(messageID: UserData.shared.messageID) { (res) in
+                        switch res {
+                        case .success(let messages):
+                            DispatchQueue.main.async {
+                                let uuid = UUID(uuidString: UserData.shared.createAccountID)
+                                if messages.createAccountID?.uuidString == UserData.shared.createAccountID {
+                                    Message(id: UserData.shared.messageID, avatar: UserData.shared.avatarName, username: UserData.shared.username, date: UserData.shared.date, message: UserData.shared.message, subChannelID: UserData.shared.subChannelID, createAccountID: uuid).deleteMessage(id: UserData.shared.messageID) { (res) in
+                                        switch res {
+                                        case .success:
+                                            DispatchQueue.main.async {
+                                                MessagesSocket.shared.messages.removeAll()
+                                                MasterViewController.shared.getMessages()
+                                                self.chatTableView.reloadData()
+                                            }
+                                        case .failure:
+                                            print("failure")
+                                            DispatchQueue.main.async {
+                                                //                                             self.view.window?.contentViewController?.presentAsSheet(self.errorViewController)
+                                            }
+                                        }
+                                    }
+                                } else {
+                                    print("No go")
+                                }
+                            }
+                        case .failure(let err):
+                            print(err)
+                            
+                        }
+                    }
+                }
             }
-        
+        }
     }
     
     @objc func userDataDidChange(_ notif: Notification) {
@@ -75,7 +72,7 @@ extension ChatViewController {
             case .failure(let err):
                 print(err)
                 DispatchQueue.main.async {
-//                    self.view.window?.contentViewController?.presentAsSheet(self.errorViewController)
+                    //                    self.view.window?.contentViewController?.presentAsSheet(self.errorViewController)
                 }
             }
         }

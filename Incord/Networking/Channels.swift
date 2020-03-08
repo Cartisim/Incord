@@ -41,7 +41,7 @@ func getChannels(completion: @escaping (Result<[Channel], Error>) -> ()) {
     guard let url = URL(string: "\(CHANNEL_URL)") else { return }
     var request = URLRequest(url: url)
     request.httpMethod = "GET"
-    
+    request.addValue("Bearer \(UserData.shared.token)", forHTTPHeaderField: "Authorization")
     URLSession.shared.dataTask(with: request) { (data, response, error) in
         if let error = error {
             completion(.failure(error))
@@ -63,6 +63,7 @@ func getChannel(channel: Int, completion: @escaping (Result<Channel, Error>) -> 
     guard let url = URL(string: "\(CHANNEL_URL)/\(channel)") else { return }
     var request = URLRequest(url: url)
     request.httpMethod = "GET"
+     request.addValue("Bearer \(UserData.shared.token)", forHTTPHeaderField: "Authorization")
     URLSession.shared.dataTask(with: request) { data, response, error in
         if let error = error {
             completion(.failure(error))

@@ -25,6 +25,7 @@ final class SubChannel: Codable {
         print(url)
         var request = URLRequest(url: url)
         request.httpMethod = "DELETE"
+        request.addValue("Bearer \(UserData.shared.token)", forHTTPHeaderField: "Authorization")
         
         URLSession.shared.dataTask(with: request) { (_, response, _) in
             if let httpResponse = response as? HTTPURLResponse, httpResponse.statusCode == 204 {

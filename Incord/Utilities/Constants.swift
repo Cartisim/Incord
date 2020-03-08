@@ -26,6 +26,7 @@ let LOGGED_IN = Notification.Name("loggedIn")
 let LOGGED_OUT = Notification.Name("loggedOut")
 let GET_ALL_USERS = Notification.Name("getUsers")
 let SET_TITLE_TO_LOGOUT = Notification.Name("setTitle")
+let CLEAR_CONTROLLER = Notification.Name("clearController")
 
 //URLS
 let BASE_URL = "http://localhost:8080/api"

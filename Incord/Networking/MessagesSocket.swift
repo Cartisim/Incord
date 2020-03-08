@@ -20,6 +20,7 @@ class MessagesSocket: NSObject {
         var request = URLRequest(url: URL(string: "\(WEBSOCKET_URL)/messages")!)
         request.timeoutInterval = 5
         request.addValue("application/json", forHTTPHeaderField: "Content-Type")
+        request.addValue("Bearer \(UserData.shared.token)", forHTTPHeaderField: "Authorization")
         request.httpMethod = "POST"
         let urlSession = URLSession(configuration: .default)
         let webSocketTask = urlSession.webSocketTask(with: request)
