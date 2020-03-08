@@ -78,6 +78,7 @@ class LoginViewController: NSViewController {
                                     NotificationCenter.default.post(name: NEW_CHANNEL, object: nil)
                                     NotificationCenter.default.post(name: USER_DATA_CHANGED, object: nil)
                                     NotificationCenter.default.post(name: GET_ALL_USERS, object: nil)
+                                    NotificationCenter.default.post(name: SET_TITLE_TO_LOGOUT, object: nil)
                                     self.dismiss(self)
                                 }
                             case .failure(let err):

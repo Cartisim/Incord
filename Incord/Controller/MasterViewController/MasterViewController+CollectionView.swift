@@ -30,7 +30,7 @@ extension MasterViewController: NSCollectionViewDelegate{
                     case .failure(let err):
                         print("There was an error selecting channel \(err)")
                         DispatchQueue.main.async {
-                            self.view.window?.contentViewController?.presentAsSheet(self.errorViewController)
+//                            self.view.window?.contentViewController?.presentAsSheet(self.errorViewController)
                         }
                     }
                 }

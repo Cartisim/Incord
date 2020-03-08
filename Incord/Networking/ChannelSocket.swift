@@ -47,6 +47,7 @@ var channels = [Channel]()
                     case .data(let data):
                         print("Received binary message: \(data)")
                         let recevied = try? JSONDecoder().decode(Channel.self, from: data)
+          
                         guard let channelName = recevied?.channel else {return}
                         guard let imageName = recevied?.imageString else {return}
                         guard let channelID = recevied?.id! else {return}

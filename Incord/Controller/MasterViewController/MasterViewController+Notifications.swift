@@ -12,9 +12,9 @@ extension MasterViewController {
     
     @objc func newChannel(_ notif: Notification) {
         DispatchQueue.main.async {
-            ChannelSocket.shared.channels.removeAll()
-            self.getChannels()
-            self.channelCollectionView.reloadData()
+//            ChannelSocket.shared.channels.removeAll()
+//            self.getChannels()
+//            self.channelCollectionView.reloadData()
         }
     }
     

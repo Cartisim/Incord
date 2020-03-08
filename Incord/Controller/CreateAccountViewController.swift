@@ -38,17 +38,17 @@ class CreateAccountViewController: NSViewController {
         self.progressIndicator.stopAnimation(self)
         self.progressIndicator.isHidden = true
     }
-
+    
     lazy var errorViewController: NSViewController = {
-          return self.storyboard?.instantiateController(withIdentifier: "ErrorVC") as! NSViewController
-      }()
+        return self.storyboard?.instantiateController(withIdentifier: "ErrorVC") as! NSViewController
+    }()
     
     lazy var mismatchViewController: NSViewController = {
-       return self.storyboard!.instantiateController(withIdentifier: "MismatchVC") as! NSViewController
+        return self.storyboard!.instantiateController(withIdentifier: "MismatchVC") as! NSViewController
     }()
     
     lazy var logOutViewController: NSViewController = {
-       return self.storyboard!.instantiateController(withIdentifier: "LogOutVC") as! NSViewController
+        return self.storyboard!.instantiateController(withIdentifier: "LogOutVC") as! NSViewController
     }()
     
     @IBAction func chooseAvatarClicked(_ sender: NSButton) {
@@ -72,32 +72,33 @@ class CreateAccountViewController: NSViewController {
                                 switch res {
                                 case .success(let login):
                                     DispatchQueue.main.async {
-                                            Users.shared.currentUser(id: login.createAccountID) { (res) in
-                                                             switch res {
-                                                             case .success(let user):
-                                                                 print(user.email)
-                                                                 DispatchQueue.main.async {
-                                                                     UserData.shared.avatarName = user.avatar
-                                                                     UserData.shared.userEmail = user.email
-                                                                     UserData.shared.id = user.id!.uuidString
-                                                                     UserData.shared.username = user.username
-                                                                     self.progressIndicator.stopAnimation(self)
-                                                                     self.progressIndicator.isHidden = true
-                                                                     NotificationCenter.default.post(name: NEW_CHANNEL, object: nil)
-                                                                     NotificationCenter.default.post(name: USER_DATA_CHANGED, object: nil)
-                                                                    NotificationCenter.default.post(name: GET_ALL_USERS, object: nil)
-                                                                     self.dismiss(self)
-                                                                 }
-                                                             case .failure(let err):
-                                                                 print(err)
-                                                             }
-                                                         }
+                                        Users.shared.currentUser(id: login.createAccountID) { (res) in
+                                            switch res {
+                                            case .success(let user):
+                                                print(user.email)
+                                                DispatchQueue.main.async {
+                                                    UserData.shared.avatarName = user.avatar
+                                                    UserData.shared.userEmail = user.email
+                                                    UserData.shared.id = user.id!.uuidString
+                                                    UserData.shared.username = user.username
+                                                    self.progressIndicator.stopAnimation(self)
+                                                    self.progressIndicator.isHidden = true
+                                                    NotificationCenter.default.post(name: NEW_CHANNEL, object: nil)
+                                                    NotificationCenter.default.post(name: USER_DATA_CHANGED, object: nil)
+                                                    NotificationCenter.default.post(name: GET_ALL_USERS, object: nil)
+                                                    NotificationCenter.default.post(name: SET_TITLE_TO_LOGOUT, object: nil)
+                                                    self.dismiss(self)
+                                                }
+                                            case .failure(let err):
+                                                print(err)
+                                            }
+                                        }
                                         print(login)
                                     }
                                 case .failure(let err):
                                     print(err)
                                     DispatchQueue.main.async {
-                                    self.view.window?.contentViewController?.presentAsSheet(self.errorViewController)
+                                        self.view.window?.contentViewController?.presentAsSheet(self.errorViewController)
                                         self.progressIndicator.stopAnimation(self)
                                         self.progressIndicator.isHidden = true
                                     }
@@ -116,7 +117,7 @@ class CreateAccountViewController: NSViewController {
                 print("passwords must match")
                 self.progressIndicator.stopAnimation(self)
                 self.progressIndicator.isHidden = true
-                 self.view.window?.contentViewController?.presentAsSheet(self.mismatchViewController)
+                self.view.window?.contentViewController?.presentAsSheet(self.mismatchViewController)
             }
         } else {
             self.progressIndicator.stopAnimation(self)
@@ -126,12 +127,12 @@ class CreateAccountViewController: NSViewController {
     }
     
     @IBAction func closeSheetClicked(_ sender: NSButton) {
-          dismiss(self)
+        dismiss(self)
     }
     
     
     @IBAction func createAccountOnEnterClicked(_ sender: NSTextField) {
-//                createAccountButton.performClick(nil)
+        //                createAccountButton.performClick(nil)
     }
 }
 

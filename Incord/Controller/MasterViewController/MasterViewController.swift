@@ -143,9 +143,9 @@ class MasterViewController: NSViewController {
         return self.storyboard?.instantiateController(withIdentifier: "PleaseLoginVC") as! NSViewController
     }()
     
-    lazy var errorViewController: NSViewController = {
-        return self.storyboard?.instantiateController(withIdentifier: "ErrorVC") as! NSViewController
-    }()
+//    lazy var errorViewController: NSViewController = {
+//        return self.storyboard?.instantiateController(withIdentifier: "ErrorVC") as! NSViewController
+//    }()
     
     @IBAction func loginClicked(_ sender: NSButton) {
         view.window?.contentViewController?.presentAsSheet(loginViewController)

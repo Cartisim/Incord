@@ -41,7 +41,7 @@ extension ChatViewController {
                                      case .failure:
                                          print("failure")
                                          DispatchQueue.main.async {
-                                             self.view.window?.contentViewController?.presentAsSheet(self.errorViewController)
+//                                             self.view.window?.contentViewController?.presentAsSheet(self.errorViewController)
                                          }
                                      }
                                  }
@@ -75,7 +75,7 @@ extension ChatViewController {
             case .failure(let err):
                 print(err)
                 DispatchQueue.main.async {
-                    self.view.window?.contentViewController?.presentAsSheet(self.errorViewController)
+//                    self.view.window?.contentViewController?.presentAsSheet(self.errorViewController)
                 }
             }
         }

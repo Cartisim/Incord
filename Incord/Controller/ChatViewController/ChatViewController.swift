@@ -59,10 +59,10 @@ class ChatViewController: NSViewController, URLSessionWebSocketDelegate {
     lazy var mismatchViewController: NSViewController = {
         return self.storyboard!.instantiateController(withIdentifier: "MismatchVC") as! NSViewController
     }()
-    
-    lazy var errorViewController: NSViewController = {
-        return self.storyboard?.instantiateController(withIdentifier: "ErrorVC") as! NSViewController
-    }()
+//
+//    lazy var errorViewController: NSViewController = {
+//        return self.storyboard?.instantiateController(withIdentifier: "ErrorVC") as! NSViewController
+//    }()
     
     lazy var deleteViewController: NSViewController = {
         return self.storyboard?.instantiateController(withIdentifier: "DeleteVC") as! NSViewController
@@ -131,14 +131,14 @@ class ChatViewController: NSViewController, URLSessionWebSocketDelegate {
                                 }
                             case .failure(let error):
                                 print(error)
-                                self.view.window?.contentViewController?.presentAsSheet(self.errorViewController)
+//                                self.view.window?.contentViewController?.presentAsSheet(self.errorViewController)
                             }
                         }
                     }
                 case .failure(let err):
                     print(err)
                     DispatchQueue.main.async {
-                        self.view.window?.contentViewController?.presentAsSheet(self.errorViewController)
+//                        self.view.window?.contentViewController?.presentAsSheet(self.errorViewController)
                     }
                 }
             }
