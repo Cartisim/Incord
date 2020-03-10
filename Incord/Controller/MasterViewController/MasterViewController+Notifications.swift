@@ -42,8 +42,6 @@ extension MasterViewController {
                     self.clearChannels()
                     NotificationCenter.default.post(name: CHANNEL_DID_CHANGE, object: nil)
                     NotificationCenter.default.post(name: CLEAR_CHANNELS, object: nil)
-                    
-                    deleteSubChannel()
                 }
             case .failure:
                 print("failured")
